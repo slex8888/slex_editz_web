@@ -19,6 +19,92 @@
       color: white;
     }
 
+/* WEBSITE ON/OFF SYSTEM */
+
+#maintenance {
+  display: none;
+}
+
+body.site-off > *:not(#maintenance) {
+  display: none !important;
+}
+
+body.site-off #maintenance {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  background: #08080d;
+  color: white;
+}
+
+.maintenance-box {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  padding: 35px 25px;
+  background: #101018;
+  border: 1px solid #292936;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(139, 0, 255, 0.15);
+}
+
+.maintenance-logo {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+}
+
+.maintenance-logo span,
+.maintenance-box h1 span {
+  color: #b000ff;
+}
+
+.off-icon {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.maintenance-box h1 {
+  font-size: 25px;
+  margin-bottom: 12px;
+}
+
+.maintenance-box p {
+  color: #aaa;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.instagram-box {
+  margin-top: 25px;
+  padding: 18px;
+  background: #15151f;
+  border: 1px solid #292936;
+  border-radius: 14px;
+}
+
+.instagram-title {
+  color: #999;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.instagram-box a {
+  color: #c000ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.maintenance-footer {
+  margin-top: 25px;
+  color: #666;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+    
     header {
       padding: 22px 18px;
       text-align: center;
@@ -400,6 +486,14 @@
   </div>
 
 </div>
+
+<script>
+  const SITE_OFF = false;
+
+  if (SITE_OFF) {
+    document.body.classList.add("site-off");
+  }
+</script>
   
 </body>
 </html>
