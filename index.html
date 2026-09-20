@@ -132,6 +132,105 @@
       font-size: 13px;
     }
 
+/* ================================
+   WEBSITE OFF PAGE
+================================ */
+
+#maintenance {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(139, 0, 255, 0.18), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(176, 0, 255, 0.15), transparent 35%),
+    #08080d;
+  color: white;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+}
+
+.maintenance-box {
+  width: 100%;
+  max-width: 650px;
+  padding: 40px 25px;
+  background: rgba(18, 18, 27, 0.95);
+  border: 1px solid #8b00ff;
+  border-radius: 24px;
+  box-shadow: 0 0 40px rgba(139, 0, 255, 0.25);
+}
+
+.maintenance-logo {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 35px;
+}
+
+.maintenance-logo span {
+  color: #b000ff;
+}
+
+.off-icon {
+  width: 85px;
+  height: 85px;
+  margin: 0 auto 25px;
+  border: 2px solid #8b00ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  box-shadow: 0 0 25px rgba(139, 0, 255, 0.5);
+}
+
+.maintenance-box h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.maintenance-box h1 span {
+  color: #b000ff;
+}
+
+.maintenance-box p {
+  color: #aaa;
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.instagram-box {
+  border: 1px solid #292936;
+  background: #101018;
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.instagram-title {
+  color: #999;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.instagram-box a {
+  color: #b000ff;
+  font-size: 17px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.instagram-box a:hover {
+  color: #d000ff;
+}
+
+.maintenance-footer {
+  margin-top: 30px;
+  color: #666;
+  font-size: 12px;
+  letter-spacing: 1px;
+      }
+    
     footer {
       text-align: center;
       padding: 30px 15px;
@@ -259,5 +358,48 @@
     © 2026 SLEX.EDITZ — All Rights Reserved
   </footer>
 
+<!-- WEBSITE OFF PAGE -->
+
+<div id="maintenance">
+
+  <div class="maintenance-box">
+
+    <div class="maintenance-logo">
+      SLEX<span>.EDITZ</span>
+    </div>
+
+    <div class="off-icon">
+      ⏻
+    </div>
+
+    <h1>
+      WEBSITE IS <span>OFF</span>
+    </h1>
+
+    <p>
+      Our website is temporarily unavailable.<br>
+      Please check back again later.
+    </p>
+
+    <div class="instagram-box">
+
+      <div class="instagram-title">
+        For updates & information
+      </div>
+
+      <a href="https://instagram.com/slex_888" target="_blank">
+        Instagram: @slex_888
+      </a>
+
+    </div>
+
+    <div class="maintenance-footer">
+      SLEX.EDITZ • EDIT • CREATE • INSPIRE
+    </div>
+
+  </div>
+
+</div>
+  
 </body>
 </html>
