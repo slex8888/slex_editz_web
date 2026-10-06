@@ -7,6 +7,7 @@
 <title>SLEX.EDITZ</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -14,14 +15,21 @@
   font-family:Arial,sans-serif;
 }
 
+html,
+body{
+  width:100%;
+  min-height:100%;
+}
+
 body{
   background:#08080d;
   color:white;
 }
 
-/* ================================
-   WEBSITE ON/OFF
-================================ */
+
+/* =================================
+   WEBSITE ON / OFF
+================================= */
 
 #maintenance{
   display:none;
@@ -122,9 +130,10 @@ body.site-off #maintenance{
   letter-spacing:1px;
 }
 
-/* ================================
+
+/* =================================
    HEADER
-================================ */
+================================= */
 
 header{
   padding:22px 18px;
@@ -160,9 +169,10 @@ header{
   font-size:15px;
 }
 
-/* ================================
+
+/* =================================
    HERO
-================================ */
+================================= */
 
 .hero{
   text-align:center;
@@ -179,9 +189,10 @@ header{
   font-size:15px;
 }
 
-/* ================================
+
+/* =================================
    APPS
-================================ */
+================================= */
 
 .section{
   padding:20px;
@@ -217,6 +228,7 @@ header{
   align-items:center;
   justify-content:center;
   font-size:28px;
+  overflow:hidden;
 }
 
 .icon img{
@@ -247,9 +259,10 @@ header{
   font-size:13px;
 }
 
-/* ================================
+
+/* =================================
    FOOTER
-================================ */
+================================= */
 
 footer{
   text-align:center;
@@ -259,35 +272,71 @@ footer{
   border-top:1px solid #22222c;
 }
 
-/* ================================
+
+/* =================================
    APP UPDATE SCREEN
-================================ */
+================================= */
 
 #appUpdating{
   display:none;
+
   position:fixed;
   inset:0;
+
   z-index:99999;
+
   width:100%;
-  height:100dvh;
+  height:100%;
+
   background:rgba(3,3,10,.94);
+
   align-items:center;
   justify-content:center;
+
   padding:16px;
+
+  /*
+    Important:
+    Update screen itself can scroll.
+  */
+  overflow-y:auto;
+  overflow-x:hidden;
+
+  -webkit-overflow-scrolling:touch;
+
+  overscroll-behavior:contain;
 }
+
+
+/* =================================
+   UPDATE BOX
+================================= */
 
 .update-box{
   width:100%;
   max-width:390px;
+
   background:#101018;
+
   border:2px solid #8b00ff;
+
   border-radius:18px;
+
   padding:24px 16px 16px;
+
   text-align:center;
+
   box-shadow:
     0 0 20px #7200ff,
     0 0 45px rgba(120,0,255,.35);
+
+  flex-shrink:0;
 }
+
+
+/* =================================
+   UPDATE LOGO
+================================= */
 
 .update-logo{
   font-size:22px;
@@ -300,30 +349,53 @@ footer{
   color:#8b00ff;
 }
 
+
+/* =================================
+   APP ICON
+================================= */
+
 .update-app-icon{
   width:82px;
   height:82px;
+
   margin:0 auto 18px;
+
   border-radius:50%;
+
   border:3px solid #8b00ff;
+
   padding:8px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   box-shadow:0 0 20px #7200ff;
+
+  overflow:hidden;
 }
 
 .update-app-icon img{
   width:100%;
   height:100%;
+
   object-fit:contain;
+
   border-radius:50%;
 }
 
+
+/* =================================
+   UPDATE TITLE
+================================= */
+
 .update-box h1{
   margin:4px 0;
+
   font-size:23px;
+
   line-height:1.25;
+
   color:white;
 }
 
@@ -331,29 +403,58 @@ footer{
   color:#8b00ff;
 }
 
+
+/* =================================
+   APP NAME
+================================= */
+
 .update-app-name{
   margin:12px 0 18px;
+
   color:#aaaaca;
+
   font-size:13px;
+
   line-height:1.5;
 }
 
+
+/* =================================
+   MESSAGE
+================================= */
+
 .update-message{
   padding:13px 10px;
+
   margin-bottom:12px;
+
   background:#090910;
+
   border:1px solid #421078;
+
   border-radius:12px;
+
   color:#b9b9d0;
+
   font-size:12px;
+
   line-height:1.55;
 }
 
+
+/* =================================
+   CONTACT
+================================= */
+
 .update-contact{
   padding:12px 10px;
+
   margin-bottom:10px;
+
   background:#090910;
+
   border:1px solid #6413a5;
+
   border-radius:12px;
 }
 
@@ -365,11 +466,15 @@ footer{
 
 .update-contact a{
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   gap:8px;
+
   color:white;
   text-decoration:none;
+
   font-size:14px;
   font-weight:bold;
 }
@@ -377,31 +482,145 @@ footer{
 .update-contact img{
   width:27px;
   height:27px;
+
   border-radius:50%;
+
   object-fit:cover;
 }
 
+
+/* =================================
+   BACK HOME
+================================= */
+
 .update-home{
   display:flex;
+
   width:100%;
   height:43px;
+
   align-items:center;
   justify-content:center;
+
   border:1.5px solid #8b00ff;
+
   border-radius:11px;
+
   color:white;
+
   text-decoration:none;
+
   font-size:13px;
   font-weight:bold;
+
+  cursor:pointer;
 }
+
+
+/* =================================
+   LANDSCAPE FIX
+================================= */
+
+@media screen and (orientation:landscape){
+
+  #appUpdating{
+    align-items:flex-start;
+    justify-content:center;
+
+    padding-top:16px;
+    padding-bottom:16px;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+  }
+
+  .update-box{
+    margin:0 auto;
+    max-width:390px;
+  }
+
+}
+
+
+/* =================================
+   VERY SHORT LANDSCAPE
+================================= */
+
+@media screen and (orientation:landscape)
+       and (max-height:500px){
+
+  #appUpdating{
+    align-items:flex-start;
+
+    padding-top:10px;
+    padding-bottom:10px;
+  }
+
+  .update-box{
+    padding:18px 14px 14px;
+  }
+
+  .update-logo{
+    margin-bottom:10px;
+  }
+
+  .update-app-icon{
+    width:65px;
+    height:65px;
+
+    margin-bottom:10px;
+  }
+
+  .update-box h1{
+    font-size:20px;
+  }
+
+  .update-app-name{
+    margin:8px 0 12px;
+  }
+
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media screen and (max-width:480px){
+
+  .update-box{
+    max-width:390px;
+  }
+
+}
+
+
+/* =================================
+   SAFE AREA
+================================= */
+
+@supports(padding:max(0px)){
+
+  #appUpdating{
+    padding-left:max(16px,env(safe-area-inset-left));
+    padding-right:max(16px,env(safe-area-inset-right));
+
+    padding-top:max(16px,env(safe-area-inset-top));
+    padding-bottom:max(16px,env(safe-area-inset-bottom));
+  }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- ================================
+
+<!-- =================================
      HEADER
-================================ -->
+================================= -->
 
 <header>
 
@@ -410,18 +629,20 @@ footer{
   </div>
 
   <div class="search">
+
     <input
       type="text"
       placeholder="Search apps & editing tools..."
     >
+
   </div>
 
 </header>
 
 
-<!-- ================================
+<!-- =================================
      HERO
-================================ -->
+================================= -->
 
 <section class="hero">
 
@@ -434,9 +655,9 @@ footer{
 </section>
 
 
-<!-- ================================
+<!-- =================================
      APPS
-================================ -->
+================================= -->
 
 <section class="section">
 
@@ -444,219 +665,275 @@ footer{
 
 <div class="apps">
 
+
 <!-- CAPCUT -->
+
 <div class="app">
+
   <div class="icon">
     <img src="capcut.jpg" alt="CapCut">
   </div>
 
   <h3>CapCut</h3>
+
   <p>Video Editor</p>
 
   <a
     class="btn"
     href="https://www.mediafire.com/file/9fykbt4d8azfwn0/CAPCUT_ULTRA_v23.0.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
     target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'CapCut','capcut.jpg')"
   >
     Download
   </a>
+
 </div>
 
 
 <!-- ALIGHT MOTION -->
+
 <div class="app">
+
   <div class="icon">
     <img src="alight-motion.jpg" alt="Alight Motion">
   </div>
 
   <h3>Alight Motion</h3>
+
   <p>Motion Graphics</p>
 
   <a
     class="btn"
     href="https://www.mediafire.com/file/2cqmokmxkul7wp0/ALIGHT+MOTION+v5.0.273+.apk/file"
     target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'Alight Motion','alight-motion.jpg')"
   >
     Download
   </a>
+
 </div>
 
 
 <!-- WINK -->
+
 <div class="app">
+
   <div class="icon">
     <img src="Wink.jpg" alt="Wink">
   </div>
 
   <h3>Wink</h3>
+
   <p>Photo & Video Editor</p>
 
   <a
     class="btn"
     href="https://www.mediafire.com/file/o21m6a4jw6vaout/Wink+v3.16.5+.xapk/file"
     target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'Wink','Wink.jpg')"
   >
     Download
   </a>
+
 </div>
 
 
 <!-- EFIKO -->
+
 <div class="app">
+
   <div class="icon">
     <img src="EFIKO.jpg" alt="EFIKO">
   </div>
 
   <h3>EFIKO</h3>
+
   <p>Photo & Video Editor</p>
 
   <a
     class="btn"
     href="https://www.mediafire.com/file/nhfvyp1j8pk2xql/EFIKO_PRO_v1.6.2%25F0%259F%2594%25A5.apk/file"
     target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'EFIKO','EFIKO.jpg')"
   >
     Download
   </a>
+
 </div>
 
 
 <!-- PICSART -->
+
 <div class="app">
+
   <div class="icon">
     <img src="PicsArt.jpg" alt="PicsArt">
   </div>
 
   <h3>PicsArt</h3>
+
   <p>Photo Editor</p>
 
   <a
     class="btn"
     href="https://www.mediafire.com/file/5fjugndt0dbc8b5/PICSART_v30.7.11_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
     target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'PicsArt','PicsArt.jpg')"
   >
     Download
   </a>
+
 </div>
 
 
-<!-- BEAUTIYPLUS -->
+<!-- BEAUTYPLUS -->
+
 <div class="app">
+
   <div class="icon">
     <img src="BeutiyPlus.jpg" alt="BeutiyPlus">
   </div>
 
   <h3>BeutiyPlus</h3>
+
   <p>Beauty Editor</p>
 
   <a
     class="btn"
     href="https://www.mediafire.com/file/8yt5e5w2b7pbzv0/BEUTIYPLUS_v7.44.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
     target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'BeutiyPlus','BeutiyPlus.jpg')"
   >
     Download
   </a>
+
 </div>
 
 
 <!-- REMINI -->
+
 <div class="app">
+
   <div class="icon">
     <img src="Remini.jpg" alt="Remini">
   </div>
 
   <h3>Remini</h3>
+
   <p>Photo Enhancer</p>
 
   <a
     class="btn"
     href="https://www.mediafire.com/file/026d7z4fo45bbza/REMINI_v3.7.1443.202524660_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
     target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'Remini','Remini.jpg')"
   >
     Download
   </a>
+
 </div>
 
 
 <!-- GLIP -->
+
 <div class="app">
+
   <div class="icon">
     <img src="Glip.jpg" alt="Glip Screen Recorder">
   </div>
 
   <h3>Glip Screen Recorder</h3>
+
   <p>Screen Recorder</p>
 
   <a
     class="btn"
     href="https://www.mediafire.com/file/1pkwfb3i3pvlcyr/GLIP_v3.0.89_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
     target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'Glip Screen Recorder','Glip.jpg')"
   >
     Download
   </a>
+
 </div>
 
 
 <!-- PLAYIT -->
+
 <div class="app">
+
   <div class="icon">
     <img src="PLAYit.jpg" alt="PLAYit">
   </div>
 
   <h3>PLAYit</h3>
+
   <p>Video & Music Player</p>
 
   <a
     class="btn"
     href="https://www.mediafire.com/file/lvzgozdm92jqgnf/PLAYIT+2.7.52.6+.apk/file"
     target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'PLAYit','PLAYit.jpg')"
   >
     Download
   </a>
+
 </div>
 
 
 <!-- MOVIEBOX -->
+
 <div class="app">
+
   <div class="icon">
     <img src="MovieBox.jpg" alt="MovieBox">
   </div>
 
   <h3>MovieBox</h3>
+
   <p>Free Movie & Anime</p>
 
   <a
     class="btn"
     href="https://www.mediafire.com/file/f244x7svpiezl1d/MovieBox_v4.0.02.0903.02_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
     target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'MovieBox','MovieBox.jpg')"
   >
     Download
   </a>
+
 </div>
+
 
 </div>
 </section>
 
 
-<!-- FOOTER -->
+<!-- =================================
+     FOOTER
+================================= -->
 
 <footer>
+
   © 2026 SLEX.EDITZ — All Rights Reserved
+
 </footer>
 
 
-<!-- ================================
+<!-- =================================
      WEBSITE OFF PAGE
-================================ -->
+================================= -->
 
 <div id="maintenance">
 
@@ -667,7 +944,12 @@ footer{
     </div>
 
     <div class="off-icon">
-      <img src="insta-logo.jpg" alt="Instagram">
+
+      <img
+        src="insta-logo.jpg"
+        alt="Instagram"
+      >
+
     </div>
 
     <h1>
@@ -688,6 +970,7 @@ footer{
       <a
         href="https://instagram.com/slex_888"
         target="_blank"
+        rel="noopener"
       >
         Instagram: @slex_888
       </a>
@@ -703,9 +986,9 @@ footer{
 </div>
 
 
-<!-- ================================
+<!-- =================================
      APP UPDATE SCREEN
-================================ -->
+================================= -->
 
 <div id="appUpdating">
 
@@ -715,24 +998,43 @@ footer{
       SLEX<span>.EDITZ</span>
     </div>
 
+
     <div class="update-app-icon">
-      <img id="updateAppIcon" src="" alt="App">
+
+      <img
+        id="updateAppIcon"
+        src=""
+        alt="App"
+      >
+
     </div>
 
-    <h1>WAIT SOME TIME</h1>
+
+    <h1>
+      WAIT SOME TIME
+    </h1>
 
     <h1>
       APP IS <span>UPDATING</span>
     </h1>
 
-    <div class="update-app-name" id="updateAppName">
+
+    <div
+      class="update-app-name"
+      id="updateAppName"
+    >
       This app is currently being updated.
     </div>
 
+
     <div class="update-message">
+
       The download is temporarily unavailable.<br>
+
       Please wait a few minutes and try again later.
+
     </div>
+
 
     <div class="update-contact">
 
@@ -743,9 +1045,13 @@ footer{
       <a
         href="https://instagram.com/slex_888"
         target="_blank"
+        rel="noopener"
       >
 
-        <img src="insta-logo.jpg" alt="Instagram">
+        <img
+          src="insta-logo.jpg"
+          alt="Instagram"
+        >
 
         <span>@slex_888</span>
 
@@ -753,12 +1059,15 @@ footer{
 
     </div>
 
+
     <a
       href="#"
       class="update-home"
       onclick="closeUpdating(); return false;"
     >
+
       🏠 &nbsp; Back to Home
+
     </a>
 
   </div>
@@ -768,13 +1077,15 @@ footer{
 
 <script>
 
+
 /* =========================================
    WEBSITE ON / OFF
-   false = website ON
-   true  = website OFF
+
+   false = WEBSITE ON
+   true  = WEBSITE OFF
 ========================================= */
 
-const SITE_OFF = true;
+const SITE_OFF = false;
 
 
 /* =========================================
@@ -782,8 +1093,6 @@ const SITE_OFF = true;
 
    false = DOWNLOAD WORKS
    true  = UPDATE SCREEN SHOWS
-
-   YAHAN SE HAR APP KO CONTROL KARO
 ========================================= */
 
 const APP_UPDATES = {
@@ -806,13 +1115,13 @@ const APP_UPDATES = {
 
   "PLAYit": false,
 
-  "MovieBox": true,
+  "MovieBox": false,
 
 };
 
 
 /* =========================================
-   WEBSITE ON/OFF
+   WEBSITE ON / OFF
 ========================================= */
 
 if(SITE_OFF){
@@ -828,11 +1137,6 @@ if(SITE_OFF){
 
 function handleDownload(event, appName, icon){
 
-  /*
-    Agar app update mode mein hai,
-    download link ko open hone se roko.
-  */
-
   if(APP_UPDATES[appName] === true){
 
     event.preventDefault();
@@ -840,6 +1144,7 @@ function handleDownload(event, appName, icon){
     showUpdating(appName, icon);
 
     return false;
+
   }
 
 }
@@ -861,17 +1166,41 @@ function showUpdating(appName, icon){
     document.getElementById("updateAppName");
 
 
+  /* Set app icon */
+
   updateIcon.src = icon;
 
   updateIcon.alt = appName;
 
-  updateName.innerHTML =
-    "<b>" + appName + "</b> is currently being updated.";
 
+  /* Set app name */
+
+  updateName.innerHTML =
+    "<b>" +
+    appName +
+    "</b> is currently being updated.";
+
+
+  /* Show update screen */
 
   updateScreen.style.display = "flex";
 
+
+  /*
+    Lock background page.
+    Update overlay itself remains scrollable.
+  */
+
   document.body.style.overflow = "hidden";
+
+  document.documentElement.style.overflow = "hidden";
+
+
+  /*
+    Start update screen from top.
+  */
+
+  updateScreen.scrollTop = 0;
 
 }
 
@@ -885,9 +1214,15 @@ function closeUpdating(){
   const updateScreen =
     document.getElementById("appUpdating");
 
+
   updateScreen.style.display = "none";
 
+
+  /* Unlock background page */
+
   document.body.style.overflow = "";
+
+  document.documentElement.style.overflow = "";
 
 }
 
@@ -899,32 +1234,60 @@ function closeUpdating(){
 const searchInput =
   document.querySelector(".search input");
 
-searchInput.addEventListener("input", function(){
 
-  const searchText =
-    this.value.toLowerCase().trim();
+searchInput.addEventListener(
+  "input",
+  function(){
 
-  const apps =
-    document.querySelectorAll(".app");
+    const searchText =
+      this.value.toLowerCase().trim();
 
-  apps.forEach(function(app){
 
-    const appName =
-      app.querySelector("h3").textContent.toLowerCase();
+    const apps =
+      document.querySelectorAll(".app");
 
-    if(appName.includes(searchText)){
 
-      app.style.display = "";
+    apps.forEach(function(app){
 
-    }else{
+      const appName =
+        app
+        .querySelector("h3")
+        .textContent
+        .toLowerCase();
 
-      app.style.display = "none";
+
+      if(appName.includes(searchText)){
+
+        app.style.display = "";
+
+      }else{
+
+        app.style.display = "none";
+
+      }
+
+    });
+
+  }
+);
+
+
+/* =========================================
+   ESC KEY
+========================================= */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Escape"){
+
+      closeUpdating();
 
     }
 
-  });
-
-});
+  }
+);
 
 </script>
 
