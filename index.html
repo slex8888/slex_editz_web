@@ -1,1 +1,932 @@
-fuck you
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SLEX.EDITZ</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#08080d;
+  color:white;
+}
+
+/* ================================
+   WEBSITE ON/OFF
+================================ */
+
+#maintenance{
+  display:none;
+}
+
+body.site-off > *:not(#maintenance){
+  display:none !important;
+}
+
+body.site-off #maintenance{
+  display:flex;
+  min-height:100vh;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  background:#08080d;
+  color:white;
+}
+
+.maintenance-box{
+  width:100%;
+  max-width:650px;
+  padding:40px 25px;
+  text-align:center;
+  background:rgba(18,18,27,.95);
+  border:1px solid #8b00ff;
+  border-radius:24px;
+  box-shadow:0 0 40px rgba(139,0,255,.25);
+}
+
+.maintenance-logo{
+  font-size:28px;
+  font-weight:800;
+  letter-spacing:2px;
+  margin-bottom:35px;
+}
+
+.maintenance-logo span,
+.maintenance-box h1 span{
+  color:#b000ff;
+}
+
+.off-icon{
+  width:85px;
+  height:85px;
+  margin:0 auto 25px;
+  border:2px solid #8b00ff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 0 25px rgba(139,0,255,.5);
+}
+
+.off-icon img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:50%;
+}
+
+.maintenance-box h1{
+  font-size:32px;
+  margin-bottom:15px;
+}
+
+.maintenance-box p{
+  color:#aaa;
+  font-size:15px;
+  line-height:1.7;
+  margin-bottom:30px;
+}
+
+.instagram-box{
+  border:1px solid #292936;
+  background:#101018;
+  border-radius:16px;
+  padding:18px;
+}
+
+.instagram-title{
+  color:#999;
+  font-size:13px;
+  margin-bottom:8px;
+}
+
+.instagram-box a{
+  color:#b000ff;
+  font-size:17px;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+.maintenance-footer{
+  margin-top:30px;
+  color:#666;
+  font-size:12px;
+  letter-spacing:1px;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+header{
+  padding:22px 18px;
+  text-align:center;
+  background:#101018;
+  border-bottom:1px solid #272733;
+}
+
+.logo{
+  font-size:28px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+.logo span{
+  color:#b000ff;
+}
+
+.search{
+  margin:20px auto;
+  max-width:600px;
+  padding:0 15px;
+}
+
+.search input{
+  width:100%;
+  padding:15px;
+  border-radius:12px;
+  border:1px solid #333342;
+  background:#15151f;
+  color:white;
+  outline:none;
+  font-size:15px;
+}
+
+/* ================================
+   HERO
+================================ */
+
+.hero{
+  text-align:center;
+  padding:35px 20px;
+}
+
+.hero h1{
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  color:#aaa;
+  font-size:15px;
+}
+
+/* ================================
+   APPS
+================================ */
+
+.section{
+  padding:20px;
+  max-width:1000px;
+  margin:auto;
+}
+
+.section h2{
+  margin-bottom:18px;
+}
+
+.apps{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:15px;
+}
+
+.app{
+  background:#12121b;
+  border:1px solid #292936;
+  border-radius:16px;
+  padding:18px;
+  text-align:center;
+}
+
+.icon{
+  width:70px;
+  height:70px;
+  margin:auto auto 12px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#7b00ff,#e000ff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+}
+
+.icon img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:16px;
+}
+
+.app h3{
+  font-size:17px;
+  margin-bottom:6px;
+}
+
+.app p{
+  color:#999;
+  font-size:13px;
+  margin-bottom:12px;
+}
+
+.btn{
+  display:inline-block;
+  padding:9px 15px;
+  background:#8b00ff;
+  color:white;
+  text-decoration:none;
+  border-radius:9px;
+  font-size:13px;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+footer{
+  text-align:center;
+  padding:30px 15px;
+  color:#777;
+  margin-top:30px;
+  border-top:1px solid #22222c;
+}
+
+/* ================================
+   APP UPDATE SCREEN
+================================ */
+
+#appUpdating{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  width:100%;
+  height:100dvh;
+  background:rgba(3,3,10,.94);
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+}
+
+.update-box{
+  width:100%;
+  max-width:390px;
+  background:#101018;
+  border:2px solid #8b00ff;
+  border-radius:18px;
+  padding:24px 16px 16px;
+  text-align:center;
+  box-shadow:
+    0 0 20px #7200ff,
+    0 0 45px rgba(120,0,255,.35);
+}
+
+.update-logo{
+  font-size:22px;
+  font-weight:800;
+  letter-spacing:1.5px;
+  margin-bottom:18px;
+}
+
+.update-logo span{
+  color:#8b00ff;
+}
+
+.update-app-icon{
+  width:82px;
+  height:82px;
+  margin:0 auto 18px;
+  border-radius:50%;
+  border:3px solid #8b00ff;
+  padding:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 0 20px #7200ff;
+}
+
+.update-app-icon img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:50%;
+}
+
+.update-box h1{
+  margin:4px 0;
+  font-size:23px;
+  line-height:1.25;
+  color:white;
+}
+
+.update-box h1 span{
+  color:#8b00ff;
+}
+
+.update-app-name{
+  margin:12px 0 18px;
+  color:#aaaaca;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.update-message{
+  padding:13px 10px;
+  margin-bottom:12px;
+  background:#090910;
+  border:1px solid #421078;
+  border-radius:12px;
+  color:#b9b9d0;
+  font-size:12px;
+  line-height:1.55;
+}
+
+.update-contact{
+  padding:12px 10px;
+  margin-bottom:10px;
+  background:#090910;
+  border:1px solid #6413a5;
+  border-radius:12px;
+}
+
+.update-contact-title{
+  font-size:11px;
+  color:#9999b5;
+  margin-bottom:8px;
+}
+
+.update-contact a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.update-contact img{
+  width:27px;
+  height:27px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.update-home{
+  display:flex;
+  width:100%;
+  height:43px;
+  align-items:center;
+  justify-content:center;
+  border:1.5px solid #8b00ff;
+  border-radius:11px;
+  color:white;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================================
+     HEADER
+================================ -->
+
+<header>
+
+  <div class="logo">
+    SLEX<span>.EDITZ</span>
+  </div>
+
+  <div class="search">
+    <input
+      type="text"
+      placeholder="Search apps & editing tools..."
+    >
+  </div>
+
+</header>
+
+
+<!-- ================================
+     HERO
+================================ -->
+
+<section class="hero">
+
+  <h1>Editing Tools & Apps</h1>
+
+  <p>
+    Discover useful apps, tools and resources for editing.
+  </p>
+
+</section>
+
+
+<!-- ================================
+     APPS
+================================ -->
+
+<section class="section">
+
+<h2>🔥 Featured Apps</h2>
+
+<div class="apps">
+
+<!-- CAPCUT -->
+<div class="app">
+  <div class="icon">
+    <img src="capcut.jpg" alt="CapCut">
+  </div>
+
+  <h3>CapCut</h3>
+  <p>Video Editor</p>
+
+  <a
+    class="btn"
+    href="https://www.mediafire.com/file/9fykbt4d8azfwn0/CAPCUT_ULTRA_v23.0.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
+    target="_blank"
+    onclick="handleDownload(event,'CapCut','capcut.jpg')"
+  >
+    Download
+  </a>
+</div>
+
+
+<!-- ALIGHT MOTION -->
+<div class="app">
+  <div class="icon">
+    <img src="alight-motion.jpg" alt="Alight Motion">
+  </div>
+
+  <h3>Alight Motion</h3>
+  <p>Motion Graphics</p>
+
+  <a
+    class="btn"
+    href="https://www.mediafire.com/file/2cqmokmxkul7wp0/ALIGHT+MOTION+v5.0.273+.apk/file"
+    target="_blank"
+    onclick="handleDownload(event,'Alight Motion','alight-motion.jpg')"
+  >
+    Download
+  </a>
+</div>
+
+
+<!-- WINK -->
+<div class="app">
+  <div class="icon">
+    <img src="Wink.jpg" alt="Wink">
+  </div>
+
+  <h3>Wink</h3>
+  <p>Photo & Video Editor</p>
+
+  <a
+    class="btn"
+    href="https://www.mediafire.com/file/o21m6a4jw6vaout/Wink+v3.16.5+.xapk/file"
+    target="_blank"
+    onclick="handleDownload(event,'Wink','Wink.jpg')"
+  >
+    Download
+  </a>
+</div>
+
+
+<!-- EFIKO -->
+<div class="app">
+  <div class="icon">
+    <img src="EFIKO.jpg" alt="EFIKO">
+  </div>
+
+  <h3>EFIKO</h3>
+  <p>Photo & Video Editor</p>
+
+  <a
+    class="btn"
+    href="https://www.mediafire.com/file/nhfvyp1j8pk2xql/EFIKO_PRO_v1.6.2%25F0%259F%2594%25A5.apk/file"
+    target="_blank"
+    onclick="handleDownload(event,'EFIKO','EFIKO.jpg')"
+  >
+    Download
+  </a>
+</div>
+
+
+<!-- PICSART -->
+<div class="app">
+  <div class="icon">
+    <img src="PicsArt.jpg" alt="PicsArt">
+  </div>
+
+  <h3>PicsArt</h3>
+  <p>Photo Editor</p>
+
+  <a
+    class="btn"
+    href="https://www.mediafire.com/file/5fjugndt0dbc8b5/PICSART_v30.7.11_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
+    target="_blank"
+    onclick="handleDownload(event,'PicsArt','PicsArt.jpg')"
+  >
+    Download
+  </a>
+</div>
+
+
+<!-- BEAUTIYPLUS -->
+<div class="app">
+  <div class="icon">
+    <img src="BeutiyPlus.jpg" alt="BeutiyPlus">
+  </div>
+
+  <h3>BeutiyPlus</h3>
+  <p>Beauty Editor</p>
+
+  <a
+    class="btn"
+    href="https://www.mediafire.com/file/8yt5e5w2b7pbzv0/BEUTIYPLUS_v7.44.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
+    target="_blank"
+    onclick="handleDownload(event,'BeutiyPlus','BeutiyPlus.jpg')"
+  >
+    Download
+  </a>
+</div>
+
+
+<!-- REMINI -->
+<div class="app">
+  <div class="icon">
+    <img src="Remini.jpg" alt="Remini">
+  </div>
+
+  <h3>Remini</h3>
+  <p>Photo Enhancer</p>
+
+  <a
+    class="btn"
+    href="https://www.mediafire.com/file/026d7z4fo45bbza/REMINI_v3.7.1443.202524660_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
+    target="_blank"
+    onclick="handleDownload(event,'Remini','Remini.jpg')"
+  >
+    Download
+  </a>
+</div>
+
+
+<!-- GLIP -->
+<div class="app">
+  <div class="icon">
+    <img src="Glip.jpg" alt="Glip Screen Recorder">
+  </div>
+
+  <h3>Glip Screen Recorder</h3>
+  <p>Screen Recorder</p>
+
+  <a
+    class="btn"
+    href="https://www.mediafire.com/file/1pkwfb3i3pvlcyr/GLIP_v3.0.89_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
+    target="_blank"
+    onclick="handleDownload(event,'Glip Screen Recorder','Glip.jpg')"
+  >
+    Download
+  </a>
+</div>
+
+
+<!-- PLAYIT -->
+<div class="app">
+  <div class="icon">
+    <img src="PLAYit.jpg" alt="PLAYit">
+  </div>
+
+  <h3>PLAYit</h3>
+  <p>Video & Music Player</p>
+
+  <a
+    class="btn"
+    href="https://www.mediafire.com/file/lvzgozdm92jqgnf/PLAYIT+2.7.52.6+.apk/file"
+    target="_blank"
+    onclick="handleDownload(event,'PLAYit','PLAYit.jpg')"
+  >
+    Download
+  </a>
+</div>
+
+
+<!-- MOVIEBOX -->
+<div class="app">
+  <div class="icon">
+    <img src="MovieBox.jpg" alt="MovieBox">
+  </div>
+
+  <h3>MovieBox</h3>
+  <p>Free Movie & Anime</p>
+
+  <a
+    class="btn"
+    href="https://www.mediafire.com/file/f244x7svpiezl1d/MovieBox_v4.0.02.0903.02_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
+    target="_blank"
+    onclick="handleDownload(event,'MovieBox','MovieBox.jpg')"
+  >
+    Download
+  </a>
+</div>
+
+</div>
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+  © 2026 SLEX.EDITZ — All Rights Reserved
+</footer>
+
+
+<!-- ================================
+     WEBSITE OFF PAGE
+================================ -->
+
+<div id="maintenance">
+
+  <div class="maintenance-box">
+
+    <div class="maintenance-logo">
+      SLEX<span>.EDITZ</span>
+    </div>
+
+    <div class="off-icon">
+      <img src="insta-logo.jpg" alt="Instagram">
+    </div>
+
+    <h1>
+      WEBSITE IS <span>OFF</span>
+    </h1>
+
+    <p>
+      Our website is temporarily unavailable.<br>
+      Please check back again later.
+    </p>
+
+    <div class="instagram-box">
+
+      <div class="instagram-title">
+        For updates & information
+      </div>
+
+      <a
+        href="https://instagram.com/slex_888"
+        target="_blank"
+      >
+        Instagram: @slex_888
+      </a>
+
+    </div>
+
+    <div class="maintenance-footer">
+      SLEX.EDITZ • EDIT • CREATE • INSPIRE
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================================
+     APP UPDATE SCREEN
+================================ -->
+
+<div id="appUpdating">
+
+  <div class="update-box">
+
+    <div class="update-logo">
+      SLEX<span>.EDITZ</span>
+    </div>
+
+    <div class="update-app-icon">
+      <img id="updateAppIcon" src="" alt="App">
+    </div>
+
+    <h1>WAIT SOME TIME</h1>
+
+    <h1>
+      APP IS <span>UPDATING</span>
+    </h1>
+
+    <div class="update-app-name" id="updateAppName">
+      This app is currently being updated.
+    </div>
+
+    <div class="update-message">
+      The download is temporarily unavailable.<br>
+      Please wait a few minutes and try again later.
+    </div>
+
+    <div class="update-contact">
+
+      <div class="update-contact-title">
+        For updates & information
+      </div>
+
+      <a
+        href="https://instagram.com/slex_888"
+        target="_blank"
+      >
+
+        <img src="insta-logo.jpg" alt="Instagram">
+
+        <span>@slex_888</span>
+
+      </a>
+
+    </div>
+
+    <a
+      href="#"
+      class="update-home"
+      onclick="closeUpdating(); return false;"
+    >
+      🏠 &nbsp; Back to Home
+    </a>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   WEBSITE ON / OFF
+   false = website ON
+   true  = website OFF
+========================================= */
+
+const SITE_OFF = false;
+
+
+/* =========================================
+   APP UPDATE SETTINGS
+
+   false = DOWNLOAD WORKS
+   true  = UPDATE SCREEN SHOWS
+
+   YAHAN SE HAR APP KO CONTROL KARO
+========================================= */
+
+const APP_UPDATES = {
+
+  "CapCut": false,
+
+  "Alight Motion": false,
+
+  "Wink": false,
+
+  "EFIKO": false,
+
+  "PicsArt": false,
+
+  "BeutiyPlus": false,
+
+  "Remini": false,
+
+  "Glip Screen Recorder": false,
+
+  "PLAYit": false,
+
+  "MovieBox": true,
+
+};
+
+
+/* =========================================
+   WEBSITE ON/OFF
+========================================= */
+
+if(SITE_OFF){
+
+  document.body.classList.add("site-off");
+
+}
+
+
+/* =========================================
+   APP DOWNLOAD HANDLER
+========================================= */
+
+function handleDownload(event, appName, icon){
+
+  /*
+    Agar app update mode mein hai,
+    download link ko open hone se roko.
+  */
+
+  if(APP_UPDATES[appName] === true){
+
+    event.preventDefault();
+
+    showUpdating(appName, icon);
+
+    return false;
+  }
+
+}
+
+
+/* =========================================
+   SHOW UPDATE SCREEN
+========================================= */
+
+function showUpdating(appName, icon){
+
+  const updateScreen =
+    document.getElementById("appUpdating");
+
+  const updateIcon =
+    document.getElementById("updateAppIcon");
+
+  const updateName =
+    document.getElementById("updateAppName");
+
+
+  updateIcon.src = icon;
+
+  updateIcon.alt = appName;
+
+  updateName.innerHTML =
+    "<b>" + appName + "</b> is currently being updated.";
+
+
+  updateScreen.style.display = "flex";
+
+  document.body.style.overflow = "hidden";
+
+}
+
+
+/* =========================================
+   CLOSE UPDATE SCREEN
+========================================= */
+
+function closeUpdating(){
+
+  const updateScreen =
+    document.getElementById("appUpdating");
+
+  updateScreen.style.display = "none";
+
+  document.body.style.overflow = "";
+
+}
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+const searchInput =
+  document.querySelector(".search input");
+
+searchInput.addEventListener("input", function(){
+
+  const searchText =
+    this.value.toLowerCase().trim();
+
+  const apps =
+    document.querySelectorAll(".app");
+
+  apps.forEach(function(app){
+
+    const appName =
+      app.querySelector("h3").textContent.toLowerCase();
+
+    if(appName.includes(searchText)){
+
+      app.style.display = "";
+
+    }else{
+
+      app.style.display = "none";
+
+    }
+
+  });
+
+});
+
+</script>
+
+</body>
+  </html>
