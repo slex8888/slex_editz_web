@@ -26,6 +26,7 @@ body{
   color:white;
 }
 
+
 /* =================================
    WEBSITE ON / OFF
 ================================= */
@@ -274,11 +275,9 @@ footer{
 
 /* =================================
    APP UPDATE SCREEN
-   LANDSCAPE SCROLL FIX
 ================================= */
 
 #appUpdating{
-
   display:none;
 
   position:fixed;
@@ -297,9 +296,8 @@ footer{
   padding:16px;
 
   /*
-    IMPORTANT:
-    Overlay itself can scroll.
-    This fixes landscape mode.
+    Important:
+    Update screen itself can scroll.
   */
   overflow-y:auto;
   overflow-x:hidden;
@@ -315,7 +313,6 @@ footer{
 ================================= */
 
 .update-box{
-
   width:100%;
   max-width:390px;
 
@@ -333,12 +330,7 @@ footer{
     0 0 20px #7200ff,
     0 0 45px rgba(120,0,255,.35);
 
-  /*
-    IMPORTANT:
-    Don't use fixed height.
-  */
   flex-shrink:0;
-
 }
 
 
@@ -432,7 +424,6 @@ footer{
 ================================= */
 
 .update-message{
-
   padding:13px 10px;
 
   margin-bottom:12px;
@@ -456,7 +447,6 @@ footer{
 ================================= */
 
 .update-contact{
-
   padding:12px 10px;
 
   margin-bottom:10px;
@@ -470,33 +460,26 @@ footer{
 
 .update-contact-title{
   font-size:11px;
-
   color:#9999b5;
-
   margin-bottom:8px;
 }
 
 .update-contact a{
-
   display:flex;
 
   align-items:center;
-
   justify-content:center;
 
   gap:8px;
 
   color:white;
-
   text-decoration:none;
 
   font-size:14px;
-
   font-weight:bold;
 }
 
 .update-contact img{
-
   width:27px;
   height:27px;
 
@@ -511,7 +494,6 @@ footer{
 ================================= */
 
 .update-home{
-
   display:flex;
 
   width:100%;
@@ -529,7 +511,6 @@ footer{
   text-decoration:none;
 
   font-size:13px;
-
   font-weight:bold;
 
   cursor:pointer;
@@ -537,19 +518,13 @@ footer{
 
 
 /* =================================
-   LANDSCAPE MODE FIX
+   LANDSCAPE FIX
 ================================= */
 
 @media screen and (orientation:landscape){
 
   #appUpdating{
-
-    /*
-      Don't force center vertically
-      when screen height is small.
-    */
     align-items:flex-start;
-
     justify-content:center;
 
     padding-top:16px;
@@ -557,82 +532,64 @@ footer{
 
     overflow-y:auto;
     overflow-x:hidden;
-
   }
 
   .update-box{
-
     margin:0 auto;
-
     max-width:390px;
-
   }
 
 }
 
 
 /* =================================
-   VERY SHORT LANDSCAPE SCREEN
+   VERY SHORT LANDSCAPE
 ================================= */
 
 @media screen and (orientation:landscape)
        and (max-height:500px){
 
   #appUpdating{
-
     align-items:flex-start;
 
     padding-top:10px;
     padding-bottom:10px;
-
   }
 
   .update-box{
-
     padding:18px 14px 14px;
-
   }
 
   .update-logo{
-
     margin-bottom:10px;
-
   }
 
   .update-app-icon{
-
     width:65px;
     height:65px;
 
     margin-bottom:10px;
-
   }
 
   .update-box h1{
-
     font-size:20px;
-
   }
 
   .update-app-name{
-
     margin:8px 0 12px;
-
   }
 
 }
 
 
 /* =================================
-   MOBILE PORTRAIT
+   MOBILE
 ================================= */
 
 @media screen and (max-width:480px){
 
   .update-box{
-
     max-width:390px;
-
   }
 
 }
@@ -645,13 +602,11 @@ footer{
 @supports(padding:max(0px)){
 
   #appUpdating{
+    padding-left:max(16px,env(safe-area-inset-left));
+    padding-right:max(16px,env(safe-area-inset-right));
 
-    padding-left:max(16px, env(safe-area-inset-left));
-    padding-right:max(16px, env(safe-area-inset-right));
-
-    padding-top:max(16px, env(safe-area-inset-top));
-    padding-bottom:max(16px, env(safe-area-inset-bottom));
-
+    padding-top:max(16px,env(safe-area-inset-top));
+    padding-bottom:max(16px,env(safe-area-inset-bottom));
   }
 
 }
@@ -725,7 +680,9 @@ footer{
 
   <a
     class="btn"
-    href="#"
+    href="https://www.mediafire.com/file/9fykbt4d8azfwn0/CAPCUT_ULTRA_v23.0.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
+    target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'CapCut','capcut.jpg')"
   >
     Download
@@ -748,7 +705,9 @@ footer{
 
   <a
     class="btn"
-    href="#"
+    href="https://www.mediafire.com/file/2cqmokmxkul7wp0/ALIGHT+MOTION+v5.0.273+.apk/file"
+    target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'Alight Motion','alight-motion.jpg')"
   >
     Download
@@ -771,7 +730,9 @@ footer{
 
   <a
     class="btn"
-    href="#"
+    href="https://www.mediafire.com/file/o21m6a4jw6vaout/Wink+v3.16.5+.xapk/file"
+    target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'Wink','Wink.jpg')"
   >
     Download
@@ -794,7 +755,9 @@ footer{
 
   <a
     class="btn"
-    href="#"
+    href="https://www.mediafire.com/file/nhfvyp1j8pk2xql/EFIKO_PRO_v1.6.2%25F0%259F%2594%25A5.apk/file"
+    target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'EFIKO','EFIKO.jpg')"
   >
     Download
@@ -817,7 +780,9 @@ footer{
 
   <a
     class="btn"
-    href="#"
+    href="https://www.mediafire.com/file/5fjugndt0dbc8b5/PICSART_v30.7.11_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
+    target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'PicsArt','PicsArt.jpg')"
   >
     Download
@@ -831,7 +796,7 @@ footer{
 <div class="app">
 
   <div class="icon">
-    <img src="BeutiyPlus.jpg" alt="BeautyPlus">
+    <img src="BeutiyPlus.jpg" alt="BeutiyPlus">
   </div>
 
   <h3>BeutiyPlus</h3>
@@ -840,7 +805,9 @@ footer{
 
   <a
     class="btn"
-    href="#"
+    href="https://www.mediafire.com/file/8yt5e5w2b7pbzv0/BEUTIYPLUS_v7.44.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
+    target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'BeutiyPlus','BeutiyPlus.jpg')"
   >
     Download
@@ -863,7 +830,9 @@ footer{
 
   <a
     class="btn"
-    href="#"
+    href="https://www.mediafire.com/file/026d7z4fo45bbza/REMINI_v3.7.1443.202524660_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
+    target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'Remini','Remini.jpg')"
   >
     Download
@@ -886,7 +855,9 @@ footer{
 
   <a
     class="btn"
-    href="#"
+    href="https://www.mediafire.com/file/1pkwfb3i3pvlcyr/GLIP_v3.0.89_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
+    target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'Glip Screen Recorder','Glip.jpg')"
   >
     Download
@@ -909,7 +880,9 @@ footer{
 
   <a
     class="btn"
-    href="#"
+    href="https://www.mediafire.com/file/lvzgozdm92jqgnf/PLAYIT+2.7.52.6+.apk/file"
+    target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'PLAYit','PLAYit.jpg')"
   >
     Download
@@ -932,7 +905,9 @@ footer{
 
   <a
     class="btn"
-    href="#"
+    href="https://www.mediafire.com/file/f244x7svpiezl1d/MovieBox_v4.0.02.0903.02_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
+    target="_blank"
+    rel="noopener"
     onclick="handleDownload(event,'MovieBox','MovieBox.jpg')"
   >
     Download
@@ -1102,6 +1077,7 @@ footer{
 
 <script>
 
+
 /* =========================================
    WEBSITE ON / OFF
 
@@ -1139,7 +1115,7 @@ const APP_UPDATES = {
 
   "PLAYit": false,
 
-  "MovieBox": true,
+  "MovieBox": true
 
 };
 
@@ -1212,9 +1188,7 @@ function showUpdating(appName, icon){
 
   /*
     Lock background page.
-
-    The update overlay itself
-    remains scrollable.
+    Update overlay itself remains scrollable.
   */
 
   document.body.style.overflow = "hidden";
@@ -1223,8 +1197,7 @@ function showUpdating(appName, icon){
 
 
   /*
-    Always start from top when
-    opening the update screen.
+    Start update screen from top.
   */
 
   updateScreen.scrollTop = 0;
@@ -1245,9 +1218,7 @@ function closeUpdating(){
   updateScreen.style.display = "none";
 
 
-  /*
-    Unlock background page.
-  */
+  /* Unlock background page */
 
   document.body.style.overflow = "";
 
@@ -1321,4 +1292,4 @@ document.addEventListener(
 </script>
 
 </body>
-</html>
+    </html>
