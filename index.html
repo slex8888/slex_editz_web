@@ -1,108 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SLEX.EDITZ</title>
 
-<!-- =================================
-     WEBSITE FAVICON
-================================= -->
-
-<link
-  rel="icon"
-  type="image/jpeg"
-  href="/insta-logo.jpg"
->
-
-
-<!-- =================================
-     SOCIAL MEDIA LINK PREVIEW
-================================= -->
-
-<meta
-  property="og:title"
-  content="SLEX.EDITZ"
->
-
-<meta
-  property="og:description"
-  content="Editing Tools & Apps"
->
-
-<meta
-  property="og:image"
-  content="https://slex-editz-web.vercel.app/insta-logo.jpg"
->
-
-<meta
-  property="og:image:type"
-  content="image/jpeg"
->
-
-<meta
-  property="og:image:width"
-  content="1200"
->
-
-<meta
-  property="og:image:height"
-  content="630"
->
-
-<meta
-  property="og:url"
-  content="https://slex-editz-web.vercel.app/"
->
-
-<meta
-  property="og:type"
-  content="website"
->
-
-<meta
-  property="og:site_name"
-  content="SLEX.EDITZ"
->
-
-
-<!-- =================================
-     TWITTER / OTHER PREVIEW
-================================= -->
-
-<meta
-  name="twitter:card"
-  content="summary_large_image"
->
-
-<meta
-  name="twitter:title"
-  content="SLEX.EDITZ"
->
-
-<meta
-  name="twitter:description"
-  content="Editing Tools & Apps"
->
-
-<meta
-  name="twitter:image"
-  content="https://slex-editz-web.vercel.app/insta-logo.jpg"
->
-
-
 <style>
-
-/* =================================
-   BASIC
-================================= */
 
 *{
   box-sizing:border-box;
@@ -178,7 +82,6 @@ body.site-off #maintenance{
   align-items:center;
   justify-content:center;
   box-shadow:0 0 25px rgba(139,0,255,.5);
-  overflow:hidden;
 }
 
 .off-icon img{
@@ -303,10 +206,7 @@ header{
 
 .apps{
   display:grid;
-  grid-template-columns:repeat(
-    auto-fit,
-    minmax(150px,1fr)
-  );
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
   gap:15px;
 }
 
@@ -323,11 +223,7 @@ header{
   height:70px;
   margin:auto auto 12px;
   border-radius:16px;
-  background:linear-gradient(
-    135deg,
-    #7b00ff,
-    #e000ff
-  );
+  background:linear-gradient(135deg,#7b00ff,#e000ff);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -399,6 +295,10 @@ footer{
 
   padding:16px;
 
+  /*
+    Important:
+    Update screen itself can scroll.
+  */
   overflow-y:auto;
   overflow-x:hidden;
 
@@ -702,31 +602,16 @@ footer{
 @supports(padding:max(0px)){
 
   #appUpdating{
-    padding-left:max(
-      16px,
-      env(safe-area-inset-left)
-    );
+    padding-left:max(16px,env(safe-area-inset-left));
+    padding-right:max(16px,env(safe-area-inset-right));
 
-    padding-right:max(
-      16px,
-      env(safe-area-inset-right)
-    );
-
-    padding-top:max(
-      16px,
-      env(safe-area-inset-top)
-    );
-
-    padding-bottom:max(
-      16px,
-      env(safe-area-inset-bottom)
-    );
+    padding-top:max(16px,env(safe-area-inset-top));
+    padding-bottom:max(16px,env(safe-area-inset-bottom));
   }
 
 }
 
 </style>
-
 </head>
 
 
@@ -761,9 +646,7 @@ footer{
 
 <section class="hero">
 
-  <h1>
-    Editing Tools & Apps
-  </h1>
+  <h1>Editing Tools & Apps</h1>
 
   <p>
     Discover useful apps, tools and resources for editing.
@@ -788,12 +671,7 @@ footer{
 <div class="app">
 
   <div class="icon">
-
-    <img
-      src="capcut.jpg"
-      alt="CapCut"
-    >
-
+    <img src="capcut.jpg" alt="CapCut">
   </div>
 
   <h3>CapCut</h3>
@@ -805,11 +683,7 @@ footer{
     href="https://www.mediafire.com/file/9fykbt4d8azfwn0/CAPCUT_ULTRA_v23.0.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
     target="_blank"
     rel="noopener"
-    onclick="handleDownload(
-      event,
-      'CapCut',
-      'capcut.jpg'
-    )"
+    onclick="handleDownload(event,'CapCut','capcut.jpg')"
   >
     Download
   </a>
@@ -822,12 +696,7 @@ footer{
 <div class="app">
 
   <div class="icon">
-
-    <img
-      src="alight-motion.jpg"
-      alt="Alight Motion"
-    >
-
+    <img src="alight-motion.jpg" alt="Alight Motion">
   </div>
 
   <h3>Alight Motion</h3>
@@ -839,11 +708,7 @@ footer{
     href="https://www.mediafire.com/file/2cqmokmxkul7wp0/ALIGHT+MOTION+v5.0.273+.apk/file"
     target="_blank"
     rel="noopener"
-    onclick="handleDownload(
-      event,
-      'Alight Motion',
-      'alight-motion.jpg'
-    )"
+    onclick="handleDownload(event,'Alight Motion','alight-motion.jpg')"
   >
     Download
   </a>
@@ -856,12 +721,7 @@ footer{
 <div class="app">
 
   <div class="icon">
-
-    <img
-      src="Wink.jpg"
-      alt="Wink"
-    >
-
+    <img src="Wink.jpg" alt="Wink">
   </div>
 
   <h3>Wink</h3>
@@ -873,11 +733,7 @@ footer{
     href="https://www.mediafire.com/file/o21m6a4jw6vaout/Wink+v3.16.5+.xapk/file"
     target="_blank"
     rel="noopener"
-    onclick="handleDownload(
-      event,
-      'Wink',
-      'Wink.jpg'
-    )"
+    onclick="handleDownload(event,'Wink','Wink.jpg')"
   >
     Download
   </a>
@@ -890,12 +746,7 @@ footer{
 <div class="app">
 
   <div class="icon">
-
-    <img
-      src="EFIKO.jpg"
-      alt="EFIKO"
-    >
-
+    <img src="EFIKO.jpg" alt="EFIKO">
   </div>
 
   <h3>EFIKO</h3>
@@ -907,11 +758,7 @@ footer{
     href="https://www.mediafire.com/file/nhfvyp1j8pk2xql/EFIKO_PRO_v1.6.2%25F0%259F%2594%25A5.apk/file"
     target="_blank"
     rel="noopener"
-    onclick="handleDownload(
-      event,
-      'EFIKO',
-      'EFIKO.jpg'
-    )"
+    onclick="handleDownload(event,'EFIKO','EFIKO.jpg')"
   >
     Download
   </a>
@@ -924,12 +771,7 @@ footer{
 <div class="app">
 
   <div class="icon">
-
-    <img
-      src="PicsArt.jpg"
-      alt="PicsArt"
-    >
-
+    <img src="PicsArt.jpg" alt="PicsArt">
   </div>
 
   <h3>PicsArt</h3>
@@ -941,11 +783,7 @@ footer{
     href="https://www.mediafire.com/file/5fjugndt0dbc8b5/PICSART_v30.7.11_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
     target="_blank"
     rel="noopener"
-    onclick="handleDownload(
-      event,
-      'PicsArt',
-      'PicsArt.jpg'
-    )"
+    onclick="handleDownload(event,'PicsArt','PicsArt.jpg')"
   >
     Download
   </a>
@@ -958,12 +796,7 @@ footer{
 <div class="app">
 
   <div class="icon">
-
-    <img
-      src="BeutiyPlus.jpg"
-      alt="BeutiyPlus"
-    >
-
+    <img src="BeutiyPlus.jpg" alt="BeutiyPlus">
   </div>
 
   <h3>BeutiyPlus</h3>
@@ -975,11 +808,7 @@ footer{
     href="https://www.mediafire.com/file/8yt5e5w2b7pbzv0/BEUTIYPLUS_v7.44.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
     target="_blank"
     rel="noopener"
-    onclick="handleDownload(
-      event,
-      'BeutiyPlus',
-      'BeutiyPlus.jpg'
-    )"
+    onclick="handleDownload(event,'BeutiyPlus','BeutiyPlus.jpg')"
   >
     Download
   </a>
@@ -992,12 +821,7 @@ footer{
 <div class="app">
 
   <div class="icon">
-
-    <img
-      src="Remini.jpg"
-      alt="Remini"
-    >
-
+    <img src="Remini.jpg" alt="Remini">
   </div>
 
   <h3>Remini</h3>
@@ -1009,11 +833,7 @@ footer{
     href="https://www.mediafire.com/file/026d7z4fo45bbza/REMINI_v3.7.1443.202524660_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
     target="_blank"
     rel="noopener"
-    onclick="handleDownload(
-      event,
-      'Remini',
-      'Remini.jpg'
-    )"
+    onclick="handleDownload(event,'Remini','Remini.jpg')"
   >
     Download
   </a>
@@ -1026,17 +846,10 @@ footer{
 <div class="app">
 
   <div class="icon">
-
-    <img
-      src="Glip.jpg"
-      alt="Glip Screen Recorder"
-    >
-
+    <img src="Glip.jpg" alt="Glip Screen Recorder">
   </div>
 
-  <h3>
-    Glip Screen Recorder
-  </h3>
+  <h3>Glip Screen Recorder</h3>
 
   <p>Screen Recorder</p>
 
@@ -1045,11 +858,7 @@ footer{
     href="https://www.mediafire.com/file/1pkwfb3i3pvlcyr/GLIP_v3.0.89_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
     target="_blank"
     rel="noopener"
-    onclick="handleDownload(
-      event,
-      'Glip Screen Recorder',
-      'Glip.jpg'
-    )"
+    onclick="handleDownload(event,'Glip Screen Recorder','Glip.jpg')"
   >
     Download
   </a>
@@ -1062,12 +871,7 @@ footer{
 <div class="app">
 
   <div class="icon">
-
-    <img
-      src="PLAYit.jpg"
-      alt="PLAYit"
-    >
-
+    <img src="PLAYit.jpg" alt="PLAYit">
   </div>
 
   <h3>PLAYit</h3>
@@ -1079,11 +883,7 @@ footer{
     href="https://www.mediafire.com/file/lvzgozdm92jqgnf/PLAYIT+2.7.52.6+.apk/file"
     target="_blank"
     rel="noopener"
-    onclick="handleDownload(
-      event,
-      'PLAYit',
-      'PLAYit.jpg'
-    )"
+    onclick="handleDownload(event,'PLAYit','PLAYit.jpg')"
   >
     Download
   </a>
@@ -1096,12 +896,7 @@ footer{
 <div class="app">
 
   <div class="icon">
-
-    <img
-      src="MovieBox.jpg"
-      alt="MovieBox"
-    >
-
+    <img src="MovieBox.jpg" alt="MovieBox">
   </div>
 
   <h3>MovieBox</h3>
@@ -1113,11 +908,7 @@ footer{
     href="https://www.mediafire.com/file/f244x7svpiezl1d/MovieBox_v4.0.02.0903.02_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
     target="_blank"
     rel="noopener"
-    onclick="handleDownload(
-      event,
-      'MovieBox',
-      'MovieBox.jpg'
-    )"
+    onclick="handleDownload(event,'MovieBox','MovieBox.jpg')"
   >
     Download
   </a>
@@ -1126,7 +917,6 @@ footer{
 
 
 </div>
-
 </section>
 
 
@@ -1208,6 +998,7 @@ footer{
       SLEX<span>.EDITZ</span>
     </div>
 
+
     <div class="update-app-icon">
 
       <img
@@ -1218,6 +1009,7 @@ footer{
 
     </div>
 
+
     <h1>
       WAIT SOME TIME
     </h1>
@@ -1226,12 +1018,14 @@ footer{
       APP IS <span>UPDATING</span>
     </h1>
 
+
     <div
       class="update-app-name"
       id="updateAppName"
     >
       This app is currently being updated.
     </div>
+
 
     <div class="update-message">
 
@@ -1240,6 +1034,7 @@ footer{
       Please wait a few minutes and try again later.
 
     </div>
+
 
     <div class="update-contact">
 
@@ -1264,12 +1059,15 @@ footer{
 
     </div>
 
+
     <a
       href="#"
       class="update-home"
       onclick="closeUpdating(); return false;"
     >
+
       🏠 &nbsp; Back to Home
+
     </a>
 
   </div>
@@ -1279,8 +1077,12 @@ footer{
 
 <script>
 
+
 /* =========================================
    WEBSITE ON / OFF
+
+   false = WEBSITE ON
+   true  = WEBSITE OFF
 ========================================= */
 
 const SITE_OFF = false;
@@ -1288,6 +1090,9 @@ const SITE_OFF = false;
 
 /* =========================================
    APP UPDATE SETTINGS
+
+   false = DOWNLOAD WORKS
+   true  = UPDATE SCREEN SHOWS
 ========================================= */
 
 const APP_UPDATES = {
@@ -1310,7 +1115,7 @@ const APP_UPDATES = {
 
   "PLAYit": false,
 
-  "MovieBox": false
+  "MovieBox": false,
 
 };
 
@@ -1330,20 +1135,13 @@ if(SITE_OFF){
    APP DOWNLOAD HANDLER
 ========================================= */
 
-function handleDownload(
-  event,
-  appName,
-  icon
-){
+function handleDownload(event, appName, icon){
 
   if(APP_UPDATES[appName] === true){
 
     event.preventDefault();
 
-    showUpdating(
-      appName,
-      icon
-    );
+    showUpdating(appName, icon);
 
     return false;
 
@@ -1356,31 +1154,26 @@ function handleDownload(
    SHOW UPDATE SCREEN
 ========================================= */
 
-function showUpdating(
-  appName,
-  icon
-){
+function showUpdating(appName, icon){
 
   const updateScreen =
-    document.getElementById(
-      "appUpdating"
-    );
+    document.getElementById("appUpdating");
 
   const updateIcon =
-    document.getElementById(
-      "updateAppIcon"
-    );
+    document.getElementById("updateAppIcon");
 
   const updateName =
-    document.getElementById(
-      "updateAppName"
-    );
+    document.getElementById("updateAppName");
 
+
+  /* Set app icon */
 
   updateIcon.src = icon;
 
   updateIcon.alt = appName;
 
+
+  /* Set app name */
 
   updateName.innerHTML =
     "<b>" +
@@ -1388,16 +1181,24 @@ function showUpdating(
     "</b> is currently being updated.";
 
 
-  updateScreen.style.display =
-    "flex";
+  /* Show update screen */
+
+  updateScreen.style.display = "flex";
 
 
-  document.body.style.overflow =
-    "hidden";
+  /*
+    Lock background page.
+    Update overlay itself remains scrollable.
+  */
 
-  document.documentElement.style.overflow =
-    "hidden";
+  document.body.style.overflow = "hidden";
 
+  document.documentElement.style.overflow = "hidden";
+
+
+  /*
+    Start update screen from top.
+  */
 
   updateScreen.scrollTop = 0;
 
@@ -1411,20 +1212,17 @@ function showUpdating(
 function closeUpdating(){
 
   const updateScreen =
-    document.getElementById(
-      "appUpdating"
-    );
+    document.getElementById("appUpdating");
 
 
-  updateScreen.style.display =
-    "none";
+  updateScreen.style.display = "none";
 
 
-  document.body.style.overflow =
-    "";
+  /* Unlock background page */
 
-  document.documentElement.style.overflow =
-    "";
+  document.body.style.overflow = "";
+
+  document.documentElement.style.overflow = "";
 
 }
 
@@ -1434,9 +1232,7 @@ function closeUpdating(){
 ========================================= */
 
 const searchInput =
-  document.querySelector(
-    ".search input"
-  );
+  document.querySelector(".search input");
 
 
 searchInput.addEventListener(
@@ -1444,45 +1240,33 @@ searchInput.addEventListener(
   function(){
 
     const searchText =
-      this.value
-        .toLowerCase()
-        .trim();
+      this.value.toLowerCase().trim();
 
 
     const apps =
-      document.querySelectorAll(
-        ".app"
-      );
+      document.querySelectorAll(".app");
 
 
-    apps.forEach(
-      function(app){
+    apps.forEach(function(app){
 
-        const appName =
-          app
-            .querySelector("h3")
-            .textContent
-            .toLowerCase();
+      const appName =
+        app
+        .querySelector("h3")
+        .textContent
+        .toLowerCase();
 
 
-        if(
-          appName.includes(
-            searchText
-          )
-        ){
+      if(appName.includes(searchText)){
 
-          app.style.display =
-            "";
+        app.style.display = "";
 
-        }else{
+      }else{
 
-          app.style.display =
-            "none";
-
-        }
+        app.style.display = "none";
 
       }
-    );
+
+    });
 
   }
 );
@@ -1496,9 +1280,7 @@ document.addEventListener(
   "keydown",
   function(event){
 
-    if(
-      event.key === "Escape"
-    ){
+    if(event.key === "Escape"){
 
       closeUpdating();
 
@@ -1510,5 +1292,4 @@ document.addEventListener(
 </script>
 
 </body>
-
-</html>
+  </html>
