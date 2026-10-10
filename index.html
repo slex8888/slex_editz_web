@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08080d">
 
 <title>SLEX.EDITZ</title>
 
@@ -12,9 +11,6 @@
 <meta property="og:title" content="SLEX.EDITZ">
 <meta property="og:description" content="Editing Tools & Apps">
 <meta property="og:image" content="https://slex-editz-web.vercel.app/insta-logo.jpg">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://slex-editz-web.vercel.app/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SLEX.EDITZ">
@@ -25,18 +21,13 @@
 <meta name="twitter:image" content="https://slex-editz-web.vercel.app/insta-logo.jpg">
 
 <style>
-/* ========================================
-   THEME VARIABLES
-======================================== */
-
 :root {
   --primary: #8b00ff;
-  --background: #08080d;
-  --header: #101018;
-  --card: #12121b;
   --glow: #b000ff;
-  --button: #8b00ff;
-  --glow-strength: 35;
+  --background: #08080d;
+  --card: #12121b;
+  --button-color: #8b00ff;
+  --glow-strength: 25px;
   --brightness: 100%;
 }
 
@@ -48,174 +39,66 @@
 }
 
 html {
-  width: 100%;
-  min-height: 100%;
   scroll-behavior: smooth;
 }
 
 body {
-  width: 100%;
-  min-height: 100vh;
-  overflow-x: hidden;
   background: var(--background);
   color: white;
+  filter: brightness(var(--brightness));
 }
-
-/* ========================================
-   WEBSITE ON/OFF
-======================================== */
-
-#maintenance {
-  display: none;
-}
-
-body.site-off > *:not(#maintenance) {
-  display: none !important;
-}
-
-body.site-off #maintenance {
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  padding: 25px;
-  background: var(--background);
-}
-
-.maintenance-box {
-  width: 100%;
-  max-width: 650px;
-  padding: 40px 25px;
-  text-align: center;
-  background: var(--card);
-  border: 1px solid var(--primary);
-  border-radius: 24px;
-  box-shadow: 0 0 35px var(--glow);
-}
-
-.maintenance-logo {
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  margin-bottom: 35px;
-}
-
-.maintenance-logo span,
-.maintenance-box h1 span {
-  color: var(--primary);
-}
-
-.off-icon {
-  width: 85px;
-  height: 85px;
-  margin: 0 auto 25px;
-  border: 2px solid var(--primary);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.off-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 50%;
-}
-
-.maintenance-box h1 {
-  font-size: 32px;
-  margin-bottom: 15px;
-}
-
-.maintenance-box p {
-  color: #aaa;
-  font-size: 15px;
-  line-height: 1.7;
-  margin-bottom: 30px;
-}
-
-.instagram-box {
-  border: 1px solid #292936;
-  background: var(--header);
-  border-radius: 16px;
-  padding: 18px;
-}
-
-.instagram-title {
-  color: #999;
-  font-size: 13px;
-  margin-bottom: 8px;
-}
-
-.instagram-box a {
-  color: var(--primary);
-  font-size: 17px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.maintenance-footer {
-  margin-top: 30px;
-  color: #666;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-/* ========================================
-   HEADER
-======================================== */
 
 header {
-  padding: 22px 18px;
-  background: var(--header);
+  padding: 20px 18px;
+  background: #101018;
   border-bottom: 1px solid #272733;
+  position: relative;
 }
 
-.header-logo {
-  text-align: center;
+.header-top {
+  max-width: 1000px;
+  margin: auto;
+  position: relative;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo {
-  font-size: clamp(23px, 6vw, 30px);
+  font-size: 28px;
   font-weight: 800;
-  letter-spacing: 3px;
-  overflow-wrap: anywhere;
+  letter-spacing: 2px;
+  text-align: center;
 }
 
-.logo span {
-  color: var(--primary);
+.logo span,
+.maintenance-logo span,
+.update-logo span {
+  color: var(--glow);
 }
 
-/* Admin button sits below the logo, right side.
-   It is NOT fixed, so it scrolls with the page. */
-
-.admin-row {
-  display: flex;
-  justify-content: flex-end;
-  margin: 14px 0 0;
-}
-
-.admin-open {
-  padding: 11px 14px;
-  background: var(--header);
+/* Admin button stays in the document and scrolls with the page */
+.admin-access {
+  position: absolute;
+  right: 0;
+  top: 44px;
+  z-index: 10;
+  padding: 8px 12px;
+  background: var(--button-color);
   color: white;
-  border: 1px solid var(--primary);
-  border-radius: 11px;
-  font-weight: bold;
-  font-size: 13px;
+  border: 1px solid var(--glow);
+  border-radius: 9px;
   cursor: pointer;
-  box-shadow: 0 0 14px var(--glow);
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 0 var(--glow-strength) color-mix(in srgb, var(--glow) 45%, transparent);
 }
-
-/* ========================================
-   SEARCH
-======================================== */
 
 .search {
-  margin: 18px auto 0;
   max-width: 600px;
+  margin: 32px auto 0;
+  padding: 0 15px;
 }
 
 .search input {
@@ -223,39 +106,27 @@ header {
   padding: 15px;
   border-radius: 12px;
   border: 1px solid #333342;
-  background: #090910;
+  background: #15151f;
   color: white;
   outline: none;
   font-size: 15px;
 }
 
-.search input:focus {
-  border-color: var(--primary);
-}
-
-/* ========================================
-   HERO
-======================================== */
-
 .hero {
   text-align: center;
-  padding: 35px 20px;
+  padding: 42px 20px 35px;
 }
 
 .hero h1 {
-  font-size: clamp(26px, 6vw, 34px);
-  margin-bottom: 12px;
+  font-size: 32px;
+  margin-bottom: 10px;
 }
 
 .hero p {
   color: #aaa;
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.6;
 }
-
-/* ========================================
-   APPS
-======================================== */
 
 .section {
   padding: 20px;
@@ -264,39 +135,29 @@ header {
 }
 
 .section h2 {
-  margin-bottom: 22px;
-  font-size: 25px;
+  margin-bottom: 18px;
 }
 
 .apps {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 15px;
 }
 
 .app {
-  min-width: 0;
   background: var(--card);
   border: 1px solid #292936;
   border-radius: 16px;
-  padding: 18px 10px;
+  padding: 18px;
   text-align: center;
-  transition: border-color .2s, box-shadow .2s;
-}
-
-.app:hover {
-  border-color: var(--primary);
-}
-
-.glow-enabled .app:hover {
-  box-shadow: 0 0 calc(var(--glow-strength) * 1px) var(--glow);
+  box-shadow: 0 0 var(--glow-strength) color-mix(in srgb, var(--glow) 12%, transparent);
 }
 
 .icon {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 15px;
-  border-radius: 17px;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 12px;
+  border-radius: 16px;
   background: linear-gradient(135deg, var(--primary), var(--glow));
   display: flex;
   align-items: center;
@@ -312,38 +173,26 @@ header {
 }
 
 .app h3 {
-  font-size: 16px;
-  line-height: 1.4;
-  margin-bottom: 7px;
-  overflow-wrap: anywhere;
+  font-size: 17px;
+  margin-bottom: 6px;
 }
 
 .app p {
   color: #999;
   font-size: 13px;
-  line-height: 1.5;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .btn {
   display: inline-block;
-  padding: 11px 15px;
-  background: var(--button);
+  padding: 9px 15px;
+  background: var(--button-color);
   color: white;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 9px;
   font-size: 13px;
   font-weight: bold;
-  cursor: pointer;
 }
-
-.btn:hover {
-  filter: brightness(1.15);
-}
-
-/* ========================================
-   FOOTER
-======================================== */
 
 footer {
   text-align: center;
@@ -351,263 +200,116 @@ footer {
   color: #777;
   margin-top: 30px;
   border-top: 1px solid #22222c;
-  line-height: 1.8;
 }
 
-footer a {
-  color: var(--primary);
-  text-decoration: none;
-}
-
-/* ========================================
-   ADMIN MODAL
-======================================== */
-
-.modal-backdrop {
+/* Maintenance page */
+#maintenance {
   display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 100000;
-  width: 100%;
-  height: 100%;
-  height: 100dvh;
-  padding: 14px;
-  overflow-y: auto;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, .88);
-  overscroll-behavior: contain;
 }
 
-.modal-backdrop.open {
-  display: flex;
-}
-
-.admin-modal {
-  width: 100%;
-  max-width: 620px;
-  max-height: calc(100dvh - 28px);
-  overflow-y: auto;
-  padding: 21px;
-  background: var(--header);
-  border: 1px solid var(--primary);
-  border-radius: 20px;
-  box-shadow: 0 0 30px var(--glow);
-}
-
-.modal-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 17px;
-}
-
-.modal-heading h2 {
-  font-size: 20px;
-}
-
-.close-admin {
-  flex-shrink: 0;
-  width: 43px;
-  height: 43px;
-  color: white;
-  background: #11111b;
-  border: 1px solid var(--primary);
-  border-radius: 10px;
-  font-size: 25px;
-  cursor: pointer;
-}
-
-.muted {
-  color: #aaa;
-  font-size: 13px;
-  line-height: 1.7;
-  margin-bottom: 18px;
-}
-
-.field {
-  margin: 15px 0;
-}
-
-.field label {
-  display: block;
-  font-size: 14px;
-  margin-bottom: 9px;
-}
-
-.field input[type="password"],
-.field input[type="text"] {
-  width: 100%;
-  padding: 14px;
-  color: white;
-  background: #08080d;
-  border: 1px solid #333342;
-  border-radius: 10px;
-  outline: none;
-  font-size: 15px;
-}
-
-.field input:focus {
-  border-color: var(--primary);
-}
-
-/* PASSWORD EYE */
-
-.password-wrap {
-  position: relative;
-}
-
-.password-wrap input {
-  padding-right: 55px !important;
-}
-
-.password-eye {
-  position: absolute;
-  right: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 43px;
-  height: 43px;
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 21px;
-  cursor: pointer;
-}
-
-.remember-row,
-.check-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 15px 0;
-  font-size: 13px;
-  color: #ddd;
-}
-
-.remember-row input,
-.check-row input {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--primary);
-}
-
-.control-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.control-card {
-  min-width: 0;
-  padding: 12px;
-  background: #0b0b12;
-  border: 1px solid #292936;
-  border-radius: 12px;
-}
-
-.control-card label {
-  display: block;
-  font-size: 13px;
-  line-height: 1.5;
-  margin-bottom: 10px;
-}
-
-.control-card input[type="color"] {
-  width: 100%;
-  height: 40px;
-  padding: 3px;
-  background: #08080d;
-  border: 1px solid #333342;
-  border-radius: 8px;
-}
-
-.control-card input[type="range"] {
-  width: 100%;
-  accent-color: var(--primary);
-}
-
-.panel-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 18px;
-}
-
-.panel-btn {
-  padding: 12px 14px;
-  color: white;
-  background: #191923;
-  border: 1px solid #393947;
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.panel-btn.primary {
-  background: var(--button);
-  border-color: var(--button);
-}
-
-.status {
-  margin-top: 13px;
-  font-size: 13px;
-  line-height: 1.6;
-  overflow-wrap: anywhere;
-}
-
-.status.error {
-  color: #ff8c98;
-}
-
-.status.success {
-  color: #8dffad;
-}
-
-.note {
-  padding: 12px;
-  margin-top: 14px;
-  color: #aaa;
-  background: #090910;
-  border: 1px dashed #414150;
-  border-radius: 10px;
-  font-size: 12px;
-  line-height: 1.7;
-}
-
-[hidden] {
+body.site-off > *:not(#maintenance) {
   display: none !important;
 }
 
-/* ========================================
-   APP UPDATE SCREEN
-======================================== */
+body.site-off #maintenance {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
 
+.maintenance-box {
+  width: 100%;
+  max-width: 650px;
+  padding: 35px 25px;
+  text-align: center;
+  background: #12121b;
+  border: 1px solid var(--primary);
+  border-radius: 24px;
+  box-shadow: 0 0 40px color-mix(in srgb, var(--glow) 25%, transparent);
+}
+
+.maintenance-logo {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+}
+
+.off-icon {
+  width: 85px;
+  height: 85px;
+  margin: 0 auto 25px;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.off-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.maintenance-box h1 {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.maintenance-box h1 span {
+  color: var(--glow);
+}
+
+.maintenance-box p {
+  color: #aaa;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.instagram-box {
+  border: 1px solid #292936;
+  background: #101018;
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.instagram-title {
+  color: #999;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.instagram-box a {
+  color: var(--glow);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.maintenance-footer {
+  margin-top: 25px;
+  color: #666;
+  font-size: 12px;
+}
+
+/* Update overlay */
 #appUpdating {
   display: none;
   position: fixed;
   inset: 0;
   z-index: 99999;
-  width: 100%;
-  height: 100%;
-  height: 100dvh;
-  background: rgba(3, 3, 10, .96);
+  background: rgba(3,3,10,.96);
   align-items: center;
   justify-content: center;
   padding: 16px;
   overflow-y: auto;
-  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
 }
 
 .update-box {
   width: 100%;
   max-width: 390px;
-  flex-shrink: 0;
-  background: var(--header);
+  background: #101018;
   border: 2px solid var(--primary);
   border-radius: 18px;
   padding: 24px 16px 16px;
@@ -618,12 +320,7 @@ footer a {
 .update-logo {
   font-size: 22px;
   font-weight: 800;
-  letter-spacing: 1.5px;
   margin-bottom: 18px;
-}
-
-.update-logo span {
-  color: var(--primary);
 }
 
 .update-app-icon {
@@ -633,10 +330,6 @@ footer a {
   border-radius: 50%;
   border: 3px solid var(--primary);
   padding: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 20px var(--glow);
   overflow: hidden;
 }
 
@@ -644,27 +337,25 @@ footer a {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  border-radius: 50%;
 }
 
 .update-box h1 {
-  margin: 4px 0;
-  font-size: 23px;
-  line-height: 1.25;
+  font-size: 22px;
+  margin: 7px 0;
 }
 
 .update-box h1 span {
-  color: var(--primary);
+  color: var(--glow);
 }
 
 .update-app-name {
   margin: 12px 0 18px;
   color: #aaaaca;
   font-size: 13px;
-  line-height: 1.5;
 }
 
-.update-message {
+.update-message,
+.update-contact {
   padding: 13px 10px;
   margin-bottom: 12px;
   background: #090910;
@@ -675,20 +366,6 @@ footer a {
   line-height: 1.6;
 }
 
-.update-contact {
-  padding: 12px 10px;
-  margin-bottom: 10px;
-  background: #090910;
-  border: 1px solid #6413a5;
-  border-radius: 12px;
-}
-
-.update-contact-title {
-  font-size: 11px;
-  color: #9999b5;
-  margin-bottom: 8px;
-}
-
 .update-contact a {
   display: flex;
   align-items: center;
@@ -696,7 +373,6 @@ footer a {
   gap: 8px;
   color: white;
   text-decoration: none;
-  font-size: 14px;
   font-weight: bold;
 }
 
@@ -704,13 +380,11 @@ footer a {
   width: 27px;
   height: 27px;
   border-radius: 50%;
-  object-fit: cover;
 }
 
 .update-home {
   display: flex;
-  width: 100%;
-  min-height: 43px;
+  height: 43px;
   align-items: center;
   justify-content: center;
   border: 1.5px solid var(--primary);
@@ -719,524 +393,346 @@ footer a {
   text-decoration: none;
   font-size: 13px;
   font-weight: bold;
+}
+
+/* Admin modal */
+.admin-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: rgba(0,0,0,.85);
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.admin-box {
+  width: 100%;
+  max-width: 420px;
+  background: #101018;
+  border: 1px solid var(--primary);
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 0 28px color-mix(in srgb, var(--glow) 35%, transparent);
+  margin: auto;
+}
+
+.admin-box h2 {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.admin-box label {
+  display: block;
+  color: #c8c8d5;
+  font-size: 13px;
+  margin: 14px 0 7px;
+}
+
+.admin-box input[type="password"],
+.admin-box input[type="text"],
+.admin-box input[type="color"],
+.admin-box input[type="range"] {
+  width: 100%;
+}
+
+.admin-box input[type="password"],
+.admin-box input[type="text"] {
+  padding: 12px;
+  color: white;
+  background: #090910;
+  border: 1px solid #383846;
+  border-radius: 9px;
+}
+
+.password-wrap {
+  display: flex;
+  gap: 7px;
+}
+
+.password-wrap input {
+  min-width: 0;
+  flex: 1;
+}
+
+.eye-btn {
+  padding: 0 12px;
+  color: white;
+  background: #292936;
+  border: 1px solid #444;
+  border-radius: 9px;
   cursor: pointer;
 }
 
-@media (orientation: landscape) {
-  #appUpdating {
-    align-items: flex-start;
-    justify-content: center;
-  }
+.admin-box input[type="color"] {
+  height: 40px;
+  background: #090910;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 3px;
 }
 
-@media (orientation: landscape) and (max-height: 500px) {
-  #appUpdating {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .update-box {
-    padding: 18px 14px 14px;
-  }
-
-  .update-logo {
-    margin-bottom: 10px;
-  }
-
-  .update-app-icon {
-    width: 65px;
-    height: 65px;
-    margin-bottom: 10px;
-  }
-
-  .update-box h1 {
-    font-size: 20px;
-  }
-
-  .update-app-name {
-    margin: 8px 0 12px;
-  }
+.admin-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 18px;
 }
 
-@supports (padding: max(0px)) {
-  #appUpdating {
-    padding-left: max(16px, env(safe-area-inset-left));
-    padding-right: max(16px, env(safe-area-inset-right));
-    padding-top: max(16px, env(safe-area-inset-top));
-    padding-bottom: max(16px, env(safe-area-inset-bottom));
-  }
+.admin-btn {
+  padding: 11px 8px;
+  color: white;
+  background: var(--button-color);
+  border: none;
+  border-radius: 9px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-@media (min-width: 700px) {
-  .apps {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
+.admin-btn.secondary {
+  background: #292936;
 }
 
-@media (max-width: 380px) {
-  .control-grid {
-    grid-template-columns: 1fr;
-  }
+.admin-status {
+  color: #b9b9d0;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 12px;
+  overflow-wrap: anywhere;
+}
 
-  .admin-modal {
-    padding: 15px;
+.admin-note {
+  color: #ffcf80;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+@media(max-width:480px) {
+  .header-top {
+    justify-content: flex-start;
   }
 
   .logo {
-    letter-spacing: 2px;
+    font-size: 24px;
+  }
+
+  .admin-access {
+    top: 36px;
+    right: 0;
+    font-size: 11px;
+    padding: 7px 9px;
+  }
+
+  .search {
+    margin-top: 40px;
+  }
+
+  .hero h1 {
+    font-size: 27px;
+  }
+}
+
+@media(orientation:landscape) and (max-height:500px) {
+  #appUpdating,
+  .admin-modal {
+    align-items: flex-start;
   }
 }
 </style>
 </head>
 
-<body class="glow-enabled">
-
-<!-- ========================================
-     PASSWORD: CHANGE THIS LINE ON GITHUB
-======================================== -->
-
-<script>
-const ADMIN_PASSWORD = "SLEX8889";
-</script>
-
-<!-- ========================================
-     HEADER
-======================================== -->
+<body>
 
 <header>
-  <div class="header-logo">
+  <div class="header-top">
     <div class="logo">SLEX<span>.EDITZ</span></div>
-  </div>
-
-  <div class="admin-row">
-    <button class="admin-open" id="adminOpen" type="button">
-      ⚙️ Admin Access
-    </button>
+    <button class="admin-access" onclick="openAdmin()">🔐 Admin Access</button>
   </div>
 
   <div class="search">
-    <input
-      id="appSearch"
-      type="text"
-      placeholder="Search apps & editing tools..."
-      aria-label="Search apps"
-    >
+    <input id="searchInput" type="text" placeholder="Search apps & editing tools...">
   </div>
 </header>
 
-<!-- ========================================
-     HERO
-======================================== -->
-
 <section class="hero">
-  <h1>Editing Tools &amp; Apps</h1>
+  <h1>Editing Tools & Apps</h1>
   <p>Discover useful apps, tools and resources for editing.</p>
 </section>
 
-<!-- ========================================
-     APPS — ORIGINAL MEDIAFIRE LINKS
-======================================== -->
-
 <section class="section">
-<h2>🔥 Featured Apps</h2>
+  <h2>🔥 Featured Apps</h2>
+  <div class="apps">
 
-<div class="apps">
+    <div class="app">
+      <div class="icon"><img src="capcut.jpg" alt="CapCut"></div>
+      <h3>CapCut</h3><p>Video Editor</p>
+      <a class="btn" href="https://www.mediafire.com/file/9fykbt4d8azfwn0/CAPCUT_ULTRA_v23.0.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'CapCut','capcut.jpg')">Download</a>
+    </div>
 
-<!-- CAPCUT -->
-<div class="app">
-  <div class="icon">
-    <img src="capcut.jpg" alt="CapCut">
+    <div class="app">
+      <div class="icon"><img src="alight-motion.jpg" alt="Alight Motion"></div>
+      <h3>Alight Motion</h3><p>Motion Graphics</p>
+      <a class="btn" href="https://www.mediafire.com/file/2cqmokmxkul7wp0/ALIGHT+MOTION+v5.0.273+.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'Alight Motion','alight-motion.jpg')">Download</a>
+    </div>
+
+    <div class="app">
+      <div class="icon"><img src="Wink.jpg" alt="Wink"></div>
+      <h3>Wink</h3><p>Photo & Video Editor</p>
+      <a class="btn" href="https://www.mediafire.com/file/o21m6a4jw6vaout/Wink+v3.16.5+.xapk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'Wink','Wink.jpg')">Download</a>
+    </div>
+
+    <div class="app">
+      <div class="icon"><img src="EFIKO.jpg" alt="EFIKO"></div>
+      <h3>EFIKO</h3><p>Photo & Video Editor</p>
+      <a class="btn" href="https://www.mediafire.com/file/nhfvyp1j8pk2xql/EFIKO_PRO_v1.6.2%25F0%259F%2594%25A5.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'EFIKO','EFIKO.jpg')">Download</a>
+    </div>
+
+    <div class="app">
+      <div class="icon"><img src="PicsArt.jpg" alt="PicsArt"></div>
+      <h3>PicsArt</h3><p>Photo Editor</p>
+      <a class="btn" href="https://www.mediafire.com/file/5fjugndt0dbc8b5/PICSART_v30.7.11_%25E2%2598%25A0%25EF%25B8%258F.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'PicsArt','PicsArt.jpg')">Download</a>
+    </div>
+
+    <div class="app">
+      <div class="icon"><img src="BeutiyPlus.jpg" alt="BeutiyPlus"></div>
+      <h3>BeutiyPlus</h3><p>Beauty Editor</p>
+      <a class="btn" href="https://www.mediafire.com/file/8yt5e5w2b7pbzv0/BEUTIYPLUS_v7.44.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'BeutiyPlus','BeutiyPlus.jpg')">Download</a>
+    </div>
+
+    <div class="app">
+      <div class="icon"><img src="Remini.jpg" alt="Remini"></div>
+      <h3>Remini</h3><p>Photo Enhancer</p>
+      <a class="btn" href="https://www.mediafire.com/file/026d7z4fo45bbza/REMINI_v3.7.1443.202524660_%25E2%2598%25A0%25EF%25B8%258F.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'Remini','Remini.jpg')">Download</a>
+    </div>
+
+    <div class="app">
+      <div class="icon"><img src="Glip.jpg" alt="Glip Screen Recorder"></div>
+      <h3>Glip Screen Recorder</h3><p>Screen Recorder</p>
+      <a class="btn" href="https://www.mediafire.com/file/1pkwfb3i3pvlcyr/GLIP_v3.0.89_%25E2%2598%25A0%25EF%25B8%258F.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'Glip Screen Recorder','Glip.jpg')">Download</a>
+    </div>
+
+    <div class="app">
+      <div class="icon"><img src="PLAYit.jpg" alt="PLAYit"></div>
+      <h3>PLAYit</h3><p>Video & Music Player</p>
+      <a class="btn" href="https://www.mediafire.com/file/lvzgozdm92jqgnf/PLAYIT+2.7.52.6+.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'PLAYit','PLAYit.jpg')">Download</a>
+    </div>
+
+    <div class="app">
+      <div class="icon"><img src="MovieBox.jpg" alt="MovieBox"></div>
+      <h3>MovieBox</h3><p>Free Movie & Anime</p>
+      <a class="btn" href="https://www.mediafire.com/file/f244x7svpiezl1d/MovieBox_v4.0.02.0903.02_%25E2%2598%25A0%25EF%25B8%258F.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'MovieBox','MovieBox.jpg')">Download</a>
+    </div>
+
   </div>
-  <h3>CapCut</h3>
-  <p>Video Editor</p>
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/9fykbt4d8azfwn0/CAPCUT_ULTRA_v23.0.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(event,'CapCut','capcut.jpg')"
-  >Download</a>
-</div>
-
-<!-- ALIGHT MOTION -->
-<div class="app">
-  <div class="icon">
-    <img src="alight-motion.jpg" alt="Alight Motion">
-  </div>
-  <h3>Alight Motion</h3>
-  <p>Motion Graphics</p>
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/2cqmokmxkul7wp0/ALIGHT+MOTION+v5.0.273+.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(event,'Alight Motion','alight-motion.jpg')"
-  >Download</a>
-</div>
-
-<!-- WINK -->
-<div class="app">
-  <div class="icon">
-    <img src="Wink.jpg" alt="Wink">
-  </div>
-  <h3>Wink</h3>
-  <p>Photo &amp; Video Editor</p>
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/o21m6a4jw6vaout/Wink+v3.16.5+.xapk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(event,'Wink','Wink.jpg')"
-  >Download</a>
-</div>
-
-<!-- EFIKO -->
-<div class="app">
-  <div class="icon">
-    <img src="EFIKO.jpg" alt="EFIKO">
-  </div>
-  <h3>EFIKO</h3>
-  <p>Photo &amp; Video Editor</p>
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/nhfvyp1j8pk2xql/EFIKO_PRO_v1.6.2%25F0%259F%2594%25A5.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(event,'EFIKO','EFIKO.jpg')"
-  >Download</a>
-</div>
-
-<!-- PICSART -->
-<div class="app">
-  <div class="icon">
-    <img src="PicsArt.jpg" alt="PicsArt">
-  </div>
-  <h3>PicsArt</h3>
-  <p>Photo Editor</p>
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/5fjugndt0dbc8b5/PICSART_v30.7.11_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(event,'PicsArt','PicsArt.jpg')"
-  >Download</a>
-</div>
-
-<!-- BEAUTYPLUS -->
-<div class="app">
-  <div class="icon">
-    <img src="BeutiyPlus.jpg" alt="BeutiyPlus">
-  </div>
-  <h3>BeutiyPlus</h3>
-  <p>Beauty Editor</p>
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/8yt5e5w2b7pbzv0/BEUTIYPLUS_v7.44.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(event,'BeutiyPlus','BeutiyPlus.jpg')"
-  >Download</a>
-</div>
-
-<!-- REMINI -->
-<div class="app">
-  <div class="icon">
-    <img src="Remini.jpg" alt="Remini">
-  </div>
-  <h3>Remini</h3>
-  <p>Photo Enhancer</p>
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/026d7z4fo45bbza/REMINI_v3.7.1443.202524660_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(event,'Remini','Remini.jpg')"
-  >Download</a>
-</div>
-
-<!-- GLIP -->
-<div class="app">
-  <div class="icon">
-    <img src="Glip.jpg" alt="Glip Screen Recorder">
-  </div>
-  <h3>Glip Screen Recorder</h3>
-  <p>Screen Recorder</p>
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/1pkwfb3i3pvlcyr/GLIP_v3.0.89_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(event,'Glip Screen Recorder','Glip.jpg')"
-  >Download</a>
-</div>
-
-<!-- PLAYIT -->
-<div class="app">
-  <div class="icon">
-    <img src="PLAYit.jpg" alt="PLAYit">
-  </div>
-  <h3>PLAYit</h3>
-  <p>Video &amp; Music Player</p>
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/lvzgozdm92jqgnf/PLAYIT+2.7.52.6+.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(event,'PLAYit','PLAYit.jpg')"
-  >Download</a>
-</div>
-
-<!-- MOVIEBOX -->
-<div class="app">
-  <div class="icon">
-    <img src="MovieBox.jpg" alt="MovieBox">
-  </div>
-  <h3>MovieBox</h3>
-  <p>Free Movie &amp; Anime</p>
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/f244x7svpiezl1d/MovieBox_v4.0.02.0903.02_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(event,'MovieBox','MovieBox.jpg')"
-  >Download</a>
-</div>
-
-</div>
 </section>
 
-<!-- ========================================
-     FOOTER
-======================================== -->
-
-<footer>
-  © 2026 SLEX.EDITZ — All Rights Reserved
-  <br>
-  <a href="https://instagram.com/slex_888" target="_blank" rel="noopener">
-    @slex_888
-  </a>
-</footer>
-
-<!-- ========================================
-     MAINTENANCE SCREEN
-======================================== -->
+<footer>© 2026 SLEX.EDITZ — All Rights Reserved</footer>
 
 <div id="maintenance">
   <div class="maintenance-box">
-
     <div class="maintenance-logo">SLEX<span>.EDITZ</span></div>
-
-    <div class="off-icon">
-      <img src="insta-logo.jpg" alt="Instagram">
-    </div>
-
+    <div class="off-icon"><img src="insta-logo.jpg" alt="Instagram"></div>
     <h1>WEBSITE IS <span>OFF</span></h1>
-
-    <p>
-      Our website is temporarily unavailable.<br>
-      Please check back again later.
-    </p>
-
+    <p>Our website is temporarily unavailable.<br>Please check back again later.</p>
     <div class="instagram-box">
-      <div class="instagram-title">For updates &amp; information</div>
-      <a href="https://instagram.com/slex_888" target="_blank" rel="noopener">
-        Instagram: @slex_888
-      </a>
+      <div class="instagram-title">For updates & information</div>
+      <a href="https://instagram.com/slex_888" target="_blank" rel="noopener">Instagram: @slex_888</a>
     </div>
-
-    <div class="maintenance-footer">
-      SLEX.EDITZ • EDIT • CREATE • INSPIRE
-    </div>
-
+    <div class="maintenance-footer">SLEX.EDITZ • EDIT • CREATE • INSPIRE</div>
   </div>
 </div>
-
-<!-- ========================================
-     APP UPDATING SCREEN
-======================================== -->
 
 <div id="appUpdating">
   <div class="update-box">
-
     <div class="update-logo">SLEX<span>.EDITZ</span></div>
-
-    <div class="update-app-icon">
-      <img id="updateAppIcon" src="" alt="App">
-    </div>
-
+    <div class="update-app-icon"><img id="updateAppIcon" src="" alt="App"></div>
     <h1>WAIT SOME TIME</h1>
     <h1>APP IS <span>UPDATING</span></h1>
-
-    <div class="update-app-name" id="updateAppName">
-      This app is currently being updated.
-    </div>
-
-    <div class="update-message">
-      The download is temporarily unavailable.<br>
-      Please wait a few minutes and try again later.
-    </div>
-
+    <div class="update-app-name" id="updateAppName"></div>
+    <div class="update-message">The download is temporarily unavailable.<br>Please wait a few minutes and try again later.</div>
     <div class="update-contact">
-      <div class="update-contact-title">For updates &amp; information</div>
+      <div class="instagram-title">For updates & information</div>
       <a href="https://instagram.com/slex_888" target="_blank" rel="noopener">
-        <img src="insta-logo.jpg" alt="Instagram">
-        <span>@slex_888</span>
+        <img src="insta-logo.jpg" alt="Instagram"><span>@slex_888</span>
       </a>
     </div>
-
-    <a href="#" class="update-home" onclick="closeUpdating(); return false;">
-      🏠 &nbsp; Back to Home
-    </a>
-
+    <a href="#" class="update-home" onclick="closeUpdating();return false;">🏠 &nbsp; Back to Home</a>
   </div>
 </div>
 
-<!-- ========================================
-     ADMIN PANEL
-======================================== -->
+<!-- Admin login -->
+<div class="admin-modal" id="adminLoginModal">
+  <div class="admin-box">
+    <h2>🔐 Admin Login</h2>
+    <label for="adminPasswordInput">Admin Password</label>
+    <div class="password-wrap">
+      <input id="adminPasswordInput" type="password" placeholder="Enter admin password" autocomplete="current-password">
+      <button class="eye-btn" type="button" onclick="togglePassword('adminPasswordInput',this)" aria-label="Show or hide password">👁️</button>
+    </div>
+    <div class="admin-actions">
+      <button class="admin-btn" onclick="loginAdmin()">Unlock</button>
+      <button class="admin-btn secondary" onclick="closeAdmin()">Cancel</button>
+    </div>
+    <div class="admin-status" id="loginStatus"></div>
+  </div>
+</div>
 
-<div class="modal-backdrop" id="adminModal">
+<!-- Admin controls -->
+<div class="admin-modal" id="adminPanelModal">
+  <div class="admin-box">
+    <h2>⚙️ SLEX Admin Panel</h2>
 
-  <div class="admin-modal">
+    <label for="themePrimary">Primary Colour</label>
+    <input type="color" id="themePrimary" value="#8b00ff">
 
-    <div class="modal-heading">
-      <h2>⚙️ SLEX.EDITZ Admin</h2>
-      <button class="close-admin" id="closeAdmin" type="button">×</button>
+    <label for="themeGlow">Glow Colour</label>
+    <input type="color" id="themeGlow" value="#b000ff">
+
+    <label for="themeBackground">Background Colour</label>
+    <input type="color" id="themeBackground" value="#08080d">
+
+    <label for="themeButton">Button Colour</label>
+    <input type="color" id="themeButton" value="#8b00ff">
+
+    <label for="themeBrightness">Brightness</label>
+    <input type="range" id="themeBrightness" min="50" max="130" value="100">
+
+    <label for="themeGlowStrength">Glow Intensity</label>
+    <input type="range" id="themeGlowStrength" min="0" max="50" value="25">
+
+    <label for="newAdminPassword">Change Admin Password (6–12 letters/numbers)</label>
+    <div class="password-wrap">
+      <input id="newAdminPassword" type="password" minlength="6" maxlength="12" placeholder="New password" autocomplete="new-password">
+      <button class="eye-btn" type="button" onclick="togglePassword('newAdminPassword',this)" aria-label="Show or hide password">👁️</button>
     </div>
 
-    <div id="loginArea">
-
-      <p class="muted">
-        Enter your admin password to unlock the local theme controls.
-      </p>
-
-      <div class="field">
-        <label for="adminPassword">Admin password</label>
-
-        <div class="password-wrap">
-          <input
-            type="password"
-            id="adminPassword"
-            placeholder="Enter admin password"
-            autocomplete="current-password"
-          >
-
-          <button
-            type="button"
-            class="password-eye"
-            id="passwordEye"
-            aria-label="Show password"
-            aria-pressed="false"
-          >👁️</button>
-        </div>
-      </div>
-
-      <label class="remember-row">
-        <input type="checkbox" id="rememberLogin" checked>
-        Remember me on this device
-      </label>
-
-      <div class="panel-buttons">
-        <button class="panel-btn primary" id="unlockAdmin" type="button">
-          Unlock Admin
-        </button>
-      </div>
-
-      <div class="status" id="loginStatus" role="status"></div>
-
+    <div class="admin-actions">
+      <button class="admin-btn" onclick="saveTheme()">Save Theme</button>
+      <button class="admin-btn secondary" onclick="resetTheme()">Reset Theme</button>
+      <button class="admin-btn" onclick="changePassword()">Change Password</button>
+      <button class="admin-btn secondary" onclick="adminLogout()">Logout</button>
     </div>
 
-    <div id="adminControls" hidden>
-
-      <p class="muted">
-        Customize your website's theme. Changes apply to this browser only.
-      </p>
-
-      <div class="control-grid">
-
-        <div class="control-card">
-          <label for="themePrimary">Primary colour</label>
-          <input type="color" id="themePrimary" value="#8b00ff">
-        </div>
-
-        <div class="control-card">
-          <label for="themeBackground">Background colour</label>
-          <input type="color" id="themeBackground" value="#08080d">
-        </div>
-
-        <div class="control-card">
-          <label for="themeGlow">Glow colour</label>
-          <input type="color" id="themeGlow" value="#b000ff">
-        </div>
-
-        <div class="control-card">
-          <label for="themeButton">Button colour</label>
-          <input type="color" id="themeButton" value="#8b00ff">
-        </div>
-
-        <div class="control-card">
-          <label for="glowIntensity">
-            Glow intensity: <span id="glowLabel">35%</span>
-          </label>
-          <input type="range" id="glowIntensity" min="0" max="100" value="35">
-        </div>
-
-        <div class="control-card">
-          <label for="brightness">
-            Brightness: <span id="brightnessLabel">100%</span>
-          </label>
-          <input type="range" id="brightness" min="50" max="120" value="100">
-        </div>
-
-      </div>
-
-      <label class="check-row">
-        <input type="checkbox" id="glowEnabled" checked>
-        ✨ Enable glow effects
-      </label>
-
-      <div class="note">
-        Theme settings are saved in this browser's local storage. They do not
-        change the theme for other visitors.
-      </div>
-
-      <div class="panel-buttons">
-        <button class="panel-btn primary" id="saveTheme" type="button">
-          💾 Save Theme
-        </button>
-
-        <button class="panel-btn" id="resetTheme" type="button">
-          ♻️ Reset Theme
-        </button>
-
-        <button class="panel-btn" id="adminLogout" type="button">
-          Log Out
-        </button>
-      </div>
-
-      <div class="status" id="themeStatus" role="status"></div>
-
+    <div class="admin-status" id="adminStatus" aria-live="polite"></div>
+    <div class="admin-note">
+      Theme settings are saved only in this browser. This standalone HTML demo stores its password in browser code; it is not secure against visitors who inspect the source. For real multi-device password revocation, use a server-side authentication API.
     </div>
-
   </div>
 </div>
 
 <script>
-/* ========================================
-   WEBSITE ON / OFF
-======================================== */
+/* ==========================================
+   BASIC SETTINGS
+========================================== */
+
+// Change this password in GitHub when needed.
+// Important: this is visible to anyone who views the source code.
+let ADMIN_PASSWORD = "SlEx729Ab";
 
 const SITE_OFF = false;
-
-if (SITE_OFF) {
-  document.body.classList.add("site-off");
-}
-
-/* ========================================
-   APP UPDATE SETTINGS
-   true = show updating screen
-   false = use the original MediaFire link
-======================================== */
 
 const APP_UPDATES = {
   "CapCut": false,
@@ -1248,12 +744,224 @@ const APP_UPDATES = {
   "Remini": false,
   "Glip Screen Recorder": false,
   "PLAYit": false,
-  "MovieBox": false,
+  "MovieBox": false
 };
 
-/* ========================================
-   APP DOWNLOAD HANDLER
-======================================== */
+const DEFAULT_THEME = {
+  primary: "#8b00ff",
+  glow: "#b000ff",
+  background: "#08080d",
+  button: "#8b00ff",
+  brightness: 100,
+  glowStrength: 25
+};
+
+const THEME_KEY = "slexCustomTheme";
+const AUTH_KEY = "slexAdminUnlocked";
+const PASS_KEY = "slexAdminPassword";
+let adminUnlocked = false;
+
+/* ==========================================
+   SITE ON/OFF
+========================================== */
+
+if (SITE_OFF) {
+  document.body.classList.add("site-off");
+}
+
+/* ==========================================
+   PASSWORD VISIBILITY
+========================================== */
+
+function togglePassword(id, button) {
+  const input = document.getElementById(id);
+  if (!input) return;
+
+  if (input.type === "password") {
+    input.type = "text";
+    button.textContent = "🙈";
+  } else {
+    input.type = "password";
+    button.textContent = "👁️";
+  }
+}
+
+/* ==========================================
+   ADMIN MODAL
+========================================== */
+
+function openAdmin() {
+  if (sessionStorage.getItem(AUTH_KEY) === "yes") {
+    adminUnlocked = true;
+    openAdminPanel();
+    return;
+  }
+
+  document.getElementById("adminPasswordInput").value = "";
+  document.getElementById("loginStatus").textContent = "";
+  document.getElementById("adminLoginModal").style.display = "flex";
+}
+
+function closeAdmin() {
+  document.getElementById("adminLoginModal").style.display = "none";
+  document.getElementById("adminPanelModal").style.display = "none";
+}
+
+function openAdminPanel() {
+  document.getElementById("adminLoginModal").style.display = "none";
+  document.getElementById("adminPanelModal").style.display = "flex";
+  fillThemeInputs();
+}
+
+function loginAdmin() {
+  const entered = document.getElementById("adminPasswordInput").value;
+  const savedPassword = localStorage.getItem(PASS_KEY);
+  const correctPassword = savedPassword || ADMIN_PASSWORD;
+
+  if (entered === correctPassword) {
+    adminUnlocked = true;
+    sessionStorage.setItem(AUTH_KEY, "yes");
+    document.getElementById("loginStatus").textContent = "";
+    openAdminPanel();
+  } else {
+    document.getElementById("loginStatus").textContent =
+      "Incorrect password. Please try again.";
+  }
+}
+
+document.getElementById("adminPasswordInput").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") loginAdmin();
+});
+
+/* ==========================================
+   THEME SETTINGS
+========================================== */
+
+function readTheme() {
+  try {
+    const stored = localStorage.getItem(THEME_KEY);
+    return stored ? { ...DEFAULT_THEME, ...JSON.parse(stored) } : { ...DEFAULT_THEME };
+  } catch {
+    return { ...DEFAULT_THEME };
+  }
+}
+
+function applyTheme(theme) {
+  const root = document.documentElement;
+
+  root.style.setProperty("--primary", theme.primary);
+  root.style.setProperty("--glow", theme.glow);
+  root.style.setProperty("--background", theme.background);
+  root.style.setProperty("--button-color", theme.button);
+  root.style.setProperty("--brightness", Number(theme.brightness) + "%");
+  root.style.setProperty("--glow-strength", Number(theme.glowStrength) + "px");
+}
+
+function fillThemeInputs() {
+  const theme = readTheme();
+  document.getElementById("themePrimary").value = theme.primary;
+  document.getElementById("themeGlow").value = theme.glow;
+  document.getElementById("themeBackground").value = theme.background;
+  document.getElementById("themeButton").value = theme.button;
+  document.getElementById("themeBrightness").value = theme.brightness;
+  document.getElementById("themeGlowStrength").value = theme.glowStrength;
+}
+
+function getThemeFromInputs() {
+  return {
+    primary: document.getElementById("themePrimary").value,
+    glow: document.getElementById("themeGlow").value,
+    background: document.getElementById("themeBackground").value,
+    button: document.getElementById("themeButton").value,
+    brightness: Number(document.getElementById("themeBrightness").value),
+    glowStrength: Number(document.getElementById("themeGlowStrength").value)
+  };
+}
+
+function saveTheme() {
+  if (!adminUnlocked) return forceAdminLogout();
+
+  const theme = getThemeFromInputs();
+  localStorage.setItem(THEME_KEY, JSON.stringify(theme));
+  applyTheme(theme);
+
+  document.getElementById("adminStatus").textContent =
+    "Theme saved for this browser.";
+}
+
+function resetTheme() {
+  localStorage.removeItem(THEME_KEY);
+  applyTheme(DEFAULT_THEME);
+  fillThemeInputs();
+
+  document.getElementById("adminStatus").textContent =
+    "Default theme restored.";
+}
+
+applyTheme(readTheme());
+
+[
+  "themePrimary",
+  "themeGlow",
+  "themeBackground",
+  "themeButton",
+  "themeBrightness",
+  "themeGlowStrength"
+].forEach(function(id) {
+  document.getElementById(id).addEventListener("input", function() {
+    if (adminUnlocked) applyTheme(getThemeFromInputs());
+  });
+});
+
+/* ==========================================
+   PASSWORD CHANGE
+========================================== */
+
+function changePassword() {
+  if (!adminUnlocked) return forceAdminLogout();
+
+  const newPassword = document.getElementById("newAdminPassword").value;
+
+  if (!/^[A-Za-z0-9]{6,12}$/.test(newPassword)) {
+    document.getElementById("adminStatus").textContent =
+      "Password must contain 6–12 letters/numbers without spaces.";
+    return;
+  }
+
+  // Save new password locally in this browser.
+  // This does NOT change the password on other devices.
+  localStorage.setItem(PASS_KEY, newPassword);
+
+  // Immediately remove access and reset theme.
+  forceAdminLogout("Password changed in this browser.");
+}
+
+function forceAdminLogout(message) {
+  adminUnlocked = false;
+  sessionStorage.removeItem(AUTH_KEY);
+
+  // Reset all custom theme settings immediately.
+  localStorage.removeItem(THEME_KEY);
+  applyTheme(DEFAULT_THEME);
+  fillThemeInputs();
+
+  // Close both admin screens immediately.
+  document.getElementById("adminLoginModal").style.display = "none";
+  document.getElementById("adminPanelModal").style.display = "none";
+
+  document.getElementById("newAdminPassword").value = "";
+  document.getElementById("adminPasswordInput").value = "";
+
+  if (message) alert(message);
+}
+
+function adminLogout() {
+  forceAdminLogout("Admin access locked.");
+}
+
+/* ==========================================
+   APP DOWNLOAD / UPDATE
+========================================== */
 
 function handleDownload(event, appName, icon) {
   if (APP_UPDATES[appName] === true) {
@@ -1261,319 +969,57 @@ function handleDownload(event, appName, icon) {
     showUpdating(appName, icon);
     return false;
   }
+  return true;
 }
-
-/* ========================================
-   SHOW UPDATE SCREEN
-======================================== */
 
 function showUpdating(appName, icon) {
-  const screen = document.getElementById("appUpdating");
-  const image = document.getElementById("updateAppIcon");
-  const name = document.getElementById("updateAppName");
+  document.getElementById("updateAppIcon").src = icon;
+  document.getElementById("updateAppIcon").alt = appName;
+  document.getElementById("updateAppName").textContent =
+    appName + " is currently being updated.";
 
-  image.src = icon;
-  image.alt = appName;
-
-  name.textContent = appName + " is currently being updated.";
-
-  screen.style.display = "flex";
-  screen.scrollTop = 0;
-
+  document.getElementById("appUpdating").style.display = "flex";
   document.body.style.overflow = "hidden";
-  document.documentElement.style.overflow = "hidden";
 }
-
-/* ========================================
-   CLOSE UPDATE SCREEN
-======================================== */
 
 function closeUpdating() {
   document.getElementById("appUpdating").style.display = "none";
-
   document.body.style.overflow = "";
-  document.documentElement.style.overflow = "";
 }
 
-/* ========================================
+/* ==========================================
    SEARCH
-======================================== */
+========================================== */
 
-document.getElementById("appSearch").addEventListener("input", function() {
-  const query = this.value.toLowerCase().trim();
+document.getElementById("searchInput").addEventListener("input", function() {
+  const searchText = this.value.toLowerCase().trim();
 
   document.querySelectorAll(".app").forEach(function(app) {
-    const name = app.querySelector("h3").textContent.toLowerCase();
-    app.style.display = name.includes(query) ? "" : "none";
+    const appName = app.querySelector("h3").textContent.toLowerCase();
+    const description = app.querySelector("p").textContent.toLowerCase();
+
+    app.style.display =
+      appName.includes(searchText) || description.includes(searchText)
+        ? ""
+        : "none";
   });
 });
 
-/* ========================================
-   ADMIN LOGIN AND THEME SETTINGS
+/* ==========================================
+   CROSS-TAB LOCK CHECK
+========================================== */
 
-   IMPORTANT:
-   This is a client-side password gate, not secure authentication.
-======================================== */
-
-const LOGIN_KEY = "slex_admin_remembered_v1";
-const THEME_KEY = "slex_local_theme_v1";
-
-const DEFAULT_THEME = {
-  primary: "#8b00ff",
-  background: "#08080d",
-  glow: "#b000ff",
-  button: "#8b00ff",
-  glowIntensity: 35,
-  brightness: 100,
-  glowEnabled: true
-};
-
-const $ = id => document.getElementById(id);
-
-function setStatus(id, message, type) {
-  const element = $(id);
-  element.textContent = message;
-  element.className = "status" + (type ? " " + type : "");
-}
-
-function showAdminControls(unlocked) {
-  $("loginArea").hidden = unlocked;
-  $("adminControls").hidden = !unlocked;
-}
-
-function isRemembered() {
-  try {
-    return localStorage.getItem(LOGIN_KEY) === "yes" ||
-           sessionStorage.getItem(LOGIN_KEY) === "yes";
-  } catch (error) {
-    return false;
-  }
-}
-
-/* OPEN ADMIN */
-
-$("adminOpen").addEventListener("click", function() {
-  $("adminModal").classList.add("open");
-
-  if (isRemembered()) {
-    showAdminControls(true);
-    loadTheme();
-  } else {
-    showAdminControls(false);
-    $("adminPassword").value = "";
-    setStatus("loginStatus", "", "");
+window.addEventListener("storage", function(event) {
+  if (event.key === PASS_KEY || event.key === THEME_KEY) {
+    // A password/theme update in another tab resets this tab's local admin UI.
+    forceAdminLogout("Admin settings changed in another tab. Please log in again.");
   }
 });
-
-/* CLOSE ADMIN */
-
-function closeAdminModal() {
-  $("adminModal").classList.remove("open");
-}
-
-$("closeAdmin").addEventListener("click", closeAdminModal);
-
-$("adminModal").addEventListener("click", function(event) {
-  if (event.target === $("adminModal")) {
-    closeAdminModal();
-  }
-});
-
-/* SHOW/HIDE PASSWORD */
-
-$("passwordEye").addEventListener("click", function() {
-  const input = $("adminPassword");
-  const show = input.type === "password";
-
-  input.type = show ? "text" : "password";
-  this.textContent = show ? "🙈" : "👁️";
-  this.setAttribute("aria-label", show ? "Hide password" : "Show password");
-  this.setAttribute("aria-pressed", String(show));
-});
-
-/* LOGIN */
-
-$("unlockAdmin").addEventListener("click", function() {
-  const entered = $("adminPassword").value;
-
-  if (entered !== ADMIN_PASSWORD) {
-    setStatus("loginStatus", "Incorrect password. Please try again.", "error");
-    return;
-  }
-
-  try {
-    if ($("rememberLogin").checked) {
-      localStorage.setItem(LOGIN_KEY, "yes");
-      sessionStorage.removeItem(LOGIN_KEY);
-    } else {
-      sessionStorage.setItem(LOGIN_KEY, "yes");
-      localStorage.removeItem(LOGIN_KEY);
-    }
-  } catch (error) {
-    setStatus(
-      "loginStatus",
-      "Browser storage is unavailable. Please allow site storage.",
-      "error"
-    );
-    return;
-  }
-
-  showAdminControls(true);
-  loadTheme();
-  setStatus("themeStatus", "Admin unlocked on this device.", "success");
-});
-
-$("adminPassword").addEventListener("keydown", function(event) {
-  if (event.key === "Enter") {
-    $("unlockAdmin").click();
-  }
-});
-
-/* LOG OUT */
-
-$("adminLogout").addEventListener("click", function() {
-  try {
-    localStorage.removeItem(LOGIN_KEY);
-    sessionStorage.removeItem(LOGIN_KEY);
-  } catch (error) {}
-
-  showAdminControls(false);
-  $("adminPassword").value = "";
-  setStatus("loginStatus", "Logged out.", "success");
-});
-
-/* ========================================
-   THEME CONTROL FUNCTIONS
-======================================== */
-
-function readThemeControls() {
-  return {
-    primary: $("themePrimary").value,
-    background: $("themeBackground").value,
-    glow: $("themeGlow").value,
-    button: $("themeButton").value,
-    glowIntensity: Number($("glowIntensity").value),
-    brightness: Number($("brightness").value),
-    glowEnabled: $("glowEnabled").checked
-  };
-}
-
-function isValidTheme(theme) {
-  const validHex = value =>
-    typeof value === "string" && /^#[0-9a-fA-F]{6}$/.test(value);
-
-  return theme &&
-    validHex(theme.primary) &&
-    validHex(theme.background) &&
-    validHex(theme.glow) &&
-    validHex(theme.button) &&
-    Number.isFinite(Number(theme.glowIntensity)) &&
-    Number.isFinite(Number(theme.brightness));
-}
-
-function applyTheme(theme) {
-  $("themePrimary").value = theme.primary;
-  $("themeBackground").value = theme.background;
-  $("themeGlow").value = theme.glow;
-  $("themeButton").value = theme.button;
-  $("glowIntensity").value = theme.glowIntensity;
-  $("brightness").value = theme.brightness;
-  $("glowEnabled").checked = Boolean(theme.glowEnabled);
-
-  const root = document.documentElement;
-
-  root.style.setProperty("--primary", theme.primary);
-  root.style.setProperty("--background", theme.background);
-  root.style.setProperty("--glow", theme.glow);
-  root.style.setProperty("--button", theme.button);
-  root.style.setProperty("--glow-strength", theme.glowIntensity);
-  root.style.setProperty("--brightness", theme.brightness + "%");
-
-  document.body.classList.toggle("glow-enabled", Boolean(theme.glowEnabled));
-
-  $("glowLabel").textContent = theme.glowIntensity + "%";
-  $("brightnessLabel").textContent = theme.brightness + "%";
-}
-
-function loadTheme() {
-  let theme = DEFAULT_THEME;
-
-  try {
-    const saved = localStorage.getItem(THEME_KEY);
-
-    if (saved) {
-      const parsed = JSON.parse(saved);
-
-      if (isValidTheme(parsed)) {
-        theme = {
-          ...DEFAULT_THEME,
-          ...parsed
-        };
-      }
-    }
-  } catch (error) {
-    theme = DEFAULT_THEME;
-  }
-
-  applyTheme(theme);
-}
-
-/* LIVE PREVIEW */
-
-[
-  "themePrimary",
-  "themeBackground",
-  "themeGlow",
-  "themeButton",
-  "glowIntensity",
-  "brightness",
-  "glowEnabled"
-].forEach(function(id) {
-  $(id).addEventListener("input", function() {
-    applyTheme(readThemeControls());
-  });
-});
-
-/* SAVE THEME */
-
-$("saveTheme").addEventListener("click", function() {
-  try {
-    localStorage.setItem(THEME_KEY, JSON.stringify(readThemeControls()));
-    setStatus("themeStatus", "Theme saved on this device.", "success");
-  } catch (error) {
-    setStatus("themeStatus", "Could not save the theme.", "error");
-  }
-});
-
-/* RESET THEME */
-
-$("resetTheme").addEventListener("click", function() {
-  try {
-    localStorage.removeItem(THEME_KEY);
-  } catch (error) {}
-
-  applyTheme(DEFAULT_THEME);
-  setStatus("themeStatus", "Default theme restored.", "success");
-});
-
-/* LOAD SAVED THEME ON PAGE START */
-
-loadTheme();
-
-/* RESTORE REMEMBERED LOGIN */
-
-if (isRemembered()) {
-  showAdminControls(true);
-}
-
-/* ========================================
-   ESC KEY
-======================================== */
 
 document.addEventListener("keydown", function(event) {
   if (event.key === "Escape") {
     closeUpdating();
-    closeAdminModal();
+    closeAdmin();
   }
 });
 </script>
