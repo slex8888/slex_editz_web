@@ -1,108 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08080d">
 
 <title>SLEX.EDITZ</title>
 
-<!-- =================================
-     WEBSITE FAVICON
-================================= -->
+<link rel="icon" type="image/jpeg" href="/insta-logo.jpg">
 
-<link
-  rel="icon"
-  type="image/jpeg"
-  href="/insta-logo.jpg"
->
-
-
-<!-- =================================
-     SOCIAL MEDIA LINK PREVIEW
-================================= -->
-
-<meta
-  property="og:title"
-  content="SLEX.EDITZ"
->
-
-<meta
-  property="og:description"
-  content="Editing Tools & Apps"
->
-
-<meta
-  property="og:image"
-  content="https://slex-editz-web.vercel.app/insta-logo.jpg"
->
-
-<meta
-  property="og:image:type"
-  content="image/jpeg"
->
-
-<meta
-  property="og:image:width"
-  content="1200"
->
-
-<meta
-  property="og:image:height"
-  content="630"
->
-
-<meta
-  property="og:url"
-  content="https://slex-editz-web.vercel.app/"
->
-
-<meta
-  property="og:type"
-  content="website"
->
-
-<meta
-  property="og:site_name"
-  content="SLEX.EDITZ"
->
-
-
-<!-- =================================
-     TWITTER / OTHER PREVIEW
-================================= -->
-
-<meta
-  name="twitter:card"
-  content="summary_large_image"
->
-
-<meta
-  name="twitter:title"
-  content="SLEX.EDITZ"
->
-
-<meta
-  name="twitter:description"
-  content="Editing Tools & Apps"
->
-
-<meta
-  name="twitter:image"
-  content="https://slex-editz-web.vercel.app/insta-logo.jpg"
->
-
+<meta property="og:title" content="SLEX.EDITZ">
+<meta property="og:description" content="Editing Tools & Apps">
+<meta property="og:image" content="https://slex-editz-web.vercel.app/insta-logo.jpg">
+<meta property="og:url" content="https://slex-editz-web.vercel.app/">
+<meta property="og:type" content="website">
 
 <style>
-
-/* =================================
-   BASIC
-================================= */
+:root{
+  --primary:#8b00ff;
+  --bg:#08080d;
+  --glow:#b000ff;
+  --button:#8b00ff;
+  --card:#12121b;
+  --text:#ffffff;
+  --brightness:1;
+  --glow-intensity:.35;
+}
 
 *{
   box-sizing:border-box;
@@ -111,131 +34,22 @@
   font-family:Arial,sans-serif;
 }
 
-html,
-body{
+html,body{
   width:100%;
   min-height:100%;
+  scroll-behavior:smooth;
 }
 
 body{
-  background:#08080d;
-  color:white;
+  background:var(--bg);
+  color:var(--text);
+  filter:brightness(var(--brightness));
 }
-
-
-/* =================================
-   WEBSITE ON / OFF
-================================= */
-
-#maintenance{
-  display:none;
-}
-
-body.site-off > *:not(#maintenance){
-  display:none !important;
-}
-
-body.site-off #maintenance{
-  display:flex;
-  min-height:100vh;
-  align-items:center;
-  justify-content:center;
-  padding:25px;
-  background:#08080d;
-  color:white;
-}
-
-.maintenance-box{
-  width:100%;
-  max-width:650px;
-  padding:40px 25px;
-  text-align:center;
-  background:rgba(18,18,27,.95);
-  border:1px solid #8b00ff;
-  border-radius:24px;
-  box-shadow:0 0 40px rgba(139,0,255,.25);
-}
-
-.maintenance-logo{
-  font-size:28px;
-  font-weight:800;
-  letter-spacing:2px;
-  margin-bottom:35px;
-}
-
-.maintenance-logo span,
-.maintenance-box h1 span{
-  color:#b000ff;
-}
-
-.off-icon{
-  width:85px;
-  height:85px;
-  margin:0 auto 25px;
-  border:2px solid #8b00ff;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 0 25px rgba(139,0,255,.5);
-  overflow:hidden;
-}
-
-.off-icon img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  border-radius:50%;
-}
-
-.maintenance-box h1{
-  font-size:32px;
-  margin-bottom:15px;
-}
-
-.maintenance-box p{
-  color:#aaa;
-  font-size:15px;
-  line-height:1.7;
-  margin-bottom:30px;
-}
-
-.instagram-box{
-  border:1px solid #292936;
-  background:#101018;
-  border-radius:16px;
-  padding:18px;
-}
-
-.instagram-title{
-  color:#999;
-  font-size:13px;
-  margin-bottom:8px;
-}
-
-.instagram-box a{
-  color:#b000ff;
-  font-size:17px;
-  font-weight:bold;
-  text-decoration:none;
-}
-
-.maintenance-footer{
-  margin-top:30px;
-  color:#666;
-  font-size:12px;
-  letter-spacing:1px;
-}
-
-
-/* =================================
-   HEADER
-================================= */
 
 header{
   padding:22px 18px;
   text-align:center;
-  background:#101018;
+  background:var(--card);
   border-bottom:1px solid #272733;
 }
 
@@ -246,11 +60,11 @@ header{
 }
 
 .logo span{
-  color:#b000ff;
+  color:var(--primary);
 }
 
 .search{
-  margin:20px auto;
+  margin:20px auto 0;
   max-width:600px;
   padding:0 15px;
 }
@@ -266,11 +80,6 @@ header{
   font-size:15px;
 }
 
-
-/* =================================
-   HERO
-================================= */
-
 .hero{
   text-align:center;
   padding:35px 20px;
@@ -284,12 +93,8 @@ header{
 .hero p{
   color:#aaa;
   font-size:15px;
+  line-height:1.6;
 }
-
-
-/* =================================
-   APPS
-================================= */
 
 .section{
   padding:20px;
@@ -303,35 +108,37 @@ header{
 
 .apps{
   display:grid;
-  grid-template-columns:repeat(
-    auto-fit,
-    minmax(150px,1fr)
-  );
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
   gap:15px;
 }
 
 .app{
-  background:#12121b;
+  background:var(--card);
   border:1px solid #292936;
   border-radius:16px;
   padding:18px;
   text-align:center;
+  transition:.2s;
+}
+
+.app:hover{
+  transform:translateY(-3px);
+  border-color:var(--primary);
+}
+
+.glow-on .app:hover{
+  box-shadow:0 0 calc(40px * var(--glow-intensity)) var(--glow);
 }
 
 .icon{
   width:70px;
   height:70px;
-  margin:auto auto 12px;
+  margin:0 auto 12px;
   border-radius:16px;
-  background:linear-gradient(
-    135deg,
-    #7b00ff,
-    #e000ff
-  );
+  background:linear-gradient(135deg,var(--primary),var(--glow));
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:28px;
   overflow:hidden;
 }
 
@@ -356,17 +163,18 @@ header{
 .btn{
   display:inline-block;
   padding:9px 15px;
-  background:#8b00ff;
+  background:var(--button);
   color:white;
   text-decoration:none;
   border-radius:9px;
   font-size:13px;
+  border:0;
+  cursor:pointer;
 }
 
-
-/* =================================
-   FOOTER
-================================= */
+.btn:hover{
+  filter:brightness(1.12);
+}
 
 footer{
   text-align:center;
@@ -376,1139 +184,869 @@ footer{
   border-top:1px solid #22222c;
 }
 
-
-/* =================================
-   APP UPDATE SCREEN
-================================= */
+/* UPDATE SCREEN */
 
 #appUpdating{
   display:none;
-
   position:fixed;
   inset:0;
-
   z-index:99999;
-
-  width:100%;
-  height:100%;
-
-  background:rgba(3,3,10,.94);
-
+  background:rgba(3,3,10,.96);
   align-items:center;
   justify-content:center;
-
   padding:16px;
-
   overflow-y:auto;
-  overflow-x:hidden;
-
-  -webkit-overflow-scrolling:touch;
-
-  overscroll-behavior:contain;
 }
-
-
-/* =================================
-   UPDATE BOX
-================================= */
 
 .update-box{
   width:100%;
   max-width:390px;
-
   background:#101018;
-
-  border:2px solid #8b00ff;
-
+  border:2px solid var(--primary);
   border-radius:18px;
-
   padding:24px 16px 16px;
-
   text-align:center;
-
-  box-shadow:
-    0 0 20px #7200ff,
-    0 0 45px rgba(120,0,255,.35);
-
-  flex-shrink:0;
+  box-shadow:0 0 25px var(--glow);
 }
-
-
-/* =================================
-   UPDATE LOGO
-================================= */
 
 .update-logo{
   font-size:22px;
   font-weight:800;
-  letter-spacing:1.5px;
   margin-bottom:18px;
 }
 
 .update-logo span{
-  color:#8b00ff;
+  color:var(--primary);
 }
-
-
-/* =================================
-   APP ICON
-================================= */
 
 .update-app-icon{
   width:82px;
   height:82px;
-
   margin:0 auto 18px;
-
   border-radius:50%;
-
-  border:3px solid #8b00ff;
-
+  border:3px solid var(--primary);
   padding:8px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  box-shadow:0 0 20px #7200ff;
-
   overflow:hidden;
 }
 
 .update-app-icon img{
   width:100%;
   height:100%;
-
   object-fit:contain;
-
-  border-radius:50%;
 }
 
-
-/* =================================
-   UPDATE TITLE
-================================= */
-
 .update-box h1{
-  margin:4px 0;
-
   font-size:23px;
-
-  line-height:1.25;
-
-  color:white;
+  margin:10px 0;
 }
 
 .update-box h1 span{
-  color:#8b00ff;
+  color:var(--primary);
 }
-
-
-/* =================================
-   APP NAME
-================================= */
-
-.update-app-name{
-  margin:12px 0 18px;
-
-  color:#aaaaca;
-
-  font-size:13px;
-
-  line-height:1.5;
-}
-
-
-/* =================================
-   MESSAGE
-================================= */
 
 .update-message{
-  padding:13px 10px;
-
-  margin-bottom:12px;
-
+  padding:14px;
+  margin:15px 0;
   background:#090910;
-
   border:1px solid #421078;
-
   border-radius:12px;
-
-  color:#b9b9d0;
-
-  font-size:12px;
-
-  line-height:1.55;
+  color:#bbb;
+  font-size:13px;
+  line-height:1.6;
 }
-
-
-/* =================================
-   CONTACT
-================================= */
-
-.update-contact{
-  padding:12px 10px;
-
-  margin-bottom:10px;
-
-  background:#090910;
-
-  border:1px solid #6413a5;
-
-  border-radius:12px;
-}
-
-.update-contact-title{
-  font-size:11px;
-  color:#9999b5;
-  margin-bottom:8px;
-}
-
-.update-contact a{
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  gap:8px;
-
-  color:white;
-  text-decoration:none;
-
-  font-size:14px;
-  font-weight:bold;
-}
-
-.update-contact img{
-  width:27px;
-  height:27px;
-
-  border-radius:50%;
-
-  object-fit:cover;
-}
-
-
-/* =================================
-   BACK HOME
-================================= */
 
 .update-home{
-  display:flex;
-
-  width:100%;
-  height:43px;
-
-  align-items:center;
-  justify-content:center;
-
-  border:1.5px solid #8b00ff;
-
-  border-radius:11px;
-
+  display:block;
+  padding:13px;
+  border:1px solid var(--primary);
+  border-radius:10px;
   color:white;
-
   text-decoration:none;
+}
 
-  font-size:13px;
+/* ADMIN BUTTON */
+
+.admin-entry{
+  position:fixed;
+  right:12px;
+  bottom:12px;
+  z-index:100000;
+}
+
+.admin-entry button,
+.panel-btn{
+  border:1px solid var(--primary);
+  background:#11111b;
+  color:white;
+  border-radius:10px;
+  padding:11px 14px;
   font-weight:bold;
-
   cursor:pointer;
 }
 
-
-/* =================================
-   LANDSCAPE FIX
-================================= */
-
-@media screen and (orientation:landscape){
-
-  #appUpdating{
-    align-items:flex-start;
-    justify-content:center;
-
-    padding-top:16px;
-    padding-bottom:16px;
-
-    overflow-y:auto;
-    overflow-x:hidden;
-  }
-
-  .update-box{
-    margin:0 auto;
-    max-width:390px;
-  }
-
+.admin-entry button{
+  box-shadow:0 0 16px var(--glow);
 }
 
+/* ADMIN MODAL */
 
-/* =================================
-   VERY SHORT LANDSCAPE
-================================= */
-
-@media screen and (orientation:landscape)
-       and (max-height:500px){
-
-  #appUpdating{
-    align-items:flex-start;
-
-    padding-top:10px;
-    padding-bottom:10px;
-  }
-
-  .update-box{
-    padding:18px 14px 14px;
-  }
-
-  .update-logo{
-    margin-bottom:10px;
-  }
-
-  .update-app-icon{
-    width:65px;
-    height:65px;
-
-    margin-bottom:10px;
-  }
-
-  .update-box h1{
-    font-size:20px;
-  }
-
-  .update-app-name{
-    margin:8px 0 12px;
-  }
-
+.modal-backdrop{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:100001;
+  background:rgba(0,0,0,.85);
+  padding:16px;
+  overflow:auto;
+  align-items:center;
+  justify-content:center;
 }
 
-
-/* =================================
-   MOBILE
-================================= */
-
-@media screen and (max-width:480px){
-
-  .update-box{
-    max-width:390px;
-  }
-
+.modal-backdrop.open{
+  display:flex;
 }
 
-
-/* =================================
-   SAFE AREA
-================================= */
-
-@supports(padding:max(0px)){
-
-  #appUpdating{
-    padding-left:max(
-      16px,
-      env(safe-area-inset-left)
-    );
-
-    padding-right:max(
-      16px,
-      env(safe-area-inset-right)
-    );
-
-    padding-top:max(
-      16px,
-      env(safe-area-inset-top)
-    );
-
-    padding-bottom:max(
-      16px,
-      env(safe-area-inset-bottom)
-    );
-  }
-
+.modal{
+  width:100%;
+  max-width:620px;
+  background:#101018;
+  border:1px solid var(--primary);
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 0 30px var(--glow);
+  max-height:calc(100dvh - 32px);
+  overflow:auto;
 }
 
+.modal h2{
+  font-size:22px;
+  margin-bottom:8px;
+}
+
+.muted{
+  color:#aaa;
+  font-size:13px;
+  line-height:1.5;
+  margin-bottom:16px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  margin:12px 0;
+}
+
+.field label{
+  font-size:13px;
+  color:#ddd;
+}
+
+.field input[type=password],
+.field input[type=text]{
+  width:100%;
+  padding:12px;
+  background:#08080d;
+  color:white;
+  border:1px solid #393947;
+  border-radius:9px;
+}
+
+.field input[type=color]{
+  width:100%;
+  height:42px;
+  background:#08080d;
+  border:1px solid #393947;
+  border-radius:9px;
+  padding:4px;
+}
+
+.field input[type=range]{
+  width:100%;
+  accent-color:var(--primary);
+}
+
+.field input[type=checkbox]{
+  accent-color:var(--primary);
+  width:18px;
+  height:18px;
+}
+
+.control-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+
+.control-card{
+  background:#0a0a12;
+  border:1px solid #282837;
+  border-radius:12px;
+  padding:10px;
+}
+
+.control-card .field{
+  margin:4px 0;
+}
+
+.button-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:16px;
+}
+
+.panel-btn.primary{
+  background:var(--primary);
+}
+
+.status{
+  font-size:13px;
+  line-height:1.5;
+  margin-top:12px;
+  min-height:20px;
+  overflow-wrap:anywhere;
+}
+
+.status.error{
+  color:#ff8c8c;
+}
+
+.status.ok{
+  color:#9bffb0;
+}
+
+.preview-note{
+  border:1px dashed #494958;
+  border-radius:10px;
+  padding:10px;
+  color:#aaa;
+  font-size:12px;
+  line-height:1.5;
+  margin-top:12px;
+}
+
+[hidden]{
+  display:none!important;
+}
+
+#maintenance{
+  display:none;
+}
+
+body.site-off> *:not(#maintenance){
+  display:none!important;
+}
+
+body.site-off #maintenance{
+  display:flex;
+  min-height:100vh;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+}
+
+.maintenance-box{
+  width:100%;
+  max-width:600px;
+  padding:35px 20px;
+  text-align:center;
+  background:var(--card);
+  border:1px solid var(--primary);
+  border-radius:20px;
+}
+
+@media(max-width:480px){
+  .hero h1{font-size:27px}
+  .control-grid{grid-template-columns:1fr}
+  .modal{padding:16px}
+}
+
+@media(orientation:landscape) and (max-height:500px){
+  .modal-backdrop{align-items:flex-start}
+}
 </style>
-
 </head>
 
-
-<body>
-
-
-<!-- =================================
-     HEADER
-================================= -->
+<body class="glow-on">
 
 <header>
-
-  <div class="logo">
-    SLEX<span>.EDITZ</span>
-  </div>
-
+  <div class="logo">SLEX<span>.EDITZ</span></div>
   <div class="search">
-
-    <input
-      type="text"
-      placeholder="Search apps & editing tools..."
-    >
-
+    <input type="text" placeholder="Search apps & editing tools..." aria-label="Search apps">
   </div>
-
 </header>
 
-
-<!-- =================================
-     HERO
-================================= -->
-
 <section class="hero">
-
-  <h1>
-    Editing Tools & Apps
-  </h1>
-
-  <p>
-    Discover useful apps, tools and resources for editing.
-  </p>
-
+  <h1>Editing Tools &amp; Apps</h1>
+  <p>Discover useful apps, tools and resources for editing.</p>
 </section>
-
-
-<!-- =================================
-     APPS
-================================= -->
 
 <section class="section">
+  <h2>🔥 Featured Apps</h2>
 
-<h2>🔥 Featured Apps</h2>
+  <div class="apps">
 
-<div class="apps">
+    <div class="app">
+      <div class="icon"><img src="capcut.jpg" alt="CapCut"></div>
+      <h3>CapCut</h3>
+      <p>Video Editor</p>
+      <a class="btn" href="https://www.mediafire.com/file/9fykbt4d8azfwn0/CAPCUT_ULTRA_v23.0.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file" target="_blank" rel="noopener" onclick="handleDownload(event,'CapCut','capcut.jpg')">Download</a>
+    </div>
 
+    <div class="app">
+      <div class="icon"><img src="alight-motion.jpg" alt="Alight Motion"></div>
+      <h3>Alight Motion</h3>
+      <p>Motion Graphics</p>
+      <a class="btn" href="https://www.mediafire.com/file/2cqmokmxkul7wp0/ALIGHT+MOTION+v5.0.273+.apk/file" target="_blank" rel="noopener" onclick="handleDownload(event,'Alight Motion','alight-motion.jpg')">Download</a>
+    </div>
 
-<!-- CAPCUT -->
+    <div class="app">
+      <div class="icon"><img src="Wink.jpg" alt="Wink"></div>
+      <h3>Wink</h3>
+      <p>Photo &amp; Video Editor</p>
+      <a class="btn" href="https://www.google.com/search?q=Wink+video+editor+official" target="_blank" rel="noopener" onclick="handleDownload(event,'Wink','Wink.jpg')">Download</a>
+    </div>
 
-<div class="app">
+    <div class="app">
+      <div class="icon"><img src="EFIKO.jpg" alt="EFIKO"></div>
+      <h3>EFIKO</h3>
+      <p>Photo Effects</p>
+      <a class="btn" href="https://www.google.com/search?q=EFIKO+official+app" target="_blank" rel="noopener" onclick="handleDownload(event,'EFIKO','EFIKO.jpg')">Download</a>
+    </div>
 
-  <div class="icon">
+    <div class="app">
+      <div class="icon"><img src="PicsArt.jpg" alt="PicsArt"></div>
+      <h3>PicsArt</h3>
+      <p>Photo Editor</p>
+      <a class="btn" href="https://picsart.com/" target="_blank" rel="noopener" onclick="handleDownload(event,'PicsArt','PicsArt.jpg')">Download</a>
+    </div>
 
-    <img
-      src="capcut.jpg"
-      alt="CapCut"
-    >
+    <div class="app">
+      <div class="icon"><img src="BeutiyPlus.jpg" alt="BeautyPlus"></div>
+      <h3>BeautyPlus</h3>
+      <p>Photo Editor</p>
+      <a class="btn" href="https://www.google.com/search?q=BeautyPlus+official" target="_blank" rel="noopener" onclick="handleDownload(event,'BeautyPlus','BeutiyPlus.jpg')">Download</a>
+    </div>
 
-  </div>
+    <div class="app">
+      <div class="icon"><img src="Remini.jpg" alt="Remini"></div>
+      <h3>Remini</h3>
+      <p>Photo Enhancer</p>
+      <a class="btn" href="https://remini.ai/" target="_blank" rel="noopener" onclick="handleDownload(event,'Remini','Remini.jpg')">Download</a>
+    </div>
 
-  <h3>CapCut</h3>
+    <div class="app">
+      <div class="icon"><img src="Glip.jpg" alt="Glip"></div>
+      <h3>Glip Screen Recorder</h3>
+      <p>Screen Recording</p>
+      <a class="btn" href="https://www.google.com/search?q=Glip+screen+recorder+official" target="_blank" rel="noopener" onclick="handleDownload(event,'Glip Screen Recorder','Glip.jpg')">Download</a>
+    </div>
 
-  <p>Video Editor</p>
+    <div class="app">
+      <div class="icon"><img src="PLAYit.jpg" alt="PLAYit"></div>
+      <h3>PLAYit</h3>
+      <p>Media Player</p>
+      <a class="btn" href="https://www.google.com/search?q=PLAYit+official" target="_blank" rel="noopener" onclick="handleDownload(event,'PLAYit','PLAYit.jpg')">Download</a>
+    </div>
 
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/9fykbt4d8azfwn0/CAPCUT_ULTRA_v23.0.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(
-      event,
-      'CapCut',
-      'capcut.jpg'
-    )"
-  >
-    Download
-  </a>
-
-</div>
-
-
-<!-- ALIGHT MOTION -->
-
-<div class="app">
-
-  <div class="icon">
-
-    <img
-      src="alight-motion.jpg"
-      alt="Alight Motion"
-    >
-
-  </div>
-
-  <h3>Alight Motion</h3>
-
-  <p>Motion Graphics</p>
-
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/2cqmokmxkul7wp0/ALIGHT+MOTION+v5.0.273+.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(
-      event,
-      'Alight Motion',
-      'alight-motion.jpg'
-    )"
-  >
-    Download
-  </a>
-
-</div>
-
-
-<!-- WINK -->
-
-<div class="app">
-
-  <div class="icon">
-
-    <img
-      src="Wink.jpg"
-      alt="Wink"
-    >
+    <div class="app">
+      <div class="icon"><img src="MovieBox.jpg" alt="MovieBox"></div>
+      <h3>MovieBox</h3>
+      <p>Media App</p>
+      <a class="btn" href="https://www.google.com/search?q=MovieBox+official+app" target="_blank" rel="noopener" onclick="handleDownload(event,'MovieBox','MovieBox.jpg')">Download</a>
+    </div>
 
   </div>
-
-  <h3>Wink</h3>
-
-  <p>Photo & Video Editor</p>
-
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/o21m6a4jw6vaout/Wink+v3.16.5+.xapk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(
-      event,
-      'Wink',
-      'Wink.jpg'
-    )"
-  >
-    Download
-  </a>
-
-</div>
-
-
-<!-- EFIKO -->
-
-<div class="app">
-
-  <div class="icon">
-
-    <img
-      src="EFIKO.jpg"
-      alt="EFIKO"
-    >
-
-  </div>
-
-  <h3>EFIKO</h3>
-
-  <p>Photo & Video Editor</p>
-
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/nhfvyp1j8pk2xql/EFIKO_PRO_v1.6.2%25F0%259F%2594%25A5.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(
-      event,
-      'EFIKO',
-      'EFIKO.jpg'
-    )"
-  >
-    Download
-  </a>
-
-</div>
-
-
-<!-- PICSART -->
-
-<div class="app">
-
-  <div class="icon">
-
-    <img
-      src="PicsArt.jpg"
-      alt="PicsArt"
-    >
-
-  </div>
-
-  <h3>PicsArt</h3>
-
-  <p>Photo Editor</p>
-
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/5fjugndt0dbc8b5/PICSART_v30.7.11_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(
-      event,
-      'PicsArt',
-      'PicsArt.jpg'
-    )"
-  >
-    Download
-  </a>
-
-</div>
-
-
-<!-- BEAUTYPLUS -->
-
-<div class="app">
-
-  <div class="icon">
-
-    <img
-      src="BeutiyPlus.jpg"
-      alt="BeutiyPlus"
-    >
-
-  </div>
-
-  <h3>BeutiyPlus</h3>
-
-  <p>Beauty Editor</p>
-
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/8yt5e5w2b7pbzv0/BEUTIYPLUS_v7.44.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(
-      event,
-      'BeutiyPlus',
-      'BeutiyPlus.jpg'
-    )"
-  >
-    Download
-  </a>
-
-</div>
-
-
-<!-- REMINI -->
-
-<div class="app">
-
-  <div class="icon">
-
-    <img
-      src="Remini.jpg"
-      alt="Remini"
-    >
-
-  </div>
-
-  <h3>Remini</h3>
-
-  <p>Photo Enhancer</p>
-
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/026d7z4fo45bbza/REMINI_v3.7.1443.202524660_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(
-      event,
-      'Remini',
-      'Remini.jpg'
-    )"
-  >
-    Download
-  </a>
-
-</div>
-
-
-<!-- GLIP -->
-
-<div class="app">
-
-  <div class="icon">
-
-    <img
-      src="Glip.jpg"
-      alt="Glip Screen Recorder"
-    >
-
-  </div>
-
-  <h3>
-    Glip Screen Recorder
-  </h3>
-
-  <p>Screen Recorder</p>
-
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/1pkwfb3i3pvlcyr/GLIP_v3.0.89_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(
-      event,
-      'Glip Screen Recorder',
-      'Glip.jpg'
-    )"
-  >
-    Download
-  </a>
-
-</div>
-
-
-<!-- PLAYIT -->
-
-<div class="app">
-
-  <div class="icon">
-
-    <img
-      src="PLAYit.jpg"
-      alt="PLAYit"
-    >
-
-  </div>
-
-  <h3>PLAYit</h3>
-
-  <p>Video & Music Player</p>
-
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/lvzgozdm92jqgnf/PLAYIT+2.7.52.6+.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(
-      event,
-      'PLAYit',
-      'PLAYit.jpg'
-    )"
-  >
-    Download
-  </a>
-
-</div>
-
-
-<!-- MOVIEBOX -->
-
-<div class="app">
-
-  <div class="icon">
-
-    <img
-      src="MovieBox.jpg"
-      alt="MovieBox"
-    >
-
-  </div>
-
-  <h3>MovieBox</h3>
-
-  <p>Free Movie & Anime</p>
-
-  <a
-    class="btn"
-    href="https://www.mediafire.com/file/f244x7svpiezl1d/MovieBox_v4.0.02.0903.02_%25E2%2598%25A0%25EF%25B8%258F.apk/file"
-    target="_blank"
-    rel="noopener"
-    onclick="handleDownload(
-      event,
-      'MovieBox',
-      'MovieBox.jpg'
-    )"
-  >
-    Download
-  </a>
-
-</div>
-
-
-</div>
-
 </section>
 
-
-<!-- =================================
-     FOOTER
-================================= -->
-
 <footer>
-
   © 2026 SLEX.EDITZ — All Rights Reserved
-
+  <br><br>
+  <a href="https://instagram.com/slex_888" style="color:var(--primary);text-decoration:none">@slex_888</a>
 </footer>
 
-
-<!-- =================================
-     WEBSITE OFF PAGE
-================================= -->
-
-<div id="maintenance">
-
-  <div class="maintenance-box">
-
-    <div class="maintenance-logo">
-      SLEX<span>.EDITZ</span>
-    </div>
-
-    <div class="off-icon">
-
-      <img
-        src="insta-logo.jpg"
-        alt="Instagram"
-      >
-
-    </div>
-
-    <h1>
-      WEBSITE IS <span>OFF</span>
-    </h1>
-
-    <p>
-      Our website is temporarily unavailable.<br>
-      Please check back again later.
-    </p>
-
-    <div class="instagram-box">
-
-      <div class="instagram-title">
-        For updates & information
-      </div>
-
-      <a
-        href="https://instagram.com/slex_888"
-        target="_blank"
-        rel="noopener"
-      >
-        Instagram: @slex_888
-      </a>
-
-    </div>
-
-    <div class="maintenance-footer">
-      SLEX.EDITZ • EDIT • CREATE • INSPIRE
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- =================================
-     APP UPDATE SCREEN
-================================= -->
+<!-- UPDATE OVERLAY -->
 
 <div id="appUpdating">
-
   <div class="update-box">
-
-    <div class="update-logo">
-      SLEX<span>.EDITZ</span>
-    </div>
-
-    <div class="update-app-icon">
-
-      <img
-        id="updateAppIcon"
-        src=""
-        alt="App"
-      >
-
-    </div>
-
-    <h1>
-      WAIT SOME TIME
-    </h1>
-
-    <h1>
-      APP IS <span>UPDATING</span>
-    </h1>
-
-    <div
-      class="update-app-name"
-      id="updateAppName"
-    >
-      This app is currently being updated.
-    </div>
-
-    <div class="update-message">
-
-      The download is temporarily unavailable.<br>
-
-      Please wait a few minutes and try again later.
-
-    </div>
-
-    <div class="update-contact">
-
-      <div class="update-contact-title">
-        For updates & information
-      </div>
-
-      <a
-        href="https://instagram.com/slex_888"
-        target="_blank"
-        rel="noopener"
-      >
-
-        <img
-          src="insta-logo.jpg"
-          alt="Instagram"
-        >
-
-        <span>@slex_888</span>
-
-      </a>
-
-    </div>
-
-    <a
-      href="#"
-      class="update-home"
-      onclick="closeUpdating(); return false;"
-    >
-      🏠 &nbsp; Back to Home
-    </a>
-
+    <div class="update-logo">SLEX<span>.EDITZ</span></div>
+    <div class="update-app-icon"><img id="updateAppIcon" src="" alt=""></div>
+    <h1>APP IS <span>UPDATING</span></h1>
+    <p class="update-message" id="updateAppName">Please wait while this app is being updated.</p>
+    <a href="#" class="update-home" onclick="closeUpdating();return false;">Back to Home</a>
   </div>
-
 </div>
 
+<!-- MAINTENANCE SCREEN -->
+
+<div id="maintenance">
+  <div class="maintenance-box">
+    <div class="logo">SLEX<span style="color:var(--primary)">.EDITZ</span></div>
+    <br><br>
+    <h1>WEBSITE IS OFF</h1>
+    <p>We are working on updates. Please visit again later.</p>
+    <a href="https://instagram.com/slex_888" style="color:var(--primary)">Contact on Instagram</a>
+  </div>
+</div>
+
+<!-- ADMIN ACCESS BUTTON: VISIBLE TO ALL VISITORS -->
+
+<div class="admin-entry">
+  <button id="adminOpen" type="button">🔐 Admin Access</button>
+</div>
+
+<!-- ADMIN LOGIN AND SETTINGS -->
+
+<div class="modal-backdrop" id="adminModal">
+  <div class="modal">
+
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+      <h2>⚙️ SLEX.EDITZ Admin</h2>
+      <button class="panel-btn" id="closeModal" type="button">✕</button>
+    </div>
+
+    <div id="loginArea">
+      <p class="muted">Enter the current admin password to unlock your local theme controls.</p>
+      <div class="field">
+        <label for="adminPassword">Admin password</label>
+        <input type="password" id="adminPassword" autocomplete="current-password" maxlength="12">
+      </div>
+      <div class="button-row">
+        <button class="panel-btn primary" id="loginBtn" type="button">Unlock Admin</button>
+      </div>
+      <div class="status" id="loginStatus" role="status"></div>
+    </div>
+
+    <div id="panelArea" hidden>
+      <p class="muted">🎨 Theme settings affect this browser/device only. Other visitors' themes will not change.</p>
+
+      <div class="control-grid">
+        <div class="control-card">
+          <div class="field">
+            <label for="primaryColor">Primary colour</label>
+            <input type="color" id="primaryColor" value="#8b00ff">
+          </div>
+        </div>
+
+        <div class="control-card">
+          <div class="field">
+            <label for="backgroundColor">Background colour</label>
+            <input type="color" id="backgroundColor" value="#08080d">
+          </div>
+        </div>
+
+        <div class="control-card">
+          <div class="field">
+            <label for="glowColor">Glow colour</label>
+            <input type="color" id="glowColor" value="#b000ff">
+          </div>
+        </div>
+
+        <div class="control-card">
+          <div class="field">
+            <label for="buttonColor">Button colour</label>
+            <input type="color" id="buttonColor" value="#8b00ff">
+          </div>
+        </div>
+
+        <div class="control-card">
+          <div class="field">
+            <label for="glowIntensity">Glow intensity: <span id="glowValue">35%</span></label>
+            <input type="range" id="glowIntensity" min="0" max="100" value="35">
+          </div>
+        </div>
+
+        <div class="control-card">
+          <div class="field">
+            <label for="brightness">Brightness: <span id="brightnessValue">100%</span></label>
+            <input type="range" id="brightness" min="50" max="120" value="100">
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label><input type="checkbox" id="glowToggle" checked> 🌟 Glow effects ON</label>
+      </div>
+
+      <div class="preview-note">
+        👁️ Changes preview immediately. Save on this device to keep your theme.
+        It will not change other visitors' themes.
+      </div>
+
+      <div class="button-row">
+        <button class="panel-btn primary" id="saveTheme" type="button">💾 Save Theme</button>
+        <button class="panel-btn" id="resetTheme" type="button">♻️ Reset Theme</button>
+        <button class="panel-btn" id="showPasswordChange" type="button">🔑 Change Password</button>
+        <button class="panel-btn" id="logoutBtn" type="button">Log Out</button>
+      </div>
+
+      <div id="passwordChangeArea" hidden>
+        <hr style="border-color:#292936;margin:18px 0">
+        <h3>Change Admin Password</h3>
+        <p class="muted">6–12 characters, using at least one letter and one number. Existing admin sessions will be revoked.</p>
+
+        <div class="field">
+          <label for="currentPassword">Current password</label>
+          <input type="password" id="currentPassword" autocomplete="current-password" maxlength="12">
+        </div>
+
+        <div class="field">
+          <label for="newPassword">New password</label>
+          <input type="password" id="newPassword" autocomplete="new-password" minlength="6" maxlength="12">
+        </div>
+
+        <div class="field">
+          <label for="confirmPassword">Confirm new password</label>
+          <input type="password" id="confirmPassword" autocomplete="new-password" minlength="6" maxlength="12">
+        </div>
+
+        <div class="button-row">
+          <button class="panel-btn primary" id="changePasswordBtn" type="button">Update Password Everywhere</button>
+          <button class="panel-btn" id="cancelPasswordChange" type="button">Cancel</button>
+        </div>
+      </div>
+
+      <div class="status" id="panelStatus" role="status"></div>
+    </div>
+
+  </div>
+</div>
 
 <script>
-
-/* =========================================
-   WEBSITE ON / OFF
-========================================= */
-
 const SITE_OFF = false;
 
-
-/* =========================================
-   APP UPDATE SETTINGS
-========================================= */
-
+/* Set any app to true to show the updating screen. */
 const APP_UPDATES = {
-
-  "CapCut": false,
-
-  "Alight Motion": false,
-
-  "Wink": false,
-
-  "EFIKO": false,
-
-  "PicsArt": false,
-
-  "BeutiyPlus": false,
-
-  "Remini": false,
-
-  "Glip Screen Recorder": false,
-
-  "PLAYit": false,
-
-  "MovieBox": false,
-
+  "CapCut":false,
+  "Alight Motion":false,
+  "Wink":false,
+  "EFIKO":false,
+  "PicsArt":false,
+  "BeautyPlus":false,
+  "Remini":false,
+  "Glip Screen Recorder":false,
+  "PLAYit":false,
+  "MovieBox":false
 };
 
+const defaultTheme = {
+  primary:"#8b00ff",
+  bg:"#08080d",
+  glow:"#b000ff",
+  button:"#8b00ff",
+  glowIntensity:35,
+  brightness:100,
+  glowOn:true
+};
 
-/* =========================================
-   WEBSITE ON / OFF
-========================================= */
+const THEME_KEY = "slex_editz_local_theme_v1";
+const $ = id => document.getElementById(id);
 
 if(SITE_OFF){
-
   document.body.classList.add("site-off");
-
 }
 
-
-/* =========================================
-   APP DOWNLOAD HANDLER
-========================================= */
-
-function handleDownload(
-  event,
-  appName,
-  icon
-){
-
+function handleDownload(event,appName,icon){
   if(APP_UPDATES[appName] === true){
-
     event.preventDefault();
-
-    showUpdating(
-      appName,
-      icon
-    );
-
+    showUpdating(appName,icon);
     return false;
-
   }
-
 }
 
-
-/* =========================================
-   SHOW UPDATE SCREEN
-========================================= */
-
-function showUpdating(
-  appName,
-  icon
-){
-
-  const updateScreen =
-    document.getElementById(
-      "appUpdating"
-    );
-
-  const updateIcon =
-    document.getElementById(
-      "updateAppIcon"
-    );
-
-  const updateName =
-    document.getElementById(
-      "updateAppName"
-    );
-
-
-  updateIcon.src = icon;
-
-  updateIcon.alt = appName;
-
-
-  updateName.innerHTML =
-    "<b>" +
-    appName +
-    "</b> is currently being updated.";
-
-
-  updateScreen.style.display =
-    "flex";
-
-
-  document.body.style.overflow =
-    "hidden";
-
-  document.documentElement.style.overflow =
-    "hidden";
-
-
-  updateScreen.scrollTop = 0;
-
+function showUpdating(appName,icon){
+  $("updateAppIcon").src = icon;
+  $("updateAppIcon").alt = appName;
+  $("updateAppName").textContent = appName + " is currently being updated.";
+  $("appUpdating").style.display = "flex";
+  document.body.style.overflow = "hidden";
 }
-
-
-/* =========================================
-   CLOSE UPDATE SCREEN
-========================================= */
 
 function closeUpdating(){
-
-  const updateScreen =
-    document.getElementById(
-      "appUpdating"
-    );
-
-
-  updateScreen.style.display =
-    "none";
-
-
-  document.body.style.overflow =
-    "";
-
-  document.documentElement.style.overflow =
-    "";
-
+  $("appUpdating").style.display = "none";
+  document.body.style.overflow = "";
 }
 
+document.querySelector(".search input").addEventListener("input",function(){
+  const q = this.value.toLowerCase().trim();
 
-/* =========================================
-   SEARCH
-========================================= */
+  document.querySelectorAll(".app").forEach(app=>{
+    app.style.display = app.querySelector("h3").textContent.toLowerCase().includes(q) ? "" : "none";
+  });
+});
 
-const searchInput =
-  document.querySelector(
-    ".search input"
+function validTheme(t){
+  const hex = v => typeof v === "string" && /^#[0-9a-fA-F]{6}$/.test(v);
+
+  return t &&
+    hex(t.primary) &&
+    hex(t.bg) &&
+    hex(t.glow) &&
+    hex(t.button) &&
+    Number.isFinite(+t.glowIntensity) &&
+    Number.isFinite(+t.brightness);
+}
+
+function applyTheme(t){
+  document.documentElement.style.setProperty("--primary",t.primary);
+  document.documentElement.style.setProperty("--bg",t.bg);
+  document.documentElement.style.setProperty("--glow",t.glow);
+  document.documentElement.style.setProperty("--button",t.button);
+
+  document.documentElement.style.setProperty(
+    "--glow-intensity",
+    Math.max(0,Math.min(100,+t.glowIntensity))/100
   );
 
+  document.documentElement.style.setProperty(
+    "--brightness",
+    Math.max(50,Math.min(120,+t.brightness))/100
+  );
 
-searchInput.addEventListener(
-  "input",
-  function(){
+  document.body.classList.toggle("glow-on",!!t.glowOn);
 
-    const searchText =
-      this.value
-        .toLowerCase()
-        .trim();
+  $("primaryColor").value = t.primary;
+  $("backgroundColor").value = t.bg;
+  $("glowColor").value = t.glow;
+  $("buttonColor").value = t.button;
+  $("glowIntensity").value = t.glowIntensity;
+  $("brightness").value = t.brightness;
+  $("glowToggle").checked = !!t.glowOn;
 
+  $("glowValue").textContent = t.glowIntensity + "%";
+  $("brightnessValue").textContent = t.brightness + "%";
+}
 
-    const apps =
-      document.querySelectorAll(
-        ".app"
-      );
+function readControls(){
+  return {
+    primary:$("primaryColor").value,
+    bg:$("backgroundColor").value,
+    glow:$("glowColor").value,
+    button:$("buttonColor").value,
+    glowIntensity:+$("glowIntensity").value,
+    brightness:+$("brightness").value,
+    glowOn:$("glowToggle").checked
+  };
+}
 
+function setStatus(id,msg,type=""){
+  const el = $(id);
+  el.textContent = msg;
+  el.className = "status " + type;
+}
 
-    apps.forEach(
-      function(app){
+try{
+  const saved = JSON.parse(localStorage.getItem(THEME_KEY) || "null");
+  applyTheme(validTheme(saved) ? saved : defaultTheme);
+}catch{
+  applyTheme(defaultTheme);
+}
 
-        const appName =
-          app
-            .querySelector("h3")
-            .textContent
-            .toLowerCase();
+[
+  "primaryColor",
+  "backgroundColor",
+  "glowColor",
+  "buttonColor",
+  "glowIntensity",
+  "brightness",
+  "glowToggle"
+].forEach(id=>{
+  $(id).addEventListener("input",()=>applyTheme(readControls()));
+});
 
-
-        if(
-          appName.includes(
-            searchText
-          )
-        ){
-
-          app.style.display =
-            "";
-
-        }else{
-
-          app.style.display =
-            "none";
-
-        }
-
-      }
-    );
-
+$("saveTheme").addEventListener("click",()=>{
+  try{
+    localStorage.setItem(THEME_KEY,JSON.stringify(readControls()));
+    setStatus("panelStatus","Theme saved on this device only.","ok");
+  }catch{
+    setStatus("panelStatus","Could not save theme in this browser.","error");
   }
-);
+});
 
+$("resetTheme").addEventListener("click",()=>{
+  applyTheme(defaultTheme);
+  localStorage.removeItem(THEME_KEY);
+  setStatus("panelStatus","Default theme restored.","ok");
+});
 
-/* =========================================
-   ESC KEY
-========================================= */
+document.addEventListener("keydown",e=>{
+  if(e.key === "Escape"){
+    closeUpdating();
+    $("adminModal").classList.remove("open");
+  }
+});
 
-document.addEventListener(
-  "keydown",
-  function(event){
+$("adminOpen").addEventListener("click",()=>{
+  $("adminModal").classList.add("open");
+  checkSession();
+});
 
-    if(
-      event.key === "Escape"
-    ){
+$("closeModal").addEventListener("click",()=>{
+  $("adminModal").classList.remove("open");
+});
 
-      closeUpdating();
+$("adminModal").addEventListener("click",e=>{
+  if(e.target === $("adminModal")){
+    $("adminModal").classList.remove("open");
+  }
+});
 
+function showLoggedIn(isIn){
+  $("loginArea").hidden = isIn;
+  $("panelArea").hidden = !isIn;
+
+  if(!isIn){
+    $("passwordChangeArea").hidden = true;
+  }
+}
+
+async function api(path,body){
+  const options = {
+    method:body ? "POST" : "GET",
+    credentials:"same-origin",
+    cache:"no-store",
+    headers:body ? {"Content-Type":"application/json"} : {}
+  };
+
+  if(body){
+    options.body = JSON.stringify(body);
+  }
+
+  const res = await fetch(path,options);
+  let data = {};
+
+  try{
+    data = await res.json();
+  }catch{}
+
+  return {ok:res.ok,status:res.status,data};
+}
+
+async function checkSession(){
+  setStatus("loginStatus","Checking admin session…");
+
+  try{
+    const r = await api("/api/auth");
+
+    if(r.ok && r.data.authenticated){
+      showLoggedIn(true);
+      setStatus("panelStatus","Admin session verified.","ok");
+    }else{
+      showLoggedIn(false);
+      setStatus("loginStatus","Enter the current admin password to continue.");
     }
-
+  }catch{
+    showLoggedIn(false);
+    setStatus("loginStatus","Admin server unavailable. Check the backend setup.","error");
   }
-);
+}
 
+$("loginBtn").addEventListener("click",async()=>{
+  const password = $("adminPassword").value;
+
+  if(!password){
+    setStatus("loginStatus","Enter your password.","error");
+    return;
+  }
+
+  $("loginBtn").disabled = true;
+  setStatus("loginStatus","Verifying password…");
+
+  try{
+    const r = await api("/api/auth",{password});
+
+    if(r.ok && r.data.authenticated){
+      $("adminPassword").value = "";
+      showLoggedIn(true);
+      setStatus("panelStatus","Admin access granted.","ok");
+    }else if(r.data.code === "OLD_PASSWORD"){
+      setStatus("loginStatus","Sorry, this password was updated. Please try again.","error");
+    }else{
+      setStatus("loginStatus",r.data.error || "Incorrect password.","error");
+    }
+  }catch{
+    setStatus("loginStatus","Admin server unavailable. Check the backend setup.","error");
+  }finally{
+    $("loginBtn").disabled = false;
+  }
+});
+
+$("showPasswordChange").addEventListener("click",()=>{
+  $("passwordChangeArea").hidden = false;
+});
+
+$("cancelPasswordChange").addEventListener("click",()=>{
+  $("passwordChangeArea").hidden = true;
+
+  ["currentPassword","newPassword","confirmPassword"].forEach(id=>{
+    $(id).value = "";
+  });
+});
+
+$("changePasswordBtn").addEventListener("click",async()=>{
+  const current = $("currentPassword").value;
+  const newPass = $("newPassword").value;
+  const confirm = $("confirmPassword").value;
+
+  const rule = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$/;
+
+  if(!rule.test(newPass)){
+    setStatus("panelStatus","Use 6–12 letters/numbers with at least one letter and one number.","error");
+    return;
+  }
+
+  if(newPass !== confirm){
+    setStatus("panelStatus","New passwords do not match.","error");
+    return;
+  }
+
+  $("changePasswordBtn").disabled = true;
+  setStatus("panelStatus","Updating password…");
+
+  try{
+    const r = await api("/api/change-password",{
+      currentPassword:current,
+      newPassword:newPass
+    });
+
+    if(r.ok){
+      $("passwordChangeArea").hidden = true;
+
+      ["currentPassword","newPassword","confirmPassword"].forEach(id=>{
+        $(id).value = "";
+      });
+
+      showLoggedIn(false);
+      $("adminPassword").value = "";
+
+      setStatus(
+        "loginStatus",
+        "Password updated. All old sessions were revoked. Sign in with your new password.",
+        "ok"
+      );
+    }else if(r.data.code === "OLD_PASSWORD"){
+      setStatus("panelStatus","Sorry, this password was updated. Please try again.","error");
+    }else{
+      setStatus("panelStatus",r.data.error || "Could not update password.","error");
+    }
+  }catch{
+    setStatus("panelStatus","Admin server unavailable. Check the backend setup.","error");
+  }finally{
+    $("changePasswordBtn").disabled = false;
+  }
+});
+
+$("logoutBtn").addEventListener("click",async()=>{
+  try{
+    await api("/api/logout",{});
+  }catch{}
+
+  showLoggedIn(false);
+  $("adminPassword").value = "";
+  setStatus("loginStatus","Logged out.");
+});
 </script>
 
 </body>
-
 </html>
