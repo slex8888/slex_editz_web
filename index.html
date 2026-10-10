@@ -16,470 +16,561 @@
 <meta property="og:type" content="website">
 
 <style>
-:root{
-  --primary:#8b00ff;
-  --bg:#08080d;
-  --glow:#b000ff;
-  --button:#8b00ff;
-  --card:#12121b;
-  --text:#ffffff;
-  --brightness:1;
-  --glow-intensity:.35;
+:root {
+  --primary: #8b00ff;
+  --bg: #08080d;
+  --glow: #b000ff;
+  --button: #8b00ff;
+  --card: #12121b;
+  --glow-intensity: .35;
+  --brightness: 1;
 }
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
 
-html,body{
-  width:100%;
-  min-height:100%;
-  scroll-behavior:smooth;
+html {
+  scroll-behavior: smooth;
 }
 
-body{
-  background:var(--bg);
-  color:var(--text);
-  filter:brightness(var(--brightness));
+body {
+  background: var(--bg);
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-header{
-  padding:22px 18px;
-  text-align:center;
-  background:var(--card);
-  border-bottom:1px solid #272733;
+/* HEADER */
+
+header {
+  background: var(--card);
+  border-bottom: 1px solid #292936;
+  padding: 24px 18px 20px;
 }
 
-.logo{
-  font-size:28px;
-  font-weight:800;
-  letter-spacing:2px;
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
 }
 
-.logo span{
-  color:var(--primary);
+.logo {
+  font-size: clamp(23px, 6vw, 30px);
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-align: center;
+  overflow-wrap: anywhere;
 }
 
-.search{
-  margin:20px auto 0;
-  max-width:600px;
-  padding:0 15px;
+.logo span {
+  color: var(--primary);
 }
 
-.search input{
-  width:100%;
-  padding:15px;
-  border-radius:12px;
-  border:1px solid #333342;
-  background:#15151f;
-  color:white;
-  outline:none;
-  font-size:15px;
+/* ADMIN BUTTON: BELOW LOGO, RIGHT SIDE */
+
+.admin-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
 }
 
-.hero{
-  text-align:center;
-  padding:35px 20px;
+.admin-entry {
+  position: static;
+  z-index: 1;
 }
 
-.hero h1{
-  font-size:32px;
-  margin-bottom:10px;
+.admin-entry button {
+  padding: 10px 13px;
+  background: #11111b;
+  color: white;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 0 0 14px var(--glow);
 }
 
-.hero p{
-  color:#aaa;
-  font-size:15px;
-  line-height:1.6;
+/* SEARCH */
+
+.search {
+  max-width: 600px;
+  margin: 18px auto 0;
 }
 
-.section{
-  padding:20px;
-  max-width:1000px;
-  margin:auto;
+.search input {
+  width: 100%;
+  padding: 15px;
+  background: #090910;
+  color: white;
+  border: 1px solid #333342;
+  border-radius: 13px;
+  outline: none;
+  font-size: 15px;
 }
 
-.section h2{
-  margin-bottom:18px;
+.search input:focus {
+  border-color: var(--primary);
 }
 
-.apps{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:15px;
+/* HERO */
+
+.hero {
+  text-align: center;
+  padding: 36px 18px;
 }
 
-.app{
-  background:var(--card);
-  border:1px solid #292936;
-  border-radius:16px;
-  padding:18px;
-  text-align:center;
-  transition:.2s;
+.hero h1 {
+  font-size: clamp(25px, 6vw, 35px);
+  margin-bottom: 14px;
 }
 
-.app:hover{
-  transform:translateY(-3px);
-  border-color:var(--primary);
+.hero p {
+  color: #aaa;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
-.glow-on .app:hover{
-  box-shadow:0 0 calc(40px * var(--glow-intensity)) var(--glow);
+/* APP SECTION */
+
+.section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
 }
 
-.icon{
-  width:70px;
-  height:70px;
-  margin:0 auto 12px;
-  border-radius:16px;
-  background:linear-gradient(135deg,var(--primary),var(--glow));
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
+.section h2 {
+  font-size: 25px;
+  margin-bottom: 22px;
 }
 
-.icon img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  border-radius:16px;
+.apps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
 }
 
-.app h3{
-  font-size:17px;
-  margin-bottom:6px;
+.app {
+  min-width: 0;
+  text-align: center;
+  background: var(--card);
+  border: 1px solid #292936;
+  border-radius: 18px;
+  padding: 20px 10px;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
 }
 
-.app p{
-  color:#999;
-  font-size:13px;
-  margin-bottom:12px;
+.app:hover {
+  border-color: var(--primary);
+  transform: translateY(-3px);
 }
 
-.btn{
-  display:inline-block;
-  padding:9px 15px;
-  background:var(--button);
-  color:white;
-  text-decoration:none;
-  border-radius:9px;
-  font-size:13px;
-  border:0;
-  cursor:pointer;
+.glow-on .app:hover {
+  box-shadow:
+    0 0 calc(35px * var(--glow-intensity)) var(--glow);
 }
 
-.btn:hover{
-  filter:brightness(1.12);
+.icon {
+  width: 82px;
+  height: 82px;
+  margin: 0 auto 15px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--primary), var(--glow));
+  overflow: hidden;
 }
 
-footer{
-  text-align:center;
-  padding:30px 15px;
-  color:#777;
-  margin-top:30px;
-  border-top:1px solid #22222c;
+.icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-/* UPDATE SCREEN */
-
-#appUpdating{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:99999;
-  background:rgba(3,3,10,.96);
-  align-items:center;
-  justify-content:center;
-  padding:16px;
-  overflow-y:auto;
+.app h3 {
+  font-size: 16px;
+  margin-bottom: 9px;
+  overflow-wrap: anywhere;
 }
 
-.update-box{
-  width:100%;
-  max-width:390px;
-  background:#101018;
-  border:2px solid var(--primary);
-  border-radius:18px;
-  padding:24px 16px 16px;
-  text-align:center;
-  box-shadow:0 0 25px var(--glow);
+.app p {
+  color: #aaa;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 15px;
 }
 
-.update-logo{
-  font-size:22px;
-  font-weight:800;
-  margin-bottom:18px;
+.btn {
+  display: inline-block;
+  padding: 11px 15px;
+  background: var(--button);
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  cursor: pointer;
 }
 
-.update-logo span{
-  color:var(--primary);
+.btn:hover {
+  filter: brightness(1.15);
 }
 
-.update-app-icon{
-  width:82px;
-  height:82px;
-  margin:0 auto 18px;
-  border-radius:50%;
-  border:3px solid var(--primary);
-  padding:8px;
-  overflow:hidden;
+/* FOOTER */
+
+footer {
+  text-align: center;
+  padding: 30px 15px;
+  margin-top: 30px;
+  border-top: 1px solid #292936;
+  color: #888;
+  line-height: 1.8;
 }
 
-.update-app-icon img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-}
-
-.update-box h1{
-  font-size:23px;
-  margin:10px 0;
-}
-
-.update-box h1 span{
-  color:var(--primary);
-}
-
-.update-message{
-  padding:14px;
-  margin:15px 0;
-  background:#090910;
-  border:1px solid #421078;
-  border-radius:12px;
-  color:#bbb;
-  font-size:13px;
-  line-height:1.6;
-}
-
-.update-home{
-  display:block;
-  padding:13px;
-  border:1px solid var(--primary);
-  border-radius:10px;
-  color:white;
-  text-decoration:none;
-}
-
-/* ADMIN BUTTON */
-
-.admin-entry{
-  position:fixed;
-  right:12px;
-  bottom:12px;
-  z-index:100000;
-}
-
-.admin-entry button,
-.panel-btn{
-  border:1px solid var(--primary);
-  background:#11111b;
-  color:white;
-  border-radius:10px;
-  padding:11px 14px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.admin-entry button{
-  box-shadow:0 0 16px var(--glow);
+footer a {
+  color: var(--primary);
+  text-decoration: none;
 }
 
 /* ADMIN MODAL */
 
-.modal-backdrop{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:100001;
-  background:rgba(0,0,0,.85);
-  padding:16px;
-  overflow:auto;
-  align-items:center;
-  justify-content:center;
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, .86);
+  padding: 14px;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
 }
 
-.modal-backdrop.open{
-  display:flex;
+.modal-backdrop.open {
+  display: flex;
 }
 
-.modal{
-  width:100%;
-  max-width:620px;
-  background:#101018;
-  border:1px solid var(--primary);
-  border-radius:18px;
-  padding:20px;
-  box-shadow:0 0 30px var(--glow);
-  max-height:calc(100dvh - 32px);
-  overflow:auto;
+.modal {
+  width: 100%;
+  max-width: 620px;
+  max-height: calc(100dvh - 28px);
+  overflow-y: auto;
+  background: #101018;
+  border: 1px solid var(--primary);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 28px var(--glow);
 }
 
-.modal h2{
-  font-size:22px;
-  margin-bottom:8px;
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
 }
 
-.muted{
-  color:#aaa;
-  font-size:13px;
-  line-height:1.5;
-  margin-bottom:16px;
+.modal-header h2 {
+  font-size: 21px;
 }
 
-.field{
-  display:flex;
-  flex-direction:column;
-  gap:7px;
-  margin:12px 0;
+.close-btn {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  color: white;
+  background: #11111b;
+  border: 1px solid var(--primary);
+  border-radius: 11px;
+  font-size: 24px;
+  cursor: pointer;
 }
 
-.field label{
-  font-size:13px;
-  color:#ddd;
+.muted {
+  color: #aaa;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 17px;
 }
 
-.field input[type=password],
-.field input[type=text]{
-  width:100%;
-  padding:12px;
-  background:#08080d;
-  color:white;
-  border:1px solid #393947;
-  border-radius:9px;
+.field {
+  margin: 14px 0;
 }
 
-.field input[type=color]{
-  width:100%;
-  height:42px;
-  background:#08080d;
-  border:1px solid #393947;
-  border-radius:9px;
-  padding:4px;
+.field label {
+  display: block;
+  color: #ddd;
+  font-size: 14px;
+  margin-bottom: 9px;
 }
 
-.field input[type=range]{
-  width:100%;
-  accent-color:var(--primary);
+.field input[type="text"],
+.field input[type="password"] {
+  width: 100%;
+  padding: 14px;
+  color: white;
+  background: #08080d;
+  border: 1px solid #333342;
+  border-radius: 10px;
+  outline: none;
+  font-size: 15px;
 }
 
-.field input[type=checkbox]{
-  accent-color:var(--primary);
-  width:18px;
-  height:18px;
+.field input:focus {
+  border-color: var(--primary);
 }
 
-.control-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:10px;
+/* PASSWORD SHOW/HIDE EYE */
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
 }
 
-.control-card{
-  background:#0a0a12;
-  border:1px solid #282837;
-  border-radius:12px;
-  padding:10px;
+.password-wrapper input {
+  padding-right: 55px !important;
 }
 
-.control-card .field{
-  margin:4px 0;
+.eye-button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 21px;
+  cursor: pointer;
 }
 
-.button-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-  margin-top:16px;
+/* THEME CONTROLS */
+
+.control-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.panel-btn.primary{
-  background:var(--primary);
+.control-card {
+  min-width: 0;
+  padding: 12px;
+  background: #0b0b12;
+  border: 1px solid #292936;
+  border-radius: 12px;
 }
 
-.status{
-  font-size:13px;
-  line-height:1.5;
-  margin-top:12px;
-  min-height:20px;
-  overflow-wrap:anywhere;
+.control-card label {
+  font-size: 12px;
 }
 
-.status.error{
-  color:#ff8c8c;
+.control-card input[type="color"] {
+  width: 100%;
+  height: 42px;
+  padding: 4px;
+  background: #08080d;
+  border: 1px solid #333342;
+  border-radius: 8px;
 }
 
-.status.ok{
-  color:#9bffb0;
+.control-card input[type="range"] {
+  width: 100%;
+  accent-color: var(--primary);
 }
 
-.preview-note{
-  border:1px dashed #494958;
-  border-radius:10px;
-  padding:10px;
-  color:#aaa;
-  font-size:12px;
-  line-height:1.5;
-  margin-top:12px;
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 17px;
+  font-size: 14px;
 }
 
-[hidden]{
-  display:none!important;
+.checkbox-row input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
 }
 
-#maintenance{
-  display:none;
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
 }
 
-body.site-off> *:not(#maintenance){
-  display:none!important;
+.panel-btn {
+  padding: 12px 14px;
+  background: #191923;
+  color: white;
+  border: 1px solid #3a3a49;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
 }
 
-body.site-off #maintenance{
-  display:flex;
-  min-height:100vh;
-  align-items:center;
-  justify-content:center;
-  padding:25px;
+.panel-btn.primary {
+  background: var(--button);
+  border-color: var(--button);
 }
 
-.maintenance-box{
-  width:100%;
-  max-width:600px;
-  padding:35px 20px;
-  text-align:center;
-  background:var(--card);
-  border:1px solid var(--primary);
-  border-radius:20px;
+.status {
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
-@media(max-width:480px){
-  .hero h1{font-size:27px}
-  .control-grid{grid-template-columns:1fr}
-  .modal{padding:16px}
+.status.error {
+  color: #ff8c98;
 }
 
-@media(orientation:landscape) and (max-height:500px){
-  .modal-backdrop{align-items:flex-start}
+.status.ok {
+  color: #8dffad;
+}
+
+.note {
+  margin-top: 15px;
+  padding: 12px;
+  border: 1px dashed #414150;
+  border-radius: 10px;
+  color: #aaa;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* APP UPDATING SCREEN */
+
+#appUpdating {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(3, 3, 10, .96);
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.update-box {
+  width: 100%;
+  max-width: 390px;
+  background: #101018;
+  border: 2px solid var(--primary);
+  border-radius: 18px;
+  padding: 24px 16px;
+  text-align: center;
+  box-shadow: 0 0 25px var(--glow);
+}
+
+.update-logo {
+  font-size: 23px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.update-logo span {
+  color: var(--primary);
+}
+
+.update-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 18px;
+  border-radius: 17px;
+  overflow: hidden;
+}
+
+.update-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.update-message {
+  padding: 15px;
+  margin: 15px 0;
+  border: 1px solid #3e175c;
+  border-radius: 12px;
+  background: #090910;
+  color: #bbb;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.update-home {
+  display: block;
+  padding: 13px;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+@media (min-width: 700px) {
+  .apps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 380px) {
+  .modal {
+    padding: 15px;
+  }
+
+  .control-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .logo {
+    letter-spacing: 2px;
+  }
 }
 </style>
 </head>
 
 <body class="glow-on">
 
+<!-- 🔐 CHANGE YOUR PASSWORD HERE -->
+<script>
+const ADMIN_PASSWORD = "SLEX888";
+</script>
+
 <header>
-  <div class="logo">SLEX<span>.EDITZ</span></div>
+  <div class="header-top">
+    <div class="logo">SLEX<span>.EDITZ</span></div>
+  </div>
+
+  <!-- Button is below the logo, aligned right, and scrolls with the page -->
+  <div class="admin-row">
+    <div class="admin-entry">
+      <button id="adminOpen" type="button">⚙️ Admin Access</button>
+    </div>
+  </div>
+
   <div class="search">
-    <input type="text" placeholder="Search apps & editing tools..." aria-label="Search apps">
+    <input
+      id="appSearch"
+      type="text"
+      placeholder="Search apps & editing tools..."
+      aria-label="Search apps"
+    >
   </div>
 </header>
 
 <section class="hero">
   <h1>Editing Tools &amp; Apps</h1>
-  <p>Discover useful apps, tools and resources for editing.</p>
+  <p>Discover useful apps and editing tools.</p>
 </section>
 
 <section class="section">
@@ -491,70 +582,70 @@ body.site-off #maintenance{
       <div class="icon"><img src="capcut.jpg" alt="CapCut"></div>
       <h3>CapCut</h3>
       <p>Video Editor</p>
-      <a class="btn" href="https://www.mediafire.com/file/9fykbt4d8azfwn0/CAPCUT_ULTRA_v23.0.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file" target="_blank" rel="noopener" onclick="handleDownload(event,'CapCut','capcut.jpg')">Download</a>
+      <a class="btn" href="https://www.capcut.com/" target="_blank" rel="noopener">Download</a>
     </div>
 
     <div class="app">
       <div class="icon"><img src="alight-motion.jpg" alt="Alight Motion"></div>
       <h3>Alight Motion</h3>
       <p>Motion Graphics</p>
-      <a class="btn" href="https://www.mediafire.com/file/2cqmokmxkul7wp0/ALIGHT+MOTION+v5.0.273+.apk/file" target="_blank" rel="noopener" onclick="handleDownload(event,'Alight Motion','alight-motion.jpg')">Download</a>
+      <a class="btn" href="https://alightmotion.com/" target="_blank" rel="noopener">Download</a>
     </div>
 
     <div class="app">
       <div class="icon"><img src="Wink.jpg" alt="Wink"></div>
       <h3>Wink</h3>
-      <p>Photo &amp; Video Editor</p>
-      <a class="btn" href="https://www.google.com/search?q=Wink+video+editor+official" target="_blank" rel="noopener" onclick="handleDownload(event,'Wink','Wink.jpg')">Download</a>
+      <p>Video Enhancer</p>
+      <a class="btn" href="https://www.google.com/search?q=Wink+official+app" target="_blank" rel="noopener">Download</a>
     </div>
 
     <div class="app">
       <div class="icon"><img src="EFIKO.jpg" alt="EFIKO"></div>
       <h3>EFIKO</h3>
       <p>Photo Effects</p>
-      <a class="btn" href="https://www.google.com/search?q=EFIKO+official+app" target="_blank" rel="noopener" onclick="handleDownload(event,'EFIKO','EFIKO.jpg')">Download</a>
+      <a class="btn" href="https://www.google.com/search?q=EFIKO+official+app" target="_blank" rel="noopener">Download</a>
     </div>
 
     <div class="app">
       <div class="icon"><img src="PicsArt.jpg" alt="PicsArt"></div>
       <h3>PicsArt</h3>
       <p>Photo Editor</p>
-      <a class="btn" href="https://picsart.com/" target="_blank" rel="noopener" onclick="handleDownload(event,'PicsArt','PicsArt.jpg')">Download</a>
+      <a class="btn" href="https://picsart.com/" target="_blank" rel="noopener">Download</a>
     </div>
 
     <div class="app">
       <div class="icon"><img src="BeutiyPlus.jpg" alt="BeautyPlus"></div>
       <h3>BeautyPlus</h3>
       <p>Photo Editor</p>
-      <a class="btn" href="https://www.google.com/search?q=BeautyPlus+official" target="_blank" rel="noopener" onclick="handleDownload(event,'BeautyPlus','BeutiyPlus.jpg')">Download</a>
+      <a class="btn" href="https://www.beautyplus.com/" target="_blank" rel="noopener">Download</a>
     </div>
 
     <div class="app">
       <div class="icon"><img src="Remini.jpg" alt="Remini"></div>
       <h3>Remini</h3>
       <p>Photo Enhancer</p>
-      <a class="btn" href="https://remini.ai/" target="_blank" rel="noopener" onclick="handleDownload(event,'Remini','Remini.jpg')">Download</a>
+      <a class="btn" href="https://remini.ai/" target="_blank" rel="noopener">Download</a>
     </div>
 
     <div class="app">
       <div class="icon"><img src="Glip.jpg" alt="Glip"></div>
       <h3>Glip Screen Recorder</h3>
       <p>Screen Recording</p>
-      <a class="btn" href="https://www.google.com/search?q=Glip+screen+recorder+official" target="_blank" rel="noopener" onclick="handleDownload(event,'Glip Screen Recorder','Glip.jpg')">Download</a>
+      <a class="btn" href="https://www.google.com/search?q=Glip+screen+recorder+official" target="_blank" rel="noopener">Download</a>
     </div>
 
     <div class="app">
       <div class="icon"><img src="PLAYit.jpg" alt="PLAYit"></div>
       <h3>PLAYit</h3>
       <p>Media Player</p>
-      <a class="btn" href="https://www.google.com/search?q=PLAYit+official" target="_blank" rel="noopener" onclick="handleDownload(event,'PLAYit','PLAYit.jpg')">Download</a>
+      <a class="btn" href="https://www.google.com/search?q=PLAYit+official" target="_blank" rel="noopener">Download</a>
     </div>
 
     <div class="app">
       <div class="icon"><img src="MovieBox.jpg" alt="MovieBox"></div>
       <h3>MovieBox</h3>
       <p>Media App</p>
-      <a class="btn" href="https://www.google.com/search?q=MovieBox+official+app" target="_blank" rel="noopener" onclick="handleDownload(event,'MovieBox','MovieBox.jpg')">Download</a>
+      <a class="btn" href="https://www.google.com/search?q=MovieBox+official+app" target="_blank" rel="noopener">Download</a>
     </div>
 
   </div>
@@ -562,66 +653,65 @@ body.site-off #maintenance{
 
 <footer>
   © 2026 SLEX.EDITZ — All Rights Reserved
-  <br><br>
-  <a href="https://instagram.com/slex_888" style="color:var(--primary);text-decoration:none">@slex_888</a>
+  <br>
+  <a href="https://instagram.com/slex_888" target="_blank" rel="noopener">@slex_888</a>
 </footer>
 
-<!-- UPDATE OVERLAY -->
-
-<div id="appUpdating">
-  <div class="update-box">
-    <div class="update-logo">SLEX<span>.EDITZ</span></div>
-    <div class="update-app-icon"><img id="updateAppIcon" src="" alt=""></div>
-    <h1>APP IS <span>UPDATING</span></h1>
-    <p class="update-message" id="updateAppName">Please wait while this app is being updated.</p>
-    <a href="#" class="update-home" onclick="closeUpdating();return false;">Back to Home</a>
-  </div>
-</div>
-
-<!-- MAINTENANCE SCREEN -->
-
-<div id="maintenance">
-  <div class="maintenance-box">
-    <div class="logo">SLEX<span style="color:var(--primary)">.EDITZ</span></div>
-    <br><br>
-    <h1>WEBSITE IS OFF</h1>
-    <p>We are working on updates. Please visit again later.</p>
-    <a href="https://instagram.com/slex_888" style="color:var(--primary)">Contact on Instagram</a>
-  </div>
-</div>
-
-<!-- ADMIN ACCESS BUTTON: VISIBLE TO ALL VISITORS -->
-
-<div class="admin-entry">
-  <button id="adminOpen" type="button">🔐 Admin Access</button>
-</div>
-
-<!-- ADMIN LOGIN AND SETTINGS -->
+<!-- ADMIN PANEL -->
 
 <div class="modal-backdrop" id="adminModal">
   <div class="modal">
 
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+    <div class="modal-header">
       <h2>⚙️ SLEX.EDITZ Admin</h2>
-      <button class="panel-btn" id="closeModal" type="button">✕</button>
+      <button class="close-btn" id="closeModal" type="button" aria-label="Close">×</button>
     </div>
 
     <div id="loginArea">
-      <p class="muted">Enter the current admin password to unlock your local theme controls.</p>
+      <p class="muted">
+        Enter the admin password to unlock your local theme controls.
+      </p>
+
       <div class="field">
         <label for="adminPassword">Admin password</label>
-        <input type="password" id="adminPassword" autocomplete="current-password" maxlength="12">
+
+        <div class="password-wrapper">
+          <input
+            type="password"
+            id="adminPassword"
+            placeholder="Enter admin password"
+            autocomplete="current-password"
+          >
+
+          <button
+            type="button"
+            id="togglePassword"
+            class="eye-button"
+            aria-label="Show password"
+            aria-pressed="false"
+          >👁️</button>
+        </div>
       </div>
+
+      <label style="display:flex;gap:9px;align-items:center;font-size:13px;color:#bbb">
+        <input type="checkbox" id="rememberLogin" checked>
+        Remember me on this device
+      </label>
+
       <div class="button-row">
         <button class="panel-btn primary" id="loginBtn" type="button">Unlock Admin</button>
       </div>
+
       <div class="status" id="loginStatus" role="status"></div>
     </div>
 
     <div id="panelArea" hidden>
-      <p class="muted">🎨 Theme settings affect this browser/device only. Other visitors' themes will not change.</p>
+      <p class="muted">
+        🎨 Customize your theme. Settings are saved in this browser only.
+      </p>
 
       <div class="control-grid">
+
         <div class="control-card">
           <div class="field">
             <label for="primaryColor">Primary colour</label>
@@ -663,48 +753,22 @@ body.site-off #maintenance{
             <input type="range" id="brightness" min="50" max="120" value="100">
           </div>
         </div>
+
       </div>
 
-      <div class="field">
-        <label><input type="checkbox" id="glowToggle" checked> 🌟 Glow effects ON</label>
+      <div class="checkbox-row">
+        <input type="checkbox" id="glowToggle" checked>
+        <label for="glowToggle">✨ Enable glow effects</label>
       </div>
 
-      <div class="preview-note">
-        👁️ Changes preview immediately. Save on this device to keep your theme.
-        It will not change other visitors' themes.
+      <div class="note">
+        Theme changes apply to this browser only. They do not change the theme for other visitors.
       </div>
 
       <div class="button-row">
         <button class="panel-btn primary" id="saveTheme" type="button">💾 Save Theme</button>
         <button class="panel-btn" id="resetTheme" type="button">♻️ Reset Theme</button>
-        <button class="panel-btn" id="showPasswordChange" type="button">🔑 Change Password</button>
         <button class="panel-btn" id="logoutBtn" type="button">Log Out</button>
-      </div>
-
-      <div id="passwordChangeArea" hidden>
-        <hr style="border-color:#292936;margin:18px 0">
-        <h3>Change Admin Password</h3>
-        <p class="muted">6–12 characters, using at least one letter and one number. Existing admin sessions will be revoked.</p>
-
-        <div class="field">
-          <label for="currentPassword">Current password</label>
-          <input type="password" id="currentPassword" autocomplete="current-password" maxlength="12">
-        </div>
-
-        <div class="field">
-          <label for="newPassword">New password</label>
-          <input type="password" id="newPassword" autocomplete="new-password" minlength="6" maxlength="12">
-        </div>
-
-        <div class="field">
-          <label for="confirmPassword">Confirm new password</label>
-          <input type="password" id="confirmPassword" autocomplete="new-password" minlength="6" maxlength="12">
-        </div>
-
-        <div class="button-row">
-          <button class="panel-btn primary" id="changePasswordBtn" type="button">Update Password Everywhere</button>
-          <button class="panel-btn" id="cancelPasswordChange" type="button">Cancel</button>
-        </div>
       </div>
 
       <div class="status" id="panelStatus" role="status"></div>
@@ -713,134 +777,240 @@ body.site-off #maintenance{
   </div>
 </div>
 
+<!-- UPDATING SCREEN -->
+
+<div id="appUpdating">
+  <div class="update-box">
+    <div class="update-logo">SLEX<span>.EDITZ</span></div>
+
+    <div class="update-icon">
+      <img id="updateAppIcon" src="" alt="">
+    </div>
+
+    <h2>APP IS UPDATING</h2>
+
+    <div class="update-message" id="updateAppName"></div>
+
+    <a href="#" class="update-home" id="updateHome">Back to Home</a>
+  </div>
+</div>
+
 <script>
-const SITE_OFF = false;
+/* APP UPDATES
+   true = show updating screen
+   false = open download link
+*/
 
-/* Set any app to true to show the updating screen. */
 const APP_UPDATES = {
-  "CapCut":false,
-  "Alight Motion":false,
-  "Wink":false,
-  "EFIKO":false,
-  "PicsArt":false,
-  "BeautyPlus":false,
-  "Remini":false,
-  "Glip Screen Recorder":false,
-  "PLAYit":false,
-  "MovieBox":false
+  "CapCut": false,
+  "Alight Motion": false,
+  "Wink": false,
+  "EFIKO": false,
+  "PicsArt": false,
+  "BeautyPlus": false,
+  "Remini": false,
+  "Glip Screen Recorder": false,
+  "PLAYit": false,
+  "MovieBox": false
 };
 
-const defaultTheme = {
-  primary:"#8b00ff",
-  bg:"#08080d",
-  glow:"#b000ff",
-  button:"#8b00ff",
-  glowIntensity:35,
-  brightness:100,
-  glowOn:true
-};
+/* SEARCH */
 
-const THEME_KEY = "slex_editz_local_theme_v1";
-const $ = id => document.getElementById(id);
+document.getElementById("appSearch").addEventListener("input", function() {
+  const query = this.value.toLowerCase().trim();
 
-if(SITE_OFF){
-  document.body.classList.add("site-off");
-}
-
-function handleDownload(event,appName,icon){
-  if(APP_UPDATES[appName] === true){
-    event.preventDefault();
-    showUpdating(appName,icon);
-    return false;
-  }
-}
-
-function showUpdating(appName,icon){
-  $("updateAppIcon").src = icon;
-  $("updateAppIcon").alt = appName;
-  $("updateAppName").textContent = appName + " is currently being updated.";
-  $("appUpdating").style.display = "flex";
-  document.body.style.overflow = "hidden";
-}
-
-function closeUpdating(){
-  $("appUpdating").style.display = "none";
-  document.body.style.overflow = "";
-}
-
-document.querySelector(".search input").addEventListener("input",function(){
-  const q = this.value.toLowerCase().trim();
-
-  document.querySelectorAll(".app").forEach(app=>{
-    app.style.display = app.querySelector("h3").textContent.toLowerCase().includes(q) ? "" : "none";
+  document.querySelectorAll(".app").forEach(function(app) {
+    const name = app.querySelector("h3").textContent.toLowerCase();
+    app.style.display = name.includes(query) ? "" : "none";
   });
 });
 
-function validTheme(t){
-  const hex = v => typeof v === "string" && /^#[0-9a-fA-F]{6}$/.test(v);
+/* THEME */
 
-  return t &&
-    hex(t.primary) &&
-    hex(t.bg) &&
-    hex(t.glow) &&
-    hex(t.button) &&
-    Number.isFinite(+t.glowIntensity) &&
-    Number.isFinite(+t.brightness);
+const DEFAULT_THEME = {
+  primary: "#8b00ff",
+  bg: "#08080d",
+  glow: "#b000ff",
+  button: "#8b00ff",
+  glowIntensity: 35,
+  brightness: 100,
+  glowOn: true
+};
+
+const THEME_KEY = "slex_editz_theme_v2";
+
+/* Remember-login key: stores a flag, NOT the password. */
+const LOGIN_KEY = "slex_editz_admin_remembered_v1";
+
+const $ = id => document.getElementById(id);
+
+function setStatus(id, message, type = "") {
+  $(id).textContent = message;
+  $(id).className = "status " + type;
 }
 
-function applyTheme(t){
-  document.documentElement.style.setProperty("--primary",t.primary);
-  document.documentElement.style.setProperty("--bg",t.bg);
-  document.documentElement.style.setProperty("--glow",t.glow);
-  document.documentElement.style.setProperty("--button",t.button);
+function showPanel(isLoggedIn) {
+  $("loginArea").hidden = isLoggedIn;
+  $("panelArea").hidden = !isLoggedIn;
+
+  if (!isLoggedIn) {
+    $("adminPassword").value = "";
+    $("adminPassword").type = "password";
+    $("togglePassword").textContent = "👁️";
+    $("togglePassword").setAttribute("aria-pressed", "false");
+  }
+}
+
+/* PASSWORD VISIBILITY */
+
+$("togglePassword").addEventListener("click", function() {
+  const show = $("adminPassword").type === "password";
+
+  $("adminPassword").type = show ? "text" : "password";
+  this.textContent = show ? "🙈" : "👁️";
+  this.setAttribute("aria-label", show ? "Hide password" : "Show password");
+  this.setAttribute("aria-pressed", String(show));
+});
+
+/* OPEN ADMIN PANEL */
+
+$("adminOpen").addEventListener("click", function() {
+  $("adminModal").classList.add("open");
+
+  if (sessionStorage.getItem(LOGIN_KEY) === "yes" ||
+      localStorage.getItem(LOGIN_KEY) === "yes") {
+    showPanel(true);
+    loadThemeControls();
+  } else {
+    showPanel(false);
+    setStatus("loginStatus", "");
+  }
+});
+
+$("closeModal").addEventListener("click", function() {
+  $("adminModal").classList.remove("open");
+});
+
+$("adminModal").addEventListener("click", function(event) {
+  if (event.target === $("adminModal")) {
+    $("adminModal").classList.remove("open");
+  }
+});
+
+/* LOGIN */
+
+$("loginBtn").addEventListener("click", function() {
+  const enteredPassword = $("adminPassword").value;
+
+  if (enteredPassword !== ADMIN_PASSWORD) {
+    setStatus("loginStatus", "Incorrect password.", "error");
+    return;
+  }
+
+  try {
+    if ($("rememberLogin").checked) {
+      localStorage.setItem(LOGIN_KEY, "yes");
+      sessionStorage.removeItem(LOGIN_KEY);
+    } else {
+      sessionStorage.setItem(LOGIN_KEY, "yes");
+      localStorage.removeItem(LOGIN_KEY);
+    }
+  } catch (error) {
+    setStatus("loginStatus", "Browser storage is unavailable. Please allow site storage.", "error");
+    return;
+  }
+
+  showPanel(true);
+  loadThemeControls();
+  setStatus("panelStatus", "Admin unlocked on this device.", "ok");
+});
+
+$("adminPassword").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    $("loginBtn").click();
+  }
+});
+
+/* LOG OUT */
+
+$("logoutBtn").addEventListener("click", function() {
+  localStorage.removeItem(LOGIN_KEY);
+  sessionStorage.removeItem(LOGIN_KEY);
+  showPanel(false);
+  setStatus("loginStatus", "Logged out successfully.");
+});
+
+/* THEME FUNCTIONS */
+
+function readThemeControls() {
+  return {
+    primary: $("primaryColor").value,
+    bg: $("backgroundColor").value,
+    glow: $("glowColor").value,
+    button: $("buttonColor").value,
+    glowIntensity: Number($("glowIntensity").value),
+    brightness: Number($("brightness").value),
+    glowOn: $("glowToggle").checked
+  };
+}
+
+function validTheme(theme) {
+  const isHex = value =>
+    typeof value === "string" && /^#[0-9a-fA-F]{6}$/.test(value);
+
+  return theme &&
+    isHex(theme.primary) &&
+    isHex(theme.bg) &&
+    isHex(theme.glow) &&
+    isHex(theme.button) &&
+    Number.isFinite(Number(theme.glowIntensity)) &&
+    Number.isFinite(Number(theme.brightness));
+}
+
+function applyTheme(theme) {
+  $("primaryColor").value = theme.primary;
+  $("backgroundColor").value = theme.bg;
+  $("glowColor").value = theme.glow;
+  $("buttonColor").value = theme.button;
+  $("glowIntensity").value = theme.glowIntensity;
+  $("brightness").value = theme.brightness;
+  $("glowToggle").checked = Boolean(theme.glowOn);
+
+  document.documentElement.style.setProperty("--primary", theme.primary);
+  document.documentElement.style.setProperty("--bg", theme.bg);
+  document.documentElement.style.setProperty("--glow", theme.glow);
+  document.documentElement.style.setProperty("--button", theme.button);
 
   document.documentElement.style.setProperty(
     "--glow-intensity",
-    Math.max(0,Math.min(100,+t.glowIntensity))/100
+    Math.max(0, Math.min(100, Number(theme.glowIntensity))) / 100
   );
 
   document.documentElement.style.setProperty(
     "--brightness",
-    Math.max(50,Math.min(120,+t.brightness))/100
+    Math.max(50, Math.min(120, Number(theme.brightness))) / 100
   );
 
-  document.body.classList.toggle("glow-on",!!t.glowOn);
+  document.body.classList.toggle("glow-on", Boolean(theme.glowOn));
 
-  $("primaryColor").value = t.primary;
-  $("backgroundColor").value = t.bg;
-  $("glowColor").value = t.glow;
-  $("buttonColor").value = t.button;
-  $("glowIntensity").value = t.glowIntensity;
-  $("brightness").value = t.brightness;
-  $("glowToggle").checked = !!t.glowOn;
-
-  $("glowValue").textContent = t.glowIntensity + "%";
-  $("brightnessValue").textContent = t.brightness + "%";
+  $("glowValue").textContent = theme.glowIntensity + "%";
+  $("brightnessValue").textContent = theme.brightness + "%";
 }
 
-function readControls(){
-  return {
-    primary:$("primaryColor").value,
-    bg:$("backgroundColor").value,
-    glow:$("glowColor").value,
-    button:$("buttonColor").value,
-    glowIntensity:+$("glowIntensity").value,
-    brightness:+$("brightness").value,
-    glowOn:$("glowToggle").checked
-  };
-}
+function loadThemeControls() {
+  let theme = DEFAULT_THEME;
 
-function setStatus(id,msg,type=""){
-  const el = $(id);
-  el.textContent = msg;
-  el.className = "status " + type;
-}
+  try {
+    const saved = localStorage.getItem(THEME_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (validTheme(parsed)) theme = parsed;
+    }
+  } catch (error) {
+    theme = DEFAULT_THEME;
+  }
 
-try{
-  const saved = JSON.parse(localStorage.getItem(THEME_KEY) || "null");
-  applyTheme(validTheme(saved) ? saved : defaultTheme);
-}catch{
-  applyTheme(defaultTheme);
+  applyTheme(theme);
 }
 
 [
@@ -851,200 +1021,85 @@ try{
   "glowIntensity",
   "brightness",
   "glowToggle"
-].forEach(id=>{
-  $(id).addEventListener("input",()=>applyTheme(readControls()));
-});
-
-$("saveTheme").addEventListener("click",()=>{
-  try{
-    localStorage.setItem(THEME_KEY,JSON.stringify(readControls()));
-    setStatus("panelStatus","Theme saved on this device only.","ok");
-  }catch{
-    setStatus("panelStatus","Could not save theme in this browser.","error");
-  }
-});
-
-$("resetTheme").addEventListener("click",()=>{
-  applyTheme(defaultTheme);
-  localStorage.removeItem(THEME_KEY);
-  setStatus("panelStatus","Default theme restored.","ok");
-});
-
-document.addEventListener("keydown",e=>{
-  if(e.key === "Escape"){
-    closeUpdating();
-    $("adminModal").classList.remove("open");
-  }
-});
-
-$("adminOpen").addEventListener("click",()=>{
-  $("adminModal").classList.add("open");
-  checkSession();
-});
-
-$("closeModal").addEventListener("click",()=>{
-  $("adminModal").classList.remove("open");
-});
-
-$("adminModal").addEventListener("click",e=>{
-  if(e.target === $("adminModal")){
-    $("adminModal").classList.remove("open");
-  }
-});
-
-function showLoggedIn(isIn){
-  $("loginArea").hidden = isIn;
-  $("panelArea").hidden = !isIn;
-
-  if(!isIn){
-    $("passwordChangeArea").hidden = true;
-  }
-}
-
-async function api(path,body){
-  const options = {
-    method:body ? "POST" : "GET",
-    credentials:"same-origin",
-    cache:"no-store",
-    headers:body ? {"Content-Type":"application/json"} : {}
-  };
-
-  if(body){
-    options.body = JSON.stringify(body);
-  }
-
-  const res = await fetch(path,options);
-  let data = {};
-
-  try{
-    data = await res.json();
-  }catch{}
-
-  return {ok:res.ok,status:res.status,data};
-}
-
-async function checkSession(){
-  setStatus("loginStatus","Checking admin session…");
-
-  try{
-    const r = await api("/api/auth");
-
-    if(r.ok && r.data.authenticated){
-      showLoggedIn(true);
-      setStatus("panelStatus","Admin session verified.","ok");
-    }else{
-      showLoggedIn(false);
-      setStatus("loginStatus","Enter the current admin password to continue.");
-    }
-  }catch{
-    showLoggedIn(false);
-    setStatus("loginStatus","Admin server unavailable. Check the backend setup.","error");
-  }
-}
-
-$("loginBtn").addEventListener("click",async()=>{
-  const password = $("adminPassword").value;
-
-  if(!password){
-    setStatus("loginStatus","Enter your password.","error");
-    return;
-  }
-
-  $("loginBtn").disabled = true;
-  setStatus("loginStatus","Verifying password…");
-
-  try{
-    const r = await api("/api/auth",{password});
-
-    if(r.ok && r.data.authenticated){
-      $("adminPassword").value = "";
-      showLoggedIn(true);
-      setStatus("panelStatus","Admin access granted.","ok");
-    }else if(r.data.code === "OLD_PASSWORD"){
-      setStatus("loginStatus","Sorry, this password was updated. Please try again.","error");
-    }else{
-      setStatus("loginStatus",r.data.error || "Incorrect password.","error");
-    }
-  }catch{
-    setStatus("loginStatus","Admin server unavailable. Check the backend setup.","error");
-  }finally{
-    $("loginBtn").disabled = false;
-  }
-});
-
-$("showPasswordChange").addEventListener("click",()=>{
-  $("passwordChangeArea").hidden = false;
-});
-
-$("cancelPasswordChange").addEventListener("click",()=>{
-  $("passwordChangeArea").hidden = true;
-
-  ["currentPassword","newPassword","confirmPassword"].forEach(id=>{
-    $(id).value = "";
+].forEach(function(id) {
+  $(id).addEventListener("input", function() {
+    const theme = readThemeControls();
+    applyTheme(theme);
   });
 });
 
-$("changePasswordBtn").addEventListener("click",async()=>{
-  const current = $("currentPassword").value;
-  const newPass = $("newPassword").value;
-  const confirm = $("confirmPassword").value;
+/* SAVE THEME */
 
-  const rule = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$/;
-
-  if(!rule.test(newPass)){
-    setStatus("panelStatus","Use 6–12 letters/numbers with at least one letter and one number.","error");
-    return;
-  }
-
-  if(newPass !== confirm){
-    setStatus("panelStatus","New passwords do not match.","error");
-    return;
-  }
-
-  $("changePasswordBtn").disabled = true;
-  setStatus("panelStatus","Updating password…");
-
-  try{
-    const r = await api("/api/change-password",{
-      currentPassword:current,
-      newPassword:newPass
-    });
-
-    if(r.ok){
-      $("passwordChangeArea").hidden = true;
-
-      ["currentPassword","newPassword","confirmPassword"].forEach(id=>{
-        $(id).value = "";
-      });
-
-      showLoggedIn(false);
-      $("adminPassword").value = "";
-
-      setStatus(
-        "loginStatus",
-        "Password updated. All old sessions were revoked. Sign in with your new password.",
-        "ok"
-      );
-    }else if(r.data.code === "OLD_PASSWORD"){
-      setStatus("panelStatus","Sorry, this password was updated. Please try again.","error");
-    }else{
-      setStatus("panelStatus",r.data.error || "Could not update password.","error");
-    }
-  }catch{
-    setStatus("panelStatus","Admin server unavailable. Check the backend setup.","error");
-  }finally{
-    $("changePasswordBtn").disabled = false;
+$("saveTheme").addEventListener("click", function() {
+  try {
+    localStorage.setItem(THEME_KEY, JSON.stringify(readThemeControls()));
+    setStatus("panelStatus", "Theme saved on this device.", "ok");
+  } catch (error) {
+    setStatus("panelStatus", "Could not save the theme.", "error");
   }
 });
 
-$("logoutBtn").addEventListener("click",async()=>{
-  try{
-    await api("/api/logout",{});
-  }catch{}
+/* RESET THEME */
 
-  showLoggedIn(false);
-  $("adminPassword").value = "";
-  setStatus("loginStatus","Logged out.");
+$("resetTheme").addEventListener("click", function() {
+  localStorage.removeItem(THEME_KEY);
+  applyTheme(DEFAULT_THEME);
+  setStatus("panelStatus", "Default theme restored.", "ok");
+});
+
+/* LOAD SAVED THEME ON PAGE START */
+
+loadThemeControls();
+
+/* RESTORE REMEMBERED LOGIN */
+
+try {
+  if (localStorage.getItem(LOGIN_KEY) === "yes" ||
+      sessionStorage.getItem(LOGIN_KEY) === "yes") {
+    showPanel(true);
+  }
+} catch (error) {
+  showPanel(false);
+}
+
+/* APP UPDATING OVERLAY */
+
+document.querySelectorAll(".app").forEach(function(app) {
+  const title = app.querySelector("h3").textContent;
+  const link = app.querySelector(".btn");
+  const icon = app.querySelector(".icon img");
+
+  link.addEventListener("click", function(event) {
+    if (APP_UPDATES[title] === true) {
+      event.preventDefault();
+
+      $("updateAppIcon").src = icon.src;
+      $("updateAppName").textContent =
+        title + " is currently being updated. Please check again later.";
+
+      $("appUpdating").style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+  });
+});
+
+function closeUpdating() {
+  $("appUpdating").style.display = "none";
+  document.body.style.overflow = "";
+}
+
+$("updateHome").addEventListener("click", function(event) {
+  event.preventDefault();
+  closeUpdating();
+});
+
+/* ESCAPE KEY */
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    $("adminModal").classList.remove("open");
+    closeUpdating();
+  }
 });
 </script>
 
