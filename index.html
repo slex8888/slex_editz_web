@@ -851,6 +851,7 @@ const APP_UPDATES = {
   It is NOT secure authentication for a public website.
 */
 const DEFAULT_ADMIN_PASSWORD = "SRAJLX810Y23";
+const THEME_RESET_VERSION = "1";  
 const PASS_KEY = "slexAdminPassword";
 const THEME_KEY = "slexThemeSettings";
 const REMEMBER_KEY = "slexAdminRemember";
@@ -858,6 +859,16 @@ const SESSION_KEY = "slexAdminSession";
 
 const $ = id => document.getElementById(id);
 
+const THEME_RESET_KEY = "slexThemeResetVersion";
+
+try {
+  const savedVersion = localStorage.getItem(THEME_RESET_KEY);
+
+  if (savedVersion !== THEME_RESET_VERSION) {
+    localStorage.removeItem("slexThemeSettings");
+    localStorage.setItem(THEME_RESET_KEY, THEME_RESET_VERSION);
+  }
+} catch (e) {}
 localStorage.removeItem("slexAdminPassword");
 localStorage.removeItem("slexAdminRemember");
 sessionStorage.removeItem("slexAdminSession");
