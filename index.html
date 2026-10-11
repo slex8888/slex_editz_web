@@ -88,7 +88,9 @@ footer{padding:24px 15px;text-align:center;border-top:1px solid #252532;backgrou
 <div class="app" data-app="MovieBox" data-description="Free Movie Anime"><div class="icon"><img src="MovieBox.jpg" alt="MovieBox"></div><h3>MovieBox</h3><p>Free Movie &amp; Anime</p><a class="btn" href="https://www.mediafire.com/file/f244x7svpiezl1d/MovieBox_v4.0.02.0903.02_%25E2%2598%25A0%25EF%25B8%258F.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'MovieBox','MovieBox.jpg')">Download</a></div>
 </div></section></main>
 <footer id="mainFooter"><p>© 2026 SLEX.EDITZ — All Rights Reserved</p><p><a href="https://instagram.com/slex_888" target="_blank" rel="noopener">@slex_888</a></p></footer>
-<div id="maintenanceScreen" hidden><div class="maintenance-logo">SLEX<span>.EDITZ</span></div><div class="off-icon"><img src="insta-logo.jpg" alt="Instagram"></div><h1>WEBSITE IS <span>OFF</span></h1><p>Our website is temporarily unavailable.<br>Please check back again later.</p><div class="instagram-box"><div class="instagram-title">For updates &amp; information</div><a href="https://instagram.com/slex_888" target="_blank" rel="noopener">Instagram: @slex_888</a></div><div class="maintenance-footer">SLEX.EDITZ • EDIT • CREATE • INSPIRE</div></div>
+<div id="maintenanceScreen" hidden><div class="maintenance-logo">SLEX<span>.EDITZ</span></div><div class="off-icon"><img src="insta-logo.jpg" alt="Instagram"></div><h1>WEBSITE IS <span>OFF</span></h1><p>Our website is temporarily unavailable.<br>Please check back again later.</p><div class="instagram-box"><div class="instagram-title">For updates &amp; information</div><a href="https://instagram.com/slex_888" target="_blank" rel="noopener">Instagram: @slex_888</a></div><div class="maintenance-footer">SLEX.EDITZ • EDIT • CREATE • INSPIRE</div>
+<button id="maintenanceAdminButton" type="button" style="display:inline-block;margin-top:22px;padding:11px 18px;color:#fff;background:#171720;border:1px solid var(--primary);border-radius:9px;font-size:13px;font-weight:bold;box-shadow:none;cursor:pointer">⚙️ Admin Access</button>
+</div>
 <div id="updatingScreen" hidden><div class="update-logo">SLEX<span>.EDITZ</span></div><div class="update-app-icon"><img id="updateAppIcon" src="" alt="App"></div><h1>WAIT SOME TIME</h1><h1>APP IS <span>UPDATING</span></h1><div class="update-app-name" id="updateAppName">This app is currently being updated.</div><div class="update-message">The download is temporarily unavailable.<br>Please wait a few minutes and try again later.</div><div class="update-contact"><div class="update-contact-title">For updates &amp; information</div><a href="https://instagram.com/slex_888" target="_blank" rel="noopener"><img src="insta-logo.jpg" alt="Instagram"><span>@slex_888</span></a></div><a href="#" class="update-home" onclick="closeUpdating();return false;">🏠 &nbsp; Back to Home</a></div>
 
 <div class="modal-overlay" id="adminModal" hidden><div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
@@ -222,11 +224,26 @@ $("appSearch").addEventListener("input",searchApps);
 function handleDownload(event,name,image,updating){if(isBlocked()){event.preventDefault();alert("Access on this browser has been blocked by the site administrator.");return false}stats.downloads=(Number(stats.downloads)||0)+1;saveStats();updateStatsUI();if(updating){event.preventDefault();$("updateAppName").textContent=name+" is currently being updated.";$("updateAppIcon").src=image;$("updateAppIcon").alt=name;updatingScreen.hidden=false;return false}return true}
 function closeUpdating(){updatingScreen.hidden=true}
 function updateStatsUI(){$("statVisits").textContent=stats.visits||0;$("statDownloads").textContent=stats.downloads||0;$("visitorCount").textContent=stats.visits||0;$("downloadCount").textContent=stats.downloads||0;$("statBlocked").textContent=blockedIds.length}
-function openAdmin(){if(SITE_OFF||isBlocked())return;adminModal.hidden=false;document.body.style.overflow="hidden";let remembered=false,session=false;try{remembered=localStorage.getItem(REMEMBER_KEY)==="true";session=sessionStorage.getItem(SESSION_KEY)==="true"}catch(e){}if(remembered||session)showAdminControls();else{showLoginArea();setTimeout(()=>adminPassword.focus(),80)}}
+function openAdmin(){
+  if(isBlocked())return;
+  adminModal.hidden=false;
+  document.body.style.overflow="hidden";
+  let remembered=false,session=false;
+  try{
+    remembered=localStorage.getItem(REMEMBER_KEY)==="true";
+    session=sessionStorage.getItem(SESSION_KEY)==="true";
+  }catch(e){}
+  if(remembered||session){
+    showAdminControls();
+  }else{
+    showLoginArea();
+    setTimeout(()=>adminPassword.focus(),80);
+  }
+}
 function closeAdminModal(){adminModal.hidden=true;document.body.style.overflow="";adminPassword.value="";newAdminPassword.value="";setStatus(loginStatus,"");setStatus(themeStatus,"")}
 function showLoginArea(){loginArea.hidden=false;adminControls.hidden=true;adminPassword.value="";setStatus(loginStatus,"")}
 function showAdminControls(){loginArea.hidden=true;adminControls.hidden=false;loadThemeIntoControls();showTab("dashboard");setStatus(themeStatus,"");$("adminModal").querySelector(".modal-box").scrollTop=0;updateStatsUI();renderBlockedList();populateAppSelect();loadAppForm();loadWebsiteForm()}
-$("openAdmin").addEventListener("click",openAdmin);$("closeAdmin").addEventListener("click",closeAdminModal);$("cancelAdmin").addEventListener("click",closeAdminModal);$("closeAdminBottom").addEventListener("click",closeAdminModal);
+$("openAdmin").addEventListener("click",openAdmin);$("maintenanceAdminButton").addEventListener("click",openAdmin);$("closeAdmin").addEventListener("click",closeAdminModal);$("cancelAdmin").addEventListener("click",closeAdminModal);$("closeAdminBottom").addEventListener("click",closeAdminModal);
 adminModal.addEventListener("click",e=>{if(e.target===adminModal)closeAdminModal()});
 function togglePassword(input,button){const hidden=input.type==="password";input.type=hidden?"text":"password";button.textContent=hidden?"🙈":"👁️";button.setAttribute("aria-pressed",String(hidden))}
 passwordEye.addEventListener("click",()=>togglePassword(adminPassword,passwordEye));newPasswordEye.addEventListener("click",()=>togglePassword(newAdminPassword,newPasswordEye));
