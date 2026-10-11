@@ -1,56 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
-
+<title>SLEX.EDITZ</title>
 <meta name="theme-color" content="#08080d">
-
-<title>SLEX.EDITZ — Editing Tools & Apps</title>
-
-<meta
-  name="description"
-  content="SLEX.EDITZ — Editing tools and apps for creators."
->
-
+<meta name="description" content="SLEX.EDITZ — Discover useful apps, tools and resources for editing.">
 <meta property="og:title" content="SLEX.EDITZ">
-<meta
-  property="og:description"
-  content="Discover editing tools and apps at SLEX.EDITZ."
->
-<meta property="og:type" content="website">
+<meta property="og:description" content="Discover useful apps, tools and resources for editing.">
 <meta property="og:image" content="insta-logo.jpg">
-
+<meta property="og:type" content="website">
 <link rel="icon" type="image/jpeg" href="insta-logo.jpg">
 
 <style>
-
-/* =====================================
-   GLOBAL SETTINGS
-===================================== */
-
 :root {
-  --primary: #a020f0;
+  --primary: #8b00ff;
   --background: #08080d;
-  --card: #111119;
-  --text: #ffffff;
-  --muted: #a7a7b5;
-  --glow: 0 0 18px rgba(160, 32, 240, 0.45);
-  --brightness: 1;
+  --glow: #b000ff;
+  --button: #8b00ff;
+  --glow-strength: 35;
+  --brightness: 100%;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
 }
 
 html {
+  width: 100%;
   min-height: 100%;
   scroll-behavior: smooth;
 }
@@ -58,1487 +39,790 @@ html {
 body {
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden;
   background: var(--background);
-  color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
-  filter: brightness(var(--brightness));
+  color: #fff;
+  overflow-x: hidden;
+  transition: background .3s, color .3s;
 }
 
-button,
-input,
-select {
-  font: inherit;
-}
+button, input { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; }
+[hidden] { display: none !important; }
 
-button {
-  cursor: pointer;
-}
-
-button:focus-visible,
-input:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 3px;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.container {
-  width: min(1100px, 92%);
-  margin: auto;
-}
-
-/* =====================================
-   HEADER
-===================================== */
+/* HEADER */
 
 header {
-  padding: 35px 0 20px;
+  width: 100%;
+  padding: 22px 15px 12px;
   text-align: center;
 }
 
 .logo {
-  display: inline-block;
-  font-size: clamp(38px, 9vw, 65px);
-  font-weight: 1000;
-  letter-spacing: 3px;
-  line-height: 1.1;
-  color: white;
-  text-shadow: var(--glow);
-  overflow-wrap: anywhere;
-}
-
-.logo span {
-  color: var(--primary);
-}
-
-.tagline {
-  color: var(--muted);
-  font-size: 13px;
-  margin-top: 9px;
+  color: #fff;
+  font-size: clamp(27px, 6vw, 38px);
+  font-weight: 900;
   letter-spacing: 2px;
+  text-shadow: 0 0 calc(var(--glow-strength) * .18px) var(--glow);
 }
 
-/* =====================================
-   ADMIN ACCESS BUTTON
-===================================== */
+.logo span { color: var(--primary); }
 
-.admin-access-wrap {
-  text-align: center;
-  margin: 18px 0 28px;
-}
-
-.admin-access {
-  border: 1px solid var(--primary);
-  color: white;
-  background: transparent;
-  border-radius: 25px;
-  padding: 10px 23px;
-  box-shadow: var(--glow);
-  transition: 0.25s;
-}
-
-.admin-access:hover {
-  background: var(--primary);
-  transform: translateY(-2px);
-}
-
-/* =====================================
-   HERO
-===================================== */
+/* HERO */
 
 .hero {
   text-align: center;
-  padding: 25px 0 30px;
+  padding: 25px 15px 28px;
 }
 
 .hero h1 {
-  font-size: clamp(24px, 5vw, 38px);
+  font-size: clamp(25px, 5vw, 36px);
+  font-weight: 900;
   margin-bottom: 12px;
 }
 
-.hero h1 span {
-  color: var(--primary);
-}
-
 .hero p {
-  max-width: 600px;
-  margin: auto;
-  color: var(--muted);
+  color: #b9b9c5;
+  font-size: 14px;
   line-height: 1.7;
 }
 
-/* =====================================
-   SEARCH
-===================================== */
+/* SEARCH */
 
-.search-wrap {
-  margin: 10px auto 35px;
-  max-width: 600px;
+.search-box {
+  width: min(90%, 500px);
+  margin: 0 auto;
 }
 
-#searchInput {
+.search-box input {
   width: 100%;
-  padding: 15px 18px;
-  background: var(--card);
-  border: 1px solid #30303c;
-  border-radius: 12px;
-  color: white;
+  padding: 13px 16px;
+  background: #111119;
+  color: #fff;
+  border: 1px solid #292936;
+  border-radius: 10px;
   outline: none;
-  transition: 0.2s;
+  font-size: 14px;
 }
 
-#searchInput:focus {
+.search-box input:focus {
   border-color: var(--primary);
-  box-shadow: var(--glow);
+  box-shadow: 0 0 calc(var(--glow-strength) * .2px) var(--glow);
 }
 
-#searchInput::placeholder {
-  color: #858594;
+/* ADMIN BUTTON — UNDER SEARCH, RIGHT SIDE */
+
+.admin-access-row {
+  width: min(90%, 500px);
+  margin: 10px auto 28px;
+  display: flex;
+  justify-content: flex-end;
 }
 
-/* =====================================
-   SECTION HEADING
-===================================== */
+.admin-access {
+  display: inline-block;
+  margin: 0;
+  padding: 8px 13px;
+  color: #fff;
+  background: var(--button);
+  border: 1px solid var(--primary);
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 0 calc(var(--glow-strength) * .25px) var(--glow);
+  transition: .2s;
+}
+
+.admin-access:hover { transform: translateY(-2px); }
+
+/* APP SECTION */
+
+.apps-section {
+  width: min(1100px, 94%);
+  margin: 0 auto;
+  padding: 0 0 45px;
+}
 
 .section-title {
-  font-size: 25px;
-  margin-bottom: 23px;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 23px;
+  font-weight: 900;
 }
 
-.section-title span {
-  color: var(--primary);
-}
-
-/* =====================================
-   APP GRID
-===================================== */
-
-.app-grid {
+.apps-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  padding-bottom: 45px;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 18px;
 }
 
-.app-card {
+.app {
   min-width: 0;
-  background: var(--card);
-  border: 1px solid #262633;
-  border-radius: 16px;
-  padding: 17px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: 0.25s;
+  padding: 18px 12px;
+  text-align: center;
+  background: #111119;
+  border: 1px solid #252532;
+  border-radius: 14px;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
 }
 
-.app-card:hover {
+.app:hover {
+  transform: translateY(-4px);
   border-color: var(--primary);
-  box-shadow: var(--glow);
-  transform: translateY(-3px);
+  box-shadow: 0 0 calc(var(--glow-strength) * .25px) var(--glow);
 }
 
-.app-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.icon {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 13px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #20202a;
+  border: 1px solid #292936;
 }
 
-.app-icon {
-  width: 62px;
-  height: 62px;
-  border-radius: 13px;
+.icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  flex-shrink: 0;
-  background: #20202b;
 }
 
-.app-details {
-  min-width: 0;
-}
-
-.app-details h3 {
-  font-size: 17px;
+.app h3 {
+  margin-bottom: 7px;
+  font-size: 16px;
   overflow-wrap: anywhere;
-  margin-bottom: 6px;
 }
 
-.app-details p {
-  color: var(--muted);
+.app p {
+  min-height: 32px;
+  margin-bottom: 14px;
+  color: #b4b4c0;
   font-size: 12px;
   line-height: 1.5;
 }
 
-.app-status {
-  font-size: 11px;
-  color: #8be6a4;
-  margin-top: 5px;
-}
-
-.app-status.updating {
-  color: #ffbf69;
-}
-
-.download-btn {
+.btn {
+  display: inline-block;
   width: 100%;
-  padding: 11px;
-  background: var(--primary);
-  border: none;
-  border-radius: 9px;
-  color: white;
+  padding: 10px 7px;
+  color: #fff;
+  background: var(--button);
+  border: 0;
+  border-radius: 7px;
+  font-size: 13px;
   font-weight: bold;
-  transition: 0.2s;
+  transition: .2s;
 }
 
-.download-btn:hover {
-  filter: brightness(1.15);
-  box-shadow: var(--glow);
-}
+.btn:hover { filter: brightness(1.15); }
 
-.download-btn:disabled {
-  opacity: 0.8;
-  cursor: pointer;
-}
-
-#noResults {
-  color: var(--muted);
+.no-results {
+  padding: 25px 10px;
   text-align: center;
-  padding: 25px 0 45px;
+  color: #c5c5d0;
+  grid-column: 1 / -1;
 }
 
-/* =====================================
-   FOOTER
-===================================== */
+/* FOOTER */
 
 footer {
+  padding: 24px 15px;
   text-align: center;
-  border-top: 1px solid #242430;
-  padding: 25px 12px;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 2;
+  border-top: 1px solid #252532;
+  background: #0b0b12;
 }
 
-footer a {
-  color: var(--primary);
+footer p {
+  color: #b4b4c0;
+  font-size: 12px;
+  line-height: 1.8;
 }
 
-footer a:hover {
-  text-decoration: underline;
-}
+footer a { color: var(--primary); font-weight: bold; }
 
-/* =====================================
-   OVERLAY BASE
-===================================== */
+/* FULL-SCREEN SCREENS */
 
-.overlay {
+#maintenanceScreen,
+#updatingScreen {
   position: fixed;
   inset: 0;
-  z-index: 9999;
-  background: rgba(0, 0, 0, 0.94);
-  overflow-y: auto;
-  padding: 20px;
-}
-
-.overlay-center {
-  min-height: 100%;
+  z-index: 9000;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.panel {
-  width: min(430px, 100%);
-  margin: auto;
-  padding: 25px;
-  border-radius: 17px;
-  background: #111119;
-  border: 1px solid var(--primary);
-  box-shadow: var(--glow);
-}
-
-.panel h2 {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 24px 18px;
   text-align: center;
-  margin-bottom: 20px;
+  background: var(--background);
+}
+
+.maintenance-logo,
+.update-logo {
+  margin-bottom: 25px;
+  font-size: clamp(27px, 7vw, 38px);
+  font-weight: 900;
+  letter-spacing: 2px;
   overflow-wrap: anywhere;
 }
 
-.panel p {
-  color: var(--muted);
-  line-height: 1.6;
+.maintenance-logo span,
+.update-logo span,
+#maintenanceScreen h1 span,
+#updatingScreen h1 span { color: var(--primary); }
+
+.off-icon,
+.update-app-icon {
+  width: 85px;
+  height: 85px;
+  margin: 0 auto 24px;
+  border: 2px solid var(--primary);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 0 calc(var(--glow-strength) * .25px) var(--glow);
 }
 
-.panel-input {
+.off-icon img,
+.update-app-icon img {
   display: block;
   width: 100%;
-  margin: 12px 0;
-  padding: 13px;
-  border: 1px solid #393947;
-  border-radius: 9px;
-  background: #08080d;
-  color: white;
+  height: 100%;
+  object-fit: cover;
 }
 
-.primary-btn,
-.secondary-btn,
-.danger-btn {
-  border: none;
-  border-radius: 9px;
-  padding: 12px;
-  color: white;
-  width: 100%;
-  margin-top: 10px;
+#maintenanceScreen h1,
+#updatingScreen h1 {
+  font-size: clamp(24px, 6vw, 34px);
+  margin-bottom: 12px;
+  font-weight: 900;
+}
+
+#maintenanceScreen > p,
+.update-message {
+  color: #b9b9c5;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.instagram-box,
+.update-contact {
+  width: min(100%, 340px);
+  margin-top: 22px;
+  padding: 16px;
+  border: 1px solid #292936;
+  border-radius: 12px;
+  background: #111119;
+}
+
+.instagram-title,
+.update-contact-title {
+  margin-bottom: 12px;
+  color: #c5c5d0;
+  font-size: 13px;
+}
+
+.instagram-box a,
+.update-contact a {
+  color: var(--primary);
+  font-size: 14px;
   font-weight: bold;
+  overflow-wrap: anywhere;
 }
 
-.primary-btn {
-  background: var(--primary);
+.maintenance-footer {
+  margin-top: 30px;
+  color: #767684;
+  font-size: 11px;
+  letter-spacing: 1px;
 }
 
-.secondary-btn {
-  background: #292936;
+.update-logo { margin-bottom: 20px; }
+.update-app-icon { width: 75px; height: 75px; margin-bottom: 20px; }
+.update-app-name { margin-top: 12px; color: var(--primary); font-size: 16px; font-weight: bold; }
+.update-message { margin-top: 12px; }
+
+.update-contact a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
 }
 
-.danger-btn {
-  background: #a72736;
+.update-contact img {
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  object-fit: cover;
 }
 
-.error-text {
-  color: #ff7777 !important;
+.update-home {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: var(--button);
+  border-radius: 9px;
+  color: #fff;
+  font-weight: bold;
   font-size: 13px;
-  text-align: center;
-  margin-top: 10px;
 }
 
-.success-text {
-  color: #85e6a4 !important;
+/* ADMIN MODAL: FIXED CENTRE */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(0, 0, 0, .82);
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.modal-box {
+  width: min(100%, 640px);
+  max-height: calc(100vh - 24px);
+  max-height: calc(100dvh - 24px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 22px;
+  color: #fff;
+  background: #111119;
+  border: 1px solid var(--primary);
+  border-radius: 15px;
+  box-shadow: 0 0 calc(var(--glow-strength) * .3px) var(--glow);
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) #111119;
+}
+
+.modal-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.modal-heading h2 { font-size: 19px; }
+
+.close-admin {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  color: #fff;
+  background: #242431;
+  border: 0;
+  border-radius: 8px;
+  font-size: 23px;
+}
+
+.muted {
+  margin-bottom: 18px;
+  color: #b9b9c5;
   font-size: 13px;
-  text-align: center;
-  margin-top: 10px;
+  line-height: 1.7;
 }
 
-.remember-row {
+.field { margin-bottom: 15px; }
+
+.field label,
+.control-card label,
+.password-change-label {
+  display: block;
+  margin-bottom: 9px;
+  color: #dedee8;
+  font-size: 13px;
+}
+
+.password-wrap { display: flex; align-items: stretch; gap: 8px; }
+.password-wrap input { flex: 1; min-width: 0; }
+
+.field input,
+.password-wrap input {
+  width: 100%;
+  padding: 12px;
+  color: #fff;
+  background: #09090f;
+  border: 1px solid #343443;
+  border-radius: 8px;
+  outline: none;
+}
+
+.field input:focus,
+.password-wrap input:focus { border-color: var(--primary); }
+
+.password-eye,
+.eye-btn {
+  min-width: 43px;
+  padding: 8px;
+  color: #fff;
+  background: #252532;
+  border: 1px solid #343443;
+  border-radius: 8px;
+}
+
+.remember-row,
+.check-row {
   display: flex;
   align-items: center;
   gap: 9px;
-  color: var(--muted);
+  margin: 15px 0;
+  color: #c5c5d0;
   font-size: 13px;
-  margin: 12px 0;
 }
 
-/* =====================================
-   ADMIN PANEL
-===================================== */
+.remember-row input,
+.check-row input { accent-color: var(--primary); }
 
-.admin-panel {
-  width: min(520px, 100%);
+.panel-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 18px;
 }
 
-.admin-section {
-  margin-top: 22px;
-  padding-top: 17px;
-  border-top: 1px solid #333340;
-}
-
-.admin-section h3 {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.admin-section label {
-  display: block;
-  margin-top: 12px;
-  margin-bottom: 6px;
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.admin-section input[type="color"] {
-  width: 100%;
-  height: 42px;
-  background: #08080d;
-  border: 1px solid #393947;
-  border-radius: 8px;
-  padding: 4px;
-}
-
-.admin-section input[type="range"] {
-  width: 100%;
-  accent-color: var(--primary);
-}
-
-.admin-section input[type="checkbox"] {
-  accent-color: var(--primary);
-}
-
-.admin-section input[type="text"],
-.admin-section input[type="password"] {
-  width: 100%;
+.panel-btn {
+  flex: 1 1 115px;
   padding: 11px;
-  border-radius: 8px;
-  background: #08080d;
-  color: white;
+  color: #fff;
+  background: #252532;
   border: 1px solid #393947;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
 }
 
-.range-value {
-  color: var(--primary);
-  font-size: 13px;
-}
+.panel-btn.primary { background: var(--button); border-color: var(--primary); }
 
-.admin-note {
-  margin-top: 10px;
+.status {
+  min-height: 20px;
+  margin-top: 13px;
   font-size: 12px;
   line-height: 1.6;
-  color: #a7a7b5;
+  overflow-wrap: anywhere;
 }
 
-/* =====================================
-   MAINTENANCE SCREEN
-===================================== */
+.status.error { color: #ff7676; }
+.status.success { color: #6dffa5; }
 
-.maintenance-content {
-  width: min(600px, 100%);
-  margin: auto;
-  text-align: center;
-  padding: 35px 20px;
+/* THEME CONTROLS */
+
+.control-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
 }
 
-.maintenance-content img {
-  width: 95px;
-  height: 95px;
-  object-fit: cover;
-  border-radius: 22px;
-  margin-bottom: 22px;
+.control-card {
+  min-width: 0;
+  padding: 12px;
+  background: #09090f;
+  border: 1px solid #292936;
+  border-radius: 9px;
 }
 
-.maintenance-content h1 {
-  font-size: clamp(30px, 7vw, 48px);
-  color: var(--primary);
-  text-shadow: var(--glow);
-  margin-bottom: 15px;
+.control-card input[type="color"] {
+  width: 100%;
+  height: 38px;
+  padding: 2px;
+  background: #09090f;
+  border: 1px solid #343443;
+  border-radius: 6px;
 }
 
-.maintenance-content p {
-  color: #b9b9c7;
-  line-height: 1.8;
+.control-card input[type="range"] { width: 100%; accent-color: var(--primary); }
+
+.note,
+.admin-note {
+  margin-top: 15px;
+  padding: 12px;
+  color: #aaaab8;
+  background: #09090f;
+  border: 1px solid #292936;
+  border-radius: 8px;
+  font-size: 11px;
+  line-height: 1.7;
 }
 
-.contact-btn {
-  display: inline-block;
-  padding: 12px 22px;
-  margin-top: 24px;
-  border-radius: 10px;
-  background: var(--primary);
-  color: white;
+.password-change-section {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #30303d;
 }
 
-/* =====================================
-   APP UPDATING SCREEN
-===================================== */
+.password-change-section h3 { margin-bottom: 12px; font-size: 15px; }
+.password-change-section .password-wrap { margin-top: 8px; }
 
-.update-content {
-  width: min(520px, 100%);
-  margin: auto;
-  text-align: center;
-  padding: 30px 20px;
+@media (max-width: 380px) {
+  .apps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .app { padding: 14px 9px; }
+  .control-grid { grid-template-columns: 1fr; }
+  .modal-box { padding: 17px; }
 }
 
-.update-content img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 20px;
-  margin-bottom: 20px;
-}
+/* SHORT/LANDSCAPE SCREEN */
 
-.update-content h1 {
-  font-size: clamp(26px, 6vw, 40px);
-  color: var(--primary);
-  margin-bottom: 15px;
-  text-shadow: var(--glow);
-}
-
-.update-content p {
-  color: #b9b9c7;
-  line-height: 1.8;
-}
-
-.update-content .primary-btn {
-  margin-top: 20px;
-}
-
-/* =====================================
-   MOBILE RESPONSIVE
-===================================== */
-
-@media (max-width: 420px) {
-
-  .app-grid {
-    grid-template-columns: 1fr;
+@media (max-height: 600px) {
+  .modal-overlay { padding: 6px; }
+  .modal-box {
+    max-height: calc(100vh - 12px);
+    max-height: calc(100dvh - 12px);
+    padding: 15px;
   }
-
-  .app-card {
-    padding: 14px;
-  }
-
-  .panel {
-    padding: 19px;
-  }
-
-  .logo {
-    letter-spacing: 1px;
-  }
-}
-
-@media (min-width: 760px) {
-
-  .app-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-}
-
-@media (min-width: 1050px) {
-
-  .app-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
+  .modal-heading { margin-bottom: 12px; }
+  .muted { margin-bottom: 12px; }
+  .field { margin-bottom: 10px; }
+  .remember-row, .check-row { margin: 10px 0; }
+  .panel-buttons { margin-top: 12px; }
 }
 
 @media (orientation: landscape) and (max-height: 500px) {
-
-  .overlay {
-    align-items: flex-start;
-    padding: 12px;
+  #maintenanceScreen, #updatingScreen {
+    justify-content: flex-start;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
-
-  .overlay-center {
-    min-height: auto;
-    align-items: flex-start;
-  }
-
-  .panel {
-    margin: 5px auto;
-  }
-
-  .maintenance-content,
-  .update-content {
-    padding: 15px 10px;
-  }
-
-  .maintenance-content img,
-  .update-content img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
-  }
-
+  .maintenance-logo, .update-logo { margin-bottom: 12px; }
+  .off-icon, .update-app-icon { width: 55px; height: 55px; margin-bottom: 12px; }
+  .instagram-box, .update-contact { margin-top: 15px; }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- =====================================
-     MAINTENANCE SCREEN
-===================================== -->
+<header>
+  <div class="logo">SLEX<span>.EDITZ</span></div>
+</header>
 
-<div id="maintenanceScreen" class="overlay hidden">
-  <div class="overlay-center">
-    <div class="maintenance-content">
+<main id="mainWebsite">
 
-      <img src="insta-logo.jpg" alt="SLEX.EDITZ Logo">
+  <section class="hero">
+    <h1>Editing Tools &amp; Apps</h1>
+    <p>Discover useful apps, tools and resources for editing.</p>
+  </section>
 
-      <h1>WEBSITE IS OFF</h1>
-
-      <p>
-        SLEX.EDITZ is currently under maintenance.
-        Please wait some time and visit again later.
-      </p>
-
-      <a
-        class="contact-btn"
-        href="https://instagram.com/slex_888"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Contact SLEX
-      </a>
-
-    </div>
+  <div class="search-box">
+    <input type="search" id="appSearch"
+      placeholder="Search apps & editing tools..."
+      aria-label="Search apps and editing tools">
   </div>
-</div>
 
-<!-- =====================================
-     APP UPDATING SCREEN
-===================================== -->
-
-<div id="appUpdating" class="overlay hidden">
-  <div class="overlay-center">
-    <div class="update-content">
-
-      <img id="updatingIcon" src="insta-logo.jpg" alt="App icon">
-
-      <h1>WAIT SOME TIME</h1>
-
-      <h2 id="updatingAppName">APP IS UPDATING</h2>
-
-      <p>
-        This app is currently being updated.
-        Please check again later.
-      </p>
-
-      <a
-        class="contact-btn"
-        href="https://instagram.com/slex_888"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Contact SLEX
-      </a>
-
-      <button
-        class="primary-btn"
-        type="button"
-        onclick="closeUpdatingScreen()"
-      >
-        Back to Home
-      </button>
-
-    </div>
+  <div class="admin-access-row">
+    <button class="admin-access" id="openAdmin" type="button">
+      ⚙️ Admin Access
+    </button>
   </div>
-</div>
 
-<!-- =====================================
-     ADMIN LOGIN
-===================================== -->
+  <section class="apps-section">
+    <h2 class="section-title">🔥 Featured Apps</h2>
+    <div class="apps-grid" id="appsGrid">
 
-<div id="loginOverlay" class="overlay hidden">
-  <div class="overlay-center">
-    <div class="panel">
-
-      <h2>🔐 Admin Login</h2>
-
-      <form id="loginForm">
-
-        <input
-          id="adminPasswordInput"
-          class="panel-input"
-          type="password"
-          placeholder="Enter admin password"
-          autocomplete="current-password"
-          required
-        >
-
-        <label class="remember-row">
-          <input id="showPassword" type="checkbox">
-          Show password
-        </label>
-
-        <label class="remember-row">
-          <input id="rememberAdmin" type="checkbox">
-          Remember me on this device
-        </label>
-
-        <button class="primary-btn" type="submit">
-          Login
-        </button>
-
-      </form>
-
-      <p id="loginError" class="error-text hidden">
-        Incorrect password.
-      </p>
-
-      <button
-        class="secondary-btn"
-        type="button"
-        onclick="closeLogin()"
-      >
-        Cancel
-      </button>
-
-    </div>
-  </div>
-</div>
-
-<!-- =====================================
-     ADMIN PANEL
-===================================== -->
-
-<div id="adminOverlay" class="overlay hidden">
-  <div class="overlay-center">
-    <div class="panel admin-panel">
-
-      <h2>⚙️ SLEX Admin Panel</h2>
-
-      <p>
-        Customize the appearance of your website
-        on this browser.
-      </p>
-
-      <!-- THEME SETTINGS -->
-
-      <div class="admin-section">
-
-        <h3>🎨 Theme Customization</h3>
-
-        <label for="primaryColor">Primary / Glow Color</label>
-        <input id="primaryColor" type="color" value="#a020f0">
-
-        <label for="backgroundColor">Background Color</label>
-        <input id="backgroundColor" type="color" value="#08080d">
-
-        <label for="brightnessRange">
-          Brightness:
-          <span id="brightnessValue" class="range-value">100%</span>
-        </label>
-
-        <input
-          id="brightnessRange"
-          type="range"
-          min="50"
-          max="120"
-          value="100"
-        >
-
-        <label for="glowRange">
-          Glow Intensity:
-          <span id="glowValue" class="range-value">45%</span>
-        </label>
-
-        <input
-          id="glowRange"
-          type="range"
-          min="0"
-          max="100"
-          value="45"
-        >
-
-        <label class="remember-row">
-          <input id="glowEnabled" type="checkbox" checked>
-          Enable glow effects
-        </label>
-
-        <button
-          class="primary-btn"
-          type="button"
-          onclick="saveTheme()"
-        >
-          Save Theme
-        </button>
-
-        <button
-          class="secondary-btn"
-          type="button"
-          onclick="resetTheme()"
-        >
-          Reset Theme
-        </button>
-
-        <p id="themeMessage" class="success-text hidden">
-          Theme saved successfully.
-        </p>
-
+      <div class="app" data-app="CapCut" data-description="Video Editor">
+        <div class="icon"><img src="capcut.jpg" alt="CapCut"></div>
+        <h3>CapCut</h3><p>Video Editor</p>
+        <a class="btn" href="https://www.mediafire.com/file/9fykbt4d8azfwn0/CAPCUT_ULTRA_v23.0.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'CapCut','capcut.jpg')">Download</a>
       </div>
 
-      <!-- PASSWORD CHANGE -->
-
-      <div class="admin-section">
-
-        <h3>🔑 Change Admin Password</h3>
-
-        <form id="changePasswordForm">
-
-          <label for="currentPassword">Current Password</label>
-
-          <input
-            id="currentPassword"
-            type="password"
-            autocomplete="current-password"
-            required
-          >
-
-          <label for="newPassword">New Password</label>
-
-          <input
-            id="newPassword"
-            type="password"
-            minlength="6"
-            maxlength="12"
-            autocomplete="new-password"
-            required
-          >
-
-          <label for="confirmPassword">Confirm New Password</label>
-
-          <input
-            id="confirmPassword"
-            type="password"
-            minlength="6"
-            maxlength="12"
-            autocomplete="new-password"
-            required
-          >
-
-          <label class="remember-row">
-            <input id="showNewPassword" type="checkbox">
-            Show password fields
-          </label>
-
-          <button class="primary-btn" type="submit">
-            Change Password
-          </button>
-
-        </form>
-
-        <p id="passwordMessage" class="hidden"></p>
-
-        <p class="admin-note">
-          Password must contain 6–12 letters and numbers only.
-          After changing it, you will need to log in again.
-        </p>
-
-        <p class="admin-note">
-          Important: This is a static HTML website.
-          The password is stored in this browser only.
-          This does not provide server-side security.
-        </p>
-
+      <div class="app" data-app="Alight Motion" data-description="Motion Graphics">
+        <div class="icon"><img src="alight-motion.jpg" alt="Alight Motion"></div>
+        <h3>Alight Motion</h3><p>Motion Graphics</p>
+        <a class="btn" href="https://www.mediafire.com/file/2cqmokmxkul7wp0/ALIGHT+MOTION+v5.0.273+.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'Alight Motion','alight-motion.jpg')">Download</a>
       </div>
 
-      <button
-        class="danger-btn"
-        type="button"
-        onclick="adminLogout()"
-      >
-        Logout
-      </button>
+      <div class="app" data-app="Wink" data-description="Photo Video Editor">
+        <div class="icon"><img src="Wink.jpg" alt="Wink"></div>
+        <h3>Wink</h3><p>Photo &amp; Video Editor</p>
+        <a class="btn" href="https://www.mediafire.com/file/o21m6a4jw6vaout/Wink+v3.16.5+.xapk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'Wink','Wink.jpg')">Download</a>
+      </div>
 
-      <button
-        class="secondary-btn"
-        type="button"
-        onclick="closeAdminPanel()"
-      >
-        Close Panel
-      </button>
+      <div class="app" data-app="EFIKO" data-description="Photo Video Editor">
+        <div class="icon"><img src="EFIKO.jpg" alt="EFIKO"></div>
+        <h3>EFIKO</h3><p>Photo &amp; Video Editor</p>
+        <a class="btn" href="https://www.mediafire.com/file/nhfvyp1j8pk2xql/EFIKO_PRO_v1.6.2%25F0%259F%2594%25A5.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'EFIKO','EFIKO.jpg')">Download</a>
+      </div>
+
+      <div class="app" data-app="PicsArt" data-description="Photo Editor">
+        <div class="icon"><img src="PicsArt.jpg" alt="PicsArt"></div>
+        <h3>PicsArt</h3><p>Photo Editor</p>
+        <a class="btn" href="https://www.mediafire.com/file/5fjugndt0dbc8b5/PICSART_v30.7.11_%25E2%2598%25A0%25EF%25B8%258F.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'PicsArt','PicsArt.jpg')">Download</a>
+      </div>
+
+      <div class="app" data-app="BeutiyPlus" data-description="Beauty Editor">
+        <div class="icon"><img src="BeutiyPlus.jpg" alt="BeutiyPlus"></div>
+        <h3>BeutiyPlus</h3><p>Beauty Editor</p>
+        <a class="btn" href="https://www.mediafire.com/file/8yt5e5w2b7pbzv0/BEUTIYPLUS_v7.44.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'BeutiyPlus','BeutiyPlus.jpg')">Download</a>
+      </div>
+
+      <div class="app" data-app="Remini" data-description="Photo Enhancer">
+        <div class="icon"><img src="Remini.jpg" alt="Remini"></div>
+        <h3>Remini</h3><p>Photo Enhancer</p>
+        <a class="btn" href="https://www.mediafire.com/file/026d7z4fo45bbza/REMINI_v3.7.1443.202524660_%25E2%2598%25A0%25EF%25B8%258F.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'Remini','Remini.jpg')">Download</a>
+      </div>
+
+      <div class="app" data-app="Glip Screen Recorder" data-description="Screen Recorder">
+        <div class="icon"><img src="Glip.jpg" alt="Glip Screen Recorder"></div>
+        <h3>Glip Screen Recorder</h3><p>Screen Recorder</p>
+        <a class="btn" href="https://www.mediafire.com/file/1pkwfb3i3pvlcyr/GLIP_v3.0.89_%25E2%2598%25A0%25EF%25B8%258F.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'Glip Screen Recorder','Glip.jpg')">Download</a>
+      </div>
+
+      <div class="app" data-app="PLAYit" data-description="Video Music Player">
+        <div class="icon"><img src="PLAYit.jpg" alt="PLAYit"></div>
+        <h3>PLAYit</h3><p>Video &amp; Music Player</p>
+        <a class="btn" href="https://www.mediafire.com/file/lvzgozdm92jqgnf/PLAYIT+2.7.52.6+.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'PLAYit','PLAYit.jpg')">Download</a>
+      </div>
+
+      <div class="app" data-app="MovieBox" data-description="Free Movie Anime">
+        <div class="icon"><img src="MovieBox.jpg" alt="MovieBox"></div>
+        <h3>MovieBox</h3><p>Free Movie &amp; Anime</p>
+        <a class="btn" href="https://www.mediafire.com/file/f244x7svpiezl1d/MovieBox_v4.0.02.0903.02_%25E2%2598%25A0%25EF%25B8%258F.apk/file" target="_blank" rel="noopener" onclick="return handleDownload(event,'MovieBox','MovieBox.jpg')">Download</a>
+      </div>
 
     </div>
+  </section>
+</main>
+
+<footer id="mainFooter">
+  <p>© 2026 SLEX.EDITZ — All Rights Reserved</p>
+  <p><a href="https://instagram.com/slex_888" target="_blank" rel="noopener">@slex_888</a></p>
+</footer>
+
+<div id="maintenanceScreen" hidden>
+  <div class="maintenance-logo">SLEX<span>.EDITZ</span></div>
+  <div class="off-icon"><img src="insta-logo.jpg" alt="Instagram"></div>
+  <h1>WEBSITE IS <span>OFF</span></h1>
+  <p>Our website is temporarily unavailable.<br>Please check back again later.</p>
+  <div class="instagram-box">
+    <div class="instagram-title">For updates &amp; information</div>
+    <a href="https://instagram.com/slex_888" target="_blank" rel="noopener">Instagram: @slex_888</a>
   </div>
+  <div class="maintenance-footer">SLEX.EDITZ • EDIT • CREATE • INSPIRE</div>
 </div>
 
-<!-- =====================================
-     MAIN WEBSITE
-===================================== -->
+<div id="updatingScreen" hidden>
+  <div class="update-logo">SLEX<span>.EDITZ</span></div>
+  <div class="update-app-icon"><img id="updateAppIcon" src="" alt="App"></div>
+  <h1>WAIT SOME TIME</h1>
+  <h1>APP IS <span>UPDATING</span></h1>
+  <div class="update-app-name" id="updateAppName">This app is currently being updated.</div>
+  <div class="update-message">The download is temporarily unavailable.<br>Please wait a few minutes and try again later.</div>
+  <div class="update-contact">
+    <div class="update-contact-title">For updates &amp; information</div>
+    <a href="https://instagram.com/slex_888" target="_blank" rel="noopener">
+      <img src="insta-logo.jpg" alt="Instagram"><span>@slex_888</span>
+    </a>
+  </div>
+  <a href="#" class="update-home" onclick="closeUpdating(); return false;">🏠 &nbsp; Back to Home</a>
+</div>
 
-<div id="mainWebsite">
+<!-- ADMIN MODAL -->
 
-  <header class="container">
+<div class="modal-overlay" id="adminModal" hidden>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
 
-    <div class="logo">
-      SLEX<span>.EDITZ</span>
+    <div class="modal-heading">
+      <h2 id="adminTitle">⚙️ SLEX.EDITZ Admin</h2>
+      <button class="close-admin" id="closeAdmin" type="button" aria-label="Close">×</button>
     </div>
 
-    <p class="tagline">
-      EDIT • CREATE • INSPIRE
-    </p>
-
-  </header>
-
-  <div class="container">
-
-    <div class="admin-access-wrap">
-
-      <button
-        class="admin-access"
-        type="button"
-        onclick="openAdminLogin()"
-      >
-        ⚙ Admin Access
-      </button>
-
-    </div>
-
-    <section class="hero">
-
-      <h1>
-        Editing Tools <span>& Apps</span>
-      </h1>
-
-      <p>
-        Discover editing tools and apps for your
-        creative projects, all in one place.
-      </p>
-
-    </section>
-
-    <!-- SEARCH -->
-
-    <div class="search-wrap">
-
-      <input
-        id="searchInput"
-        type="search"
-        placeholder="Search apps & editing tools..."
-        autocomplete="off"
-        aria-label="Search apps and editing tools"
-      >
-
-    </div>
-
-    <!-- APP LIST -->
-
-    <section>
-
-      <h2 class="section-title">
-        🔥 Featured <span>Apps</span>
-      </h2>
-
-      <div id="appGrid" class="app-grid">
-
-        <!-- CAPCUT -->
-
-        <article
-          class="app-card"
-          data-name="CapCut"
-          data-description="Video editing transitions effects"
-        >
-
-          <div class="app-info">
-
-            <img
-              class="app-icon"
-              src="capcut.jpg"
-              alt="CapCut"
-            >
-
-            <div class="app-details">
-
-              <h3>CapCut</h3>
-
-              <p>
-                Video editing, effects and transitions.
-              </p>
-
-              <div class="app-status" data-status>
-                ● Available
-              </div>
-
-            </div>
-
-          </div>
-
-          <button
-            class="download-btn"
-            type="button"
-            onclick="handleDownload(
-              event,
-              'CapCut',
-              'capcut.jpg',
-              'https://www.mediafire.com/file/9fykbt4d8azfwn0/CAPCUT_ULTRA_v23.0.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file'
-            )"
-          >
-            Download App
-          </button>
-
-        </article>
-
-        <!-- ALIGHT MOTION -->
-
-        <article
-          class="app-card"
-          data-name="Alight Motion"
-          data-description="Motion graphics keyframes animation"
-        >
-
-          <div class="app-info">
-
-            <img
-              class="app-icon"
-              src="alight-motion.jpg"
-              alt="Alight Motion"
-            >
-
-            <div class="app-details">
-
-              <h3>Alight Motion</h3>
-
-              <p>
-                Motion graphics, keyframes and animation.
-              </p>
-
-              <div class="app-status" data-status>
-                ● Available
-              </div>
-
-            </div>
-
-          </div>
-
-          <button
-            class="download-btn"
-            type="button"
-            onclick="handleDownload(
-              event,
-              'Alight Motion',
-              'alight-motion.jpg',
-              'https://www.mediafire.com/file/2cqmokmxkul7wp0/ALIGHT+MOTION+v5.0.273+.apk/file'
-            )"
-          >
-            Download App
-          </button>
-
-        </article>
-
-        <!-- WINK -->
-
-        <article
-          class="app-card"
-          data-name="Wink"
-          data-description="Video quality enhancement"
-        >
-
-          <div class="app-info">
-
-            <img
-              class="app-icon"
-              src="Wink.jpg"
-              alt="Wink"
-            >
-
-            <div class="app-details">
-
-              <h3>Wink</h3>
-
-              <p>
-                Video enhancement and quality tools.
-              </p>
-
-              <div class="app-status" data-status>
-                ● Available
-              </div>
-
-            </div>
-
-          </div>
-
-          <button
-            class="download-btn"
-            type="button"
-            onclick="handleDownload(
-              event,
-              'Wink',
-              'Wink.jpg',
-              'https://www.mediafire.com/file/o21m6a4jw6vaout/Wink+v3.16.5+.xapk/file'
-            )"
-          >
-            Download App
-          </button>
-
-        </article>
-
-        <!-- EFIKO -->
-
-        <article
-          class="app-card"
-          data-name="EFIKO"
-          data-description="Photo video effects filters"
-        >
-
-          <div class="app-info">
-
-            <img
-              class="app-icon"
-              src="EFIKO.jpg"
-              alt="EFIKO"
-            >
-
-            <div class="app-details">
-
-              <h3>EFIKO</h3>
-
-              <p>
-                Effects, filters and creative tools.
-              </p>
-
-              <div class="app-status" data-status>
-                ● Available
-              </div>
-
-            </div>
-
-          </div>
-
-          <button
-            class="download-btn"
-            type="button"
-            onclick="handleDownload(
-              event,
-              'EFIKO',
-              'EFIKO.jpg',
-              'https://www.mediafire.com/file/nhfvyp1j8pk2xql/EFIKO_PRO_v1.6.2%25F0%259F%2594%25A5.apk/file'
-            )"
-          >
-            Download App
-          </button>
-
-        </article>
-
-        <!-- PICSART -->
-
-        <article
-          class="app-card"
-          data-name="PicsArt"
-          data-description="Photo editing graphic design"
-        >
-
-          <div class="app-info">
-
-            <img
-              class="app-icon"
-              src="PicsArt.jpg"
-              alt="PicsArt"
-            >
-
-            <div class="app-details">
-
-              <h3>PicsArt</h3>
-
-              <p>
-                Photo editing and graphic design.
-              </p>
-
-              <div class="app-status" data-status>
-                ● Available
-              </div>
-
-            </div>
-
-          </div>
-
-          <button
-            class="download-btn"
-            type="button"
-            onclick="handleDownload(
-              event,
-              'PicsArt',
-              'PicsArt.jpg',
-              'https://www.mediafire.com/file/5fjugndt0dbc8b5/PICSART_v30.7.11_%25E2%2598%25A0%25EF%25B8%258F.apk/file'
-            )"
-          >
-            Download App
-          </button>
-
-        </article>
-
-        <!-- BEAUTYPLUS -->
-
-        <article
-          class="app-card"
-          data-name="BeautyPlus"
-          data-description="Beauty photo camera editing"
-        >
-
-          <div class="app-info">
-
-            <img
-              class="app-icon"
-              src="BeutiyPlus.jpg"
-              alt="BeautyPlus"
-            >
-
-            <div class="app-details">
-
-              <h3>BeautyPlus</h3>
-
-              <p>
-                Photo, camera and beauty editing tools.
-              </p>
-
-              <div class="app-status" data-status>
-                ● Available
-              </div>
-
-            </div>
-
-          </div>
-
-          <button
-            class="download-btn"
-            type="button"
-            onclick="handleDownload(
-              event,
-              'BeautyPlus',
-              'BeutiyPlus.jpg',
-              'https://www.mediafire.com/file/8yt5e5w2b7pbzv0/BEUTIYPLUS_v7.44.0_%25E2%2598%25A0%25EF%25B8%258F.apk/file'
-            )"
-          >
-            Download App
-          </button>
-
-        </article>
-
-        <!-- REMINI -->
-
-        <article
-          class="app-card"
-          data-name="Remini"
-          data-description="Photo enhancement image quality"
-        >
-
-          <div class="app-info">
-
-            <img
-              class="app-icon"
-              src="Remini.jpg"
-              alt="Remini"
-            >
-
-            <div class="app-details">
-
-              <h3>Remini</h3>
-
-              <p>
-                Photo enhancement and image restoration.
-              </p>
-
-              <div class="app-status" data-status>
-                ● Available
-              </div>
-
-            </div>
-
-          </div>
-
-          <button
-            class="download-btn"
-            type="button"
-            onclick="handleDownload(
-              event,
-              'Remini',
-              'Remini.jpg',
-              'https://www.mediafire.com/file/026d7z4fo45bbza/REMINI_v3.7.1443.202524660_%25E2%2598%25A0%25EF%25B8%258F.apk/file'
-            )"
-          >
-            Download App
-          </button>
-
-        </article>
-
-        <!-- GLIP -->
-
-        <article
-          class="app-card"
-          data-name="Glip Screen Recorder"
-          data-description="Screen recorder recording"
-        >
-
-          <div class="app-info">
-
-            <img
-              class="app-icon"
-              src="Glip.jpg"
-              alt="Glip Screen Recorder"
-            >
-
-            <div class="app-details">
-
-              <h3>Glip Screen Recorder</h3>
-
-              <p>
-                Screen recording tools.
-              </p>
-
-              <div class="app-status" data-status>
-                ● Available
-              </div>
-
-            </div>
-
-          </div>
-
-          <button
-            class="download-btn"
-            type="button"
-            onclick="handleDownload(
-              event,
-              'Glip Screen Recorder',
-              'Glip.jpg',
-              'https://www.mediafire.com/file/1pkwfb3i3pvlcyr/GLIP_v3.0.89_%25E2%2598%25A0%25EF%25B8%258F.apk/file'
-            )"
-          >
-            Download App
-          </button>
-
-        </article>
-
-        <!-- PLAYIT -->
-
-        <article
-          class="app-card"
-          data-name="PLAYit"
-          data-description="Video player media player"
-        >
-
-          <div class="app-info">
-
-            <img
-              class="app-icon"
-              src="PLAYit.jpg"
-              alt="PLAYit"
-            >
-
-            <div class="app-details">
-
-              <h3>PLAYit</h3>
-
-              <p>
-                Video player and media tools.
-              </p>
-
-              <div class="app-status" data-status>
-                ● Available
-              </div>
-
-            </div>
-
-          </div>
-
-          <button
-            class="download-btn"
-            type="button"
-            onclick="handleDownload(
-              event,
-              'PLAYit',
-              'PLAYit.jpg',
-              'https://www.mediafire.com/file/lvzgozdm92jqgnf/PLAYIT+2.7.52.6+.apk/file'
-            )"
-          >
-            Download App
-          </button>
-
-        </article>
-
-        <!-- MOVIEBOX -->
-
-        <article
-          class="app-card"
-          data-name="MovieBox"
-          data-description="MovieBox application updating"
-        >
-
-          <div class="app-info">
-
-            <img
-              class="app-icon"
-              src="MovieBox.jpg"
-              alt="MovieBox"
-            >
-
-            <div class="app-details">
-
-              <h3>MovieBox</h3>
-
-              <p>
-                Application information and access.
-              </p>
-
-              <div class="app-status updating" data-status>
-                ● Updating
-              </div>
-
-            </div>
-
-          </div>
-
-          <button
-            class="download-btn"
-            type="button"
-            onclick="handleDownload(
-              event,
-              'MovieBox',
-              'MovieBox.jpg',
-              'https://www.mediafire.com/file/f244x7svpiezl1d/MovieBox_v4.0.02.0903.02_%25E2%2598%25A0%25EF%25B8%258F.apk/file'
-            )"
-          >
-            Check Status
-          </button>
-
-        </article>
-
+    <div id="loginArea">
+      <p class="muted">Enter your admin password to unlock the local theme controls.</p>
+
+      <div class="field">
+        <label for="adminPassword">Admin password</label>
+        <div class="password-wrap">
+          <input type="password" id="adminPassword" placeholder="Enter admin password" autocomplete="current-password">
+          <button type="button" class="password-eye" id="passwordEye" aria-label="Show password">👁️</button>
+        </div>
       </div>
 
-      <p id="noResults" class="hidden">
-        No apps found. Try another search.
-      </p>
+      <label class="remember-row">
+        <input type="checkbox" id="rememberLogin" checked>
+        Remember me on this device
+      </label>
 
-    </section>
+      <div class="panel-buttons">
+        <button class="panel-btn primary" id="unlockAdmin" type="button">Unlock Admin</button>
+        <button class="panel-btn" id="cancelAdmin" type="button">Cancel</button>
+      </div>
+      <div class="status" id="loginStatus" role="status"></div>
+    </div>
 
+    <div id="adminControls" hidden>
+      <p class="muted">Customize your website's theme. Changes apply to this browser only.</p>
+
+      <div class="control-grid">
+        <div class="control-card">
+          <label for="themePrimary">Primary colour</label>
+          <input type="color" id="themePrimary" value="#8b00ff">
+        </div>
+        <div class="control-card">
+          <label for="themeBackground">Background colour</label>
+          <input type="color" id="themeBackground" value="#08080d">
+        </div>
+        <div class="control-card">
+          <label for="themeGlow">Glow colour</label>
+          <input type="color" id="themeGlow" value="#b000ff">
+        </div>
+        <div class="control-card">
+          <label for="themeButton">Button colour</label>
+          <input type="color" id="themeButton" value="#8b00ff">
+        </div>
+        <div class="control-card">
+          <label for="glowIntensity">Glow intensity: <span id="glowLabel">35%</span></label>
+          <input type="range" id="glowIntensity" min="0" max="100" value="35">
+        </div>
+        <div class="control-card">
+          <label for="brightness">Brightness: <span id="brightnessLabel">100%</span></label>
+          <input type="range" id="brightness" min="50" max="130" value="100">
+        </div>
+      </div>
+
+      <label class="check-row">
+        <input type="checkbox" id="glowEnabled" checked>
+        ✨ Enable glow effects
+      </label>
+
+      <div class="note">Theme settings are saved in this browser's local storage. They do not change the theme for other visitors.</div>
+
+      <div class="panel-buttons">
+        <button class="panel-btn primary" id="saveTheme" type="button">💾 Save Theme</button>
+        <button class="panel-btn" id="resetTheme" type="button">♻️ Reset Theme</button>
+        <button class="panel-btn" id="adminLogout" type="button">Log Out</button>
+      </div>
+
+      <div class="password-change-section">
+        <h3>🔐 Change Admin Password</h3>
+        <p class="muted">Use 6–12 letters or numbers for your new password.</p>
+        <label class="password-change-label" for="newAdminPassword">New admin password</label>
+        <div class="password-wrap">
+          <input id="newAdminPassword" type="password" minlength="6" maxlength="12" placeholder="New password" autocomplete="new-password">
+          <button class="eye-btn" type="button" id="newPasswordEye" aria-label="Show or hide new password">👁️</button>
+        </div>
+        <div class="panel-buttons">
+          <button class="panel-btn primary" id="changePasswordBtn" type="button">Change Password</button>
+        </div>
+      </div>
+
+      <div class="admin-note">
+        Security note: this is a local-only password, not secure server authentication. For real protection against other visitors, a backend authentication service is required.
+      </div>
+      <div class="status" id="themeStatus" role="status"></div>
+    </div>
   </div>
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <p>
-      © 2026 SLEX.EDITZ — All Rights Reserved
-    </p>
-
-    <p>
-      Made for creators ❤️
-    </p>
-
-    <p>
-      Instagram:
-      <a
-        href="https://instagram.com/slex_888"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        @slex_888
-      </a>
-    </p>
-
-  </footer>
-
 </div>
 
 <script>
-
-/* =====================================
-   WEBSITE CONFIGURATION
-===================================== */
-
-/*
-  false = Website ON
-  true  = Website maintenance screen ON
-
-  NOTE:
-  This switch is inside this HTML file.
-  It is not a remote server control.
-*/
-
+/* WEBSITE SETTINGS */
 const SITE_OFF = false;
-
-
-/*
-  true  = Show app updating screen
-  false = Allow download link to open
-
-  MovieBox remains set to true as in your
-  first version of the website.
-*/
 
 const APP_UPDATES = {
   "CapCut": false,
@@ -1546,841 +830,397 @@ const APP_UPDATES = {
   "Wink": false,
   "EFIKO": false,
   "PicsArt": false,
-  "BeautyPlus": false,
+  "BeutiyPlus": false,
   "Remini": false,
   "Glip Screen Recorder": false,
   "PLAYit": false,
-  "MovieBox": false,
+  "MovieBox": true
 };
 
-
-/* =====================================
-   ADMIN CONFIGURATION
-===================================== */
-
 /*
-  Default password: SlEx729Ab
-
-  Change this default in your source before
-  publishing if you want a different password.
-
-  WARNING:
-  A password stored in client-side HTML/JS
-  is not secure against someone inspecting
-  the website source.
+  This password is for the local-only demo panel.
+  It is NOT secure authentication for a public website.
 */
-
 const DEFAULT_ADMIN_PASSWORD = "SlEx729Ab";
-
 const PASS_KEY = "slexAdminPassword";
 const THEME_KEY = "slexThemeSettings";
 const REMEMBER_KEY = "slexAdminRemember";
+const SESSION_KEY = "slexAdminSession";
+
+const $ = id => document.getElementById(id);
+
+const maintenanceScreen = $("maintenanceScreen");
+const updatingScreen = $("updatingScreen");
+const mainWebsite = $("mainWebsite");
+const mainFooter = $("mainFooter");
+const adminModal = $("adminModal");
+const loginArea = $("loginArea");
+const adminControls = $("adminControls");
+const adminPassword = $("adminPassword");
+const passwordEye = $("passwordEye");
+const newAdminPassword = $("newAdminPassword");
+const newPasswordEye = $("newPasswordEye");
+const loginStatus = $("loginStatus");
+const themeStatus = $("themeStatus");
 
 let ADMIN_PASSWORD = DEFAULT_ADMIN_PASSWORD;
-let adminAuthenticated = false;
 
+try {
+  ADMIN_PASSWORD = localStorage.getItem(PASS_KEY) || DEFAULT_ADMIN_PASSWORD;
+} catch (e) {}
 
-/* =====================================
-   SAFE STORAGE HELPERS
-===================================== */
-
-function storageGet(storage, key) {
-  try {
-    return storage.getItem(key);
-  } catch (error) {
-    return null;
-  }
+function applySiteMode() {
+  maintenanceScreen.hidden = !SITE_OFF;
+  mainWebsite.hidden = SITE_OFF;
+  mainFooter.hidden = SITE_OFF;
 }
+applySiteMode();
 
-function storageSet(storage, key, value) {
-  try {
-    storage.setItem(key, value);
-    return true;
-  } catch (error) {
-    return false;
-  }
-}
-
-function storageRemove(storage, key) {
-  try {
-    storage.removeItem(key);
-  } catch (error) {}
-}
-
-
-/* =====================================
-   LOAD SAVED PASSWORD
-===================================== */
-
-function loadAdminPassword() {
-  const savedPassword = storageGet(
-    localStorage,
-    PASS_KEY
-  );
-
-  ADMIN_PASSWORD =
-    savedPassword || DEFAULT_ADMIN_PASSWORD;
-}
-
-loadAdminPassword();
-
-
-/* =====================================
-   ELEMENT REFERENCES
-===================================== */
-
-const maintenanceScreen =
-  document.getElementById("maintenanceScreen");
-
-const mainWebsite =
-  document.getElementById("mainWebsite");
-
-const appUpdating =
-  document.getElementById("appUpdating");
-
-const loginOverlay =
-  document.getElementById("loginOverlay");
-
-const adminOverlay =
-  document.getElementById("adminOverlay");
-
-const loginForm =
-  document.getElementById("loginForm");
-
-const adminPasswordInput =
-  document.getElementById("adminPasswordInput");
-
-const loginError =
-  document.getElementById("loginError");
-
-const rememberAdmin =
-  document.getElementById("rememberAdmin");
-
-const showPassword =
-  document.getElementById("showPassword");
-
-
-/* =====================================
-   MAINTENANCE MODE
-===================================== */
-
-function applyMaintenanceMode() {
-  if (SITE_OFF) {
-    maintenanceScreen.classList.remove("hidden");
-    mainWebsite.classList.add("hidden");
-  } else {
-    maintenanceScreen.classList.add("hidden");
-    mainWebsite.classList.remove("hidden");
-  }
-}
-
-applyMaintenanceMode();
-
-
-/* =====================================
-   SEARCH APPS
-===================================== */
-
-const searchInput =
-  document.getElementById("searchInput");
-
-const appCards = [
-  ...document.querySelectorAll(".app-card")
-];
-
-const noResults =
-  document.getElementById("noResults");
+/* SEARCH */
+const appSearch = $("appSearch");
+const appCards = Array.from(document.querySelectorAll(".app"));
+const noResultsMessage = document.createElement("div");
+noResultsMessage.className = "no-results";
+noResultsMessage.textContent = "No matching apps found.";
+noResultsMessage.hidden = true;
+$("appsGrid").appendChild(noResultsMessage);
 
 function searchApps() {
-  const query = searchInput.value
-    .trim()
-    .toLowerCase();
-
-  let visibleCount = 0;
+  const query = appSearch.value.trim().toLowerCase();
+  let count = 0;
 
   appCards.forEach(card => {
-    const name =
-      (card.dataset.name || "").toLowerCase();
+    const text = (
+      (card.dataset.app || "") + " " +
+      (card.dataset.description || "") + " " +
+      (card.innerText || "")
+    ).toLowerCase();
 
-    const description =
-      (card.dataset.description || "").toLowerCase();
-
-    const matches =
-      name.includes(query) ||
-      description.includes(query);
-
-    card.classList.toggle(
-      "hidden",
-      !matches
-    );
-
-    if (matches) {
-      visibleCount++;
-    }
+    const matches = text.includes(query);
+    card.hidden = !matches;
+    if (matches) count++;
   });
 
-  noResults.classList.toggle(
-    "hidden",
-    visibleCount !== 0
-  );
+  noResultsMessage.hidden = !query || count > 0;
+}
+appSearch.addEventListener("input", searchApps);
+
+/* APP UPDATING SCREEN */
+function handleDownload(event, appName, iconPath) {
+  if (!APP_UPDATES[appName]) return true;
+
+  event.preventDefault();
+  $("updateAppName").textContent = appName + " is currently being updated.";
+  $("updateAppIcon").src = iconPath;
+  $("updateAppIcon").alt = appName;
+  updatingScreen.hidden = false;
+  return false;
 }
 
-searchInput.addEventListener(
-  "input",
-  searchApps
-);
-
-
-/* =====================================
-   APP STATUS LABELS
-===================================== */
-
-function refreshAppStatuses() {
-  appCards.forEach(card => {
-    const name = card.dataset.name;
-    const status = card.querySelector("[data-status]");
-    const button = card.querySelector(".download-btn");
-
-    if (!status || !button) return;
-
-    if (APP_UPDATES[name]) {
-      status.textContent = "● Updating";
-      status.classList.add("updating");
-      button.textContent = "Check Status";
-    } else {
-      status.textContent = "● Available";
-      status.classList.remove("updating");
-      button.textContent = "Download App";
-    }
-  });
+function closeUpdating() {
+  updatingScreen.hidden = true;
 }
 
-refreshAppStatuses();
-
-
-/* =====================================
-   APP DOWNLOAD HANDLER
-===================================== */
-
-function handleDownload(
-  event,
-  appName,
-  icon,
-  downloadURL
-) {
-  if (event) {
-    event.preventDefault();
-  }
-
-  if (SITE_OFF) {
-    maintenanceScreen.classList.remove("hidden");
-    return;
-  }
-
-  if (APP_UPDATES[appName]) {
-    document.getElementById(
-      "updatingAppName"
-    ).textContent = appName + " — APP IS UPDATING";
-
-    document.getElementById(
-      "updatingIcon"
-    ).src = icon;
-
-    appUpdating.classList.remove("hidden");
-    return;
-  }
-
-  if (!downloadURL) {
-    alert("Download link is not available.");
-    return;
-  }
-
-  window.open(
-    downloadURL,
-    "_blank",
-    "noopener,noreferrer"
-  );
+/* STATUS */
+function setStatus(element, message, type) {
+  element.textContent = message || "";
+  element.className = "status";
+  if (type) element.classList.add(type);
 }
 
-function closeUpdatingScreen() {
-  appUpdating.classList.add("hidden");
-}
-
-
-/* =====================================
-   ADMIN LOGIN
-===================================== */
-
-function openAdminLogin() {
+/* ADMIN MODAL */
+function openAdmin() {
   if (SITE_OFF) return;
 
-  loginError.classList.add("hidden");
+  adminModal.hidden = false;
+  document.body.style.overflow = "hidden";
 
-  rememberAdmin.checked =
-    storageGet(sessionStorage, "slexAdminAuthenticated") === "true" ||
-    storageGet(localStorage, REMEMBER_KEY) === "true";
+  let remembered = false;
+  let session = false;
 
-  /*
-    A saved login in this browser is only a convenience,
-    not secure authentication.
-  */
+  try {
+    remembered = localStorage.getItem(REMEMBER_KEY) === "true";
+    session = sessionStorage.getItem(SESSION_KEY) === "true";
+  } catch (e) {}
 
-  if (storageGet(localStorage, REMEMBER_KEY) === "true") {
-    adminAuthenticated = true;
-    openAdminPanel();
-    return;
-  }
-
-  if (
-    storageGet(sessionStorage, "slexAdminAuthenticated") === "true"
-  ) {
-    adminAuthenticated = true;
-    openAdminPanel();
-    return;
-  }
-
-  loginOverlay.classList.remove("hidden");
-
-  adminPasswordInput.value = "";
-  adminPasswordInput.focus();
-}
-
-function closeLogin() {
-  loginOverlay.classList.add("hidden");
-  loginError.classList.add("hidden");
-}
-
-showPassword.addEventListener("change", () => {
-  adminPasswordInput.type =
-    showPassword.checked ? "text" : "password";
-});
-
-loginForm.addEventListener("submit", event => {
-  event.preventDefault();
-
-  loadAdminPassword();
-
-  if (adminPasswordInput.value !== ADMIN_PASSWORD) {
-    loginError.textContent = "Incorrect password.";
-    loginError.classList.remove("hidden");
-    return;
-  }
-
-  adminAuthenticated = true;
-
-  storageSet(
-    sessionStorage,
-    "slexAdminAuthenticated",
-    "true"
-  );
-
-  if (rememberAdmin.checked) {
-    storageSet(localStorage, REMEMBER_KEY, "true");
+  if (remembered || session) {
+    showAdminControls();
   } else {
-    storageRemove(localStorage, REMEMBER_KEY);
+    showLoginArea();
+    setTimeout(() => adminPassword.focus(), 80);
   }
+}
 
-  closeLogin();
-  openAdminPanel();
+function closeAdminModal() {
+  adminModal.hidden = true;
+  document.body.style.overflow = "";
+  adminPassword.value = "";
+  newAdminPassword.value = "";
+  setStatus(loginStatus, "");
+  setStatus(themeStatus, "");
+}
+
+function showLoginArea() {
+  loginArea.hidden = false;
+  adminControls.hidden = true;
+  adminPassword.value = "";
+  setStatus(loginStatus, "");
+}
+
+function showAdminControls() {
+  loginArea.hidden = true;
+  adminControls.hidden = false;
+  loadThemeIntoControls();
+  setStatus(themeStatus, "");
+  $("adminModal").querySelector(".modal-box").scrollTop = 0;
+}
+
+$("openAdmin").addEventListener("click", openAdmin);
+$("closeAdmin").addEventListener("click", closeAdminModal);
+$("cancelAdmin").addEventListener("click", closeAdminModal);
+
+adminModal.addEventListener("click", event => {
+  if (event.target === adminModal) closeAdminModal();
 });
 
+/* PASSWORD VISIBILITY */
+function togglePassword(input, button) {
+  const hidden = input.type === "password";
+  input.type = hidden ? "text" : "password";
+  button.textContent = hidden ? "🙈" : "👁️";
+  button.setAttribute("aria-pressed", String(hidden));
+}
 
-/* =====================================
-   ADMIN PANEL
-===================================== */
+passwordEye.addEventListener("click", () => togglePassword(adminPassword, passwordEye));
+newPasswordEye.addEventListener("click", () => togglePassword(newAdminPassword, newPasswordEye));
 
-function openAdminPanel() {
-  if (!adminAuthenticated) {
-    openAdminLogin();
-    return;
+/* LOGIN */
+function unlockAdmin() {
+  try {
+    ADMIN_PASSWORD = localStorage.getItem(PASS_KEY) || DEFAULT_ADMIN_PASSWORD;
+  } catch (e) {
+    ADMIN_PASSWORD = DEFAULT_ADMIN_PASSWORD;
   }
 
-  loginOverlay.classList.add("hidden");
-  adminOverlay.classList.remove("hidden");
-
-  loadThemeControls();
-}
-
-function closeAdminPanel() {
-  adminOverlay.classList.add("hidden");
-}
-
-function adminLogout() {
-  adminAuthenticated = false;
-
-  storageRemove(
-    sessionStorage,
-    "slexAdminAuthenticated"
-  );
-
-  storageRemove(
-    localStorage,
-    REMEMBER_KEY
-  );
-
-  closeAdminPanel();
-  closeLogin();
-}
-
-
-/* =====================================
-   THEME CONTROLS
-===================================== */
-
-const primaryColor =
-  document.getElementById("primaryColor");
-
-const backgroundColor =
-  document.getElementById("backgroundColor");
-
-const brightnessRange =
-  document.getElementById("brightnessRange");
-
-const brightnessValue =
-  document.getElementById("brightnessValue");
-
-const glowRange =
-  document.getElementById("glowRange");
-
-const glowValue =
-  document.getElementById("glowValue");
-
-const glowEnabled =
-  document.getElementById("glowEnabled");
-
-
-function getDefaultTheme() {
-  return {
-    primary: "#a020f0",
-    background: "#08080d",
-    brightness: 100,
-    glow: 45,
-    glowEnabled: true
-  };
-}
-
-
-function getSavedTheme() {
-  const saved = storageGet(
-    localStorage,
-    THEME_KEY
-  );
-
-  if (!saved) {
-    return getDefaultTheme();
+  if (adminPassword.value !== ADMIN_PASSWORD) {
+    setStatus(loginStatus, "Incorrect password. Please try again.", "error");
+    return;
   }
 
   try {
-    const parsed = JSON.parse(saved);
-    const defaults = getDefaultTheme();
+    if ($("rememberLogin").checked) {
+      localStorage.setItem(REMEMBER_KEY, "true");
+      sessionStorage.removeItem(SESSION_KEY);
+    } else {
+      localStorage.removeItem(REMEMBER_KEY);
+      sessionStorage.setItem(SESSION_KEY, "true");
+    }
+  } catch (e) {}
 
-    return {
-      ...defaults,
-      ...parsed
-    };
-  } catch (error) {
-    return getDefaultTheme();
-  }
+  showAdminControls();
 }
 
+$("unlockAdmin").addEventListener("click", unlockAdmin);
+adminPassword.addEventListener("keydown", event => {
+  if (event.key === "Enter") unlockAdmin();
+});
+
+/* THEME */
+const DEFAULT_THEME = {
+  primary: "#8b00ff",
+  background: "#08080d",
+  glow: "#b000ff",
+  button: "#8b00ff",
+  glowIntensity: 35,
+  brightness: 100,
+  glowEnabled: true
+};
+
+let currentTheme = {...DEFAULT_THEME};
+
+function validHex(value) {
+  return typeof value === "string" && /^#[0-9a-fA-F]{6}$/.test(value);
+}
+
+function clampNumber(value, min, max, fallback) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return fallback;
+  return Math.min(max, Math.max(min, number));
+}
+
+function sanitizeTheme(input) {
+  const source = input && typeof input === "object" ? input : {};
+
+  return {
+    primary: validHex(source.primary) ? source.primary : DEFAULT_THEME.primary,
+    background: validHex(source.background) ? source.background : DEFAULT_THEME.background,
+    glow: validHex(source.glow) ? source.glow : DEFAULT_THEME.glow,
+    button: validHex(source.button) ? source.button : DEFAULT_THEME.button,
+    glowIntensity: clampNumber(source.glowIntensity, 0, 100, DEFAULT_THEME.glowIntensity),
+    brightness: clampNumber(source.brightness, 50, 130, DEFAULT_THEME.brightness),
+    glowEnabled: typeof source.glowEnabled === "boolean" ? source.glowEnabled : DEFAULT_THEME.glowEnabled
+  };
+}
+
+function updateRangeLabels() {
+  $("glowLabel").textContent = $("glowIntensity").value + "%";
+  $("brightnessLabel").textContent = $("brightness").value + "%";
+}
 
 function applyTheme(theme) {
+  currentTheme = sanitizeTheme(theme);
   const root = document.documentElement;
 
-  const primary =
-    /^#[0-9a-fA-F]{6}$/.test(theme.primary)
-      ? theme.primary
-      : "#a020f0";
+  root.style.setProperty("--primary", currentTheme.primary);
+  root.style.setProperty("--background", currentTheme.background);
+  root.style.setProperty("--glow", currentTheme.glow);
+  root.style.setProperty("--button", currentTheme.button);
+  root.style.setProperty("--glow-strength", currentTheme.glowEnabled ? currentTheme.glowIntensity : 0);
 
-  const background =
-    /^#[0-9a-fA-F]{6}$/.test(theme.background)
-      ? theme.background
-      : "#08080d";
+  /* Brightness is applied to page content, not to the fixed admin overlay. */
+  document.body.style.filter = "none";
+  root.style.setProperty("--brightness", currentTheme.brightness + "%");
 
-  const brightness = Math.min(
-    120,
-    Math.max(50, Number(theme.brightness) || 100)
-  );
+  $("themePrimary").value = currentTheme.primary;
+  $("themeBackground").value = currentTheme.background;
+  $("themeGlow").value = currentTheme.glow;
+  $("themeButton").value = currentTheme.button;
+  $("glowIntensity").value = currentTheme.glowIntensity;
+  $("brightness").value = currentTheme.brightness;
+  $("glowEnabled").checked = currentTheme.glowEnabled;
 
-  const glow = Math.min(
-    100,
-    Math.max(0, Number(theme.glow) || 0)
-  );
+  document.body.style.setProperty("--page-brightness", currentTheme.brightness + "%");
+  updateRangeLabels();
+}
 
-  root.style.setProperty(
-    "--primary",
-    primary
-  );
-
-  root.style.setProperty(
-    "--background",
-    background
-  );
-
-  root.style.setProperty(
-    "--brightness",
-    brightness / 100
-  );
-
-  if (theme.glowEnabled) {
-    root.style.setProperty(
-      "--glow",
-      `0 0 ${Math.round(glow / 3)}px ${primary}`
-    );
-  } else {
-    root.style.setProperty(
-      "--glow",
-      "none"
-    );
+function loadSavedTheme() {
+  try {
+    const saved = localStorage.getItem(THEME_KEY);
+    applyTheme(saved ? JSON.parse(saved) : DEFAULT_THEME);
+  } catch (e) {
+    applyTheme(DEFAULT_THEME);
   }
+}
+loadSavedTheme();
 
-  /*
-    Use a translucent glow for card shadows.
-  */
-
-  const rgb = hexToRGB(primary);
-
-  document.querySelectorAll(".app-card").forEach(card => {
-    card.style.boxShadow = "none";
+function getThemeFromControls() {
+  return sanitizeTheme({
+    primary: $("themePrimary").value,
+    background: $("themeBackground").value,
+    glow: $("themeGlow").value,
+    button: $("themeButton").value,
+    glowIntensity: $("glowIntensity").value,
+    brightness: $("brightness").value,
+    glowEnabled: $("glowEnabled").checked
   });
-
-  root.style.setProperty(
-    "--card-glow",
-    `0 0 18px rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${glow / 100})`
-  );
 }
 
-
-function hexToRGB(hex) {
-  const clean = hex.replace("#", "");
-
-  return {
-    r: parseInt(clean.substring(0, 2), 16),
-    g: parseInt(clean.substring(2, 4), 16),
-    b: parseInt(clean.substring(4, 6), 16)
-  };
+function loadThemeIntoControls() {
+  applyTheme(currentTheme);
 }
-
-
-function loadThemeControls() {
-  const theme = getSavedTheme();
-
-  primaryColor.value = theme.primary;
-  backgroundColor.value = theme.background;
-
-  brightnessRange.value = theme.brightness;
-  brightnessValue.textContent =
-    theme.brightness + "%";
-
-  glowRange.value = theme.glow;
-  glowValue.textContent =
-    theme.glow + "%";
-
-  glowEnabled.checked = theme.glowEnabled;
-
-  applyTheme(theme);
-}
-
-
-function readThemeControls() {
-  return {
-    primary: primaryColor.value,
-    background: backgroundColor.value,
-    brightness: Number(brightnessRange.value),
-    glow: Number(glowRange.value),
-    glowEnabled: glowEnabled.checked
-  };
-}
-
-
-function saveTheme() {
-  if (!adminAuthenticated) return;
-
-  const theme = readThemeControls();
-
-  const saved = storageSet(
-    localStorage,
-    THEME_KEY,
-    JSON.stringify(theme)
-  );
-
-  applyTheme(theme);
-
-  const message =
-    document.getElementById("themeMessage");
-
-  message.textContent = saved
-    ? "Theme saved successfully on this browser."
-    : "Could not save theme. Check browser storage.";
-
-  message.classList.remove("hidden");
-
-  setTimeout(() => {
-    message.classList.add("hidden");
-  }, 3000);
-}
-
-
-function resetTheme() {
-  if (!adminAuthenticated) return;
-
-  const theme = getDefaultTheme();
-
-  storageRemove(
-    localStorage,
-    THEME_KEY
-  );
-
-  primaryColor.value = theme.primary;
-  backgroundColor.value = theme.background;
-
-  brightnessRange.value = theme.brightness;
-  brightnessValue.textContent =
-    theme.brightness + "%";
-
-  glowRange.value = theme.glow;
-  glowValue.textContent =
-    theme.glow + "%";
-
-  glowEnabled.checked = theme.glowEnabled;
-
-  applyTheme(theme);
-
-  const message =
-    document.getElementById("themeMessage");
-
-  message.textContent = "Default theme restored.";
-  message.classList.remove("hidden");
-
-  setTimeout(() => {
-    message.classList.add("hidden");
-  }, 2500);
-}
-
-
-/* =====================================
-   LIVE THEME PREVIEW
-===================================== */
 
 [
-  primaryColor,
-  backgroundColor,
-  glowEnabled
-].forEach(element => {
-  element.addEventListener("input", () => {
-    applyTheme(readThemeControls());
-  });
+  "themePrimary", "themeBackground", "themeGlow", "themeButton",
+  "glowIntensity", "brightness", "glowEnabled"
+].forEach(id => {
+  $(id).addEventListener("input", () => applyTheme(getThemeFromControls()));
 });
 
-brightnessRange.addEventListener("input", () => {
-  brightnessValue.textContent =
-    brightnessRange.value + "%";
+$("saveTheme").addEventListener("click", () => {
+  const theme = getThemeFromControls();
 
-  applyTheme(readThemeControls());
+  try {
+    localStorage.setItem(THEME_KEY, JSON.stringify(theme));
+    applyTheme(theme);
+    setStatus(themeStatus, "Theme saved successfully on this device.", "success");
+  } catch (e) {
+    setStatus(themeStatus, "Unable to save theme in this browser.", "error");
+  }
 });
 
-glowRange.addEventListener("input", () => {
-  glowValue.textContent =
-    glowRange.value + "%";
+$("resetTheme").addEventListener("click", () => {
+  applyTheme(DEFAULT_THEME);
 
-  applyTheme(readThemeControls());
+  try {
+    localStorage.setItem(THEME_KEY, JSON.stringify(DEFAULT_THEME));
+    setStatus(themeStatus, "Theme reset to default successfully.", "success");
+  } catch (e) {
+    setStatus(themeStatus, "Default theme applied, but saving failed.", "error");
+  }
 });
 
+/* LOGOUT */
+$("adminLogout").addEventListener("click", () => {
+  try {
+    localStorage.removeItem(REMEMBER_KEY);
+    sessionStorage.removeItem(SESSION_KEY);
+  } catch (e) {}
 
-/* =====================================
-   CHANGE ADMIN PASSWORD
-===================================== */
-
-const changePasswordForm =
-  document.getElementById("changePasswordForm");
-
-const currentPassword =
-  document.getElementById("currentPassword");
-
-const newPassword =
-  document.getElementById("newPassword");
-
-const confirmPassword =
-  document.getElementById("confirmPassword");
-
-const passwordMessage =
-  document.getElementById("passwordMessage");
-
-
-document.getElementById(
-  "showNewPassword"
-).addEventListener("change", event => {
-  const type = event.target.checked
-    ? "text"
-    : "password";
-
-  currentPassword.type = type;
-  newPassword.type = type;
-  confirmPassword.type = type;
+  showLoginArea();
+  setStatus(loginStatus, "You have been logged out.", "success");
 });
 
+/* CHANGE PASSWORD — LOCAL ONLY */
+function changePassword() {
+  const newPassword = newAdminPassword.value;
 
-changePasswordForm.addEventListener("submit", event => {
-  event.preventDefault();
-
-  if (!adminAuthenticated) {
+  if (!/^[A-Za-z0-9]{6,12}$/.test(newPassword)) {
+    setStatus(themeStatus, "Password must contain 6–12 letters or numbers only.", "error");
     return;
   }
 
-  loadAdminPassword();
-
-  const current = currentPassword.value;
-  const next = newPassword.value;
-  const confirm = confirmPassword.value;
-
-  passwordMessage.className = "";
-  passwordMessage.textContent = "";
-
-  if (current !== ADMIN_PASSWORD) {
-    passwordMessage.textContent =
-      "Current password is incorrect.";
-
-    passwordMessage.className = "error-text";
+  if (newPassword === ADMIN_PASSWORD) {
+    setStatus(themeStatus, "Choose a password different from the current password.", "error");
     return;
   }
 
-  if (!/^[A-Za-z0-9]{6,12}$/.test(next)) {
-    passwordMessage.textContent =
-      "Use 6–12 letters and numbers only.";
+  try {
+    localStorage.setItem(PASS_KEY, newPassword);
+    ADMIN_PASSWORD = newPassword;
 
-    passwordMessage.className = "error-text";
-    return;
+    localStorage.removeItem(REMEMBER_KEY);
+    sessionStorage.removeItem(SESSION_KEY);
+    localStorage.setItem(THEME_KEY, JSON.stringify(DEFAULT_THEME));
+    applyTheme(DEFAULT_THEME);
+    newAdminPassword.value = "";
+
+    setStatus(themeStatus, "Password changed in this browser. Please log in again.", "success");
+
+    setTimeout(() => {
+      showLoginArea();
+      setStatus(loginStatus, "Your password was changed. Log in using your new password.", "success");
+    }, 1000);
+  } catch (e) {
+    setStatus(themeStatus, "Could not save the new password in this browser.", "error");
   }
+}
 
-  if (next === current) {
-    passwordMessage.textContent =
-      "Choose a different password.";
-
-    passwordMessage.className = "error-text";
-    return;
-  }
-
-  if (next !== confirm) {
-    passwordMessage.textContent =
-      "New passwords do not match.";
-
-    passwordMessage.className = "error-text";
-    return;
-  }
-
-  const saved = storageSet(
-    localStorage,
-    PASS_KEY,
-    next
-  );
-
-  if (!saved) {
-    passwordMessage.textContent =
-      "Password could not be saved in this browser.";
-
-    passwordMessage.className = "error-text";
-    return;
-  }
-
-  ADMIN_PASSWORD = next;
-
-  /*
-    Log out after changing the password.
-    Theme is also reset, as requested in the
-    merged admin workflow.
-  */
-
-  storageRemove(
-    localStorage,
-    REMEMBER_KEY
-  );
-
-  storageRemove(
-    localStorage,
-    THEME_KEY
-  );
-
-  storageRemove(
-    sessionStorage,
-    "slexAdminAuthenticated"
-  );
-
-  adminAuthenticated = false;
-
-  applyTheme(getDefaultTheme());
-
-  passwordMessage.textContent =
-    "Password changed. Please log in again.";
-
-  passwordMessage.className = "success-text";
-
-  changePasswordForm.reset();
-
-  setTimeout(() => {
-    closeAdminPanel();
-    openAdminLogin();
-  }, 1200);
+$("changePasswordBtn").addEventListener("click", changePassword);
+newAdminPassword.addEventListener("keydown", event => {
+  if (event.key === "Enter") changePassword();
 });
 
-
-/* =====================================
-   CROSS-TAB STORAGE UPDATES
-===================================== */
-
+/* CROSS-TAB CHANGES */
 window.addEventListener("storage", event => {
-
   if (event.key === PASS_KEY) {
-    loadAdminPassword();
+    ADMIN_PASSWORD = event.newValue || DEFAULT_ADMIN_PASSWORD;
 
-    adminAuthenticated = false;
+    try {
+      localStorage.removeItem(REMEMBER_KEY);
+      sessionStorage.removeItem(SESSION_KEY);
+    } catch (e) {}
 
-    storageRemove(
-      sessionStorage,
-      "slexAdminAuthenticated"
-    );
-
-    storageRemove(
-      localStorage,
-      REMEMBER_KEY
-    );
-
-    closeAdminPanel();
-    closeLogin();
+    showLoginArea();
+    setStatus(loginStatus, "Password changed in another tab. Please log in again.", "error");
   }
 
-  if (event.key === THEME_KEY) {
-    applyTheme(getSavedTheme());
-  }
-
+  if (event.key === THEME_KEY) loadSavedTheme();
 });
 
-
-/* =====================================
-   INITIALIZE THEME
-===================================== */
-
-applyTheme(getSavedTheme());
-
-
-/* =====================================
-   ESCAPE KEY HANDLING
-===================================== */
-
+/* ESCAPE KEY */
 document.addEventListener("keydown", event => {
-
-  if (event.key === "Escape") {
-    closeLogin();
-    closeAdminPanel();
-    closeUpdatingScreen();
-  }
-
+  if (event.key === "Escape" && !adminModal.hidden) closeAdminModal();
 });
-
-
-/* =====================================
-   FINISHED
-===================================== */
-
 </script>
 
 </body>
