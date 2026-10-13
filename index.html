@@ -1534,8 +1534,12 @@
     const SITE_DATA_KEY = "slexSiteDataV2";
     const BLOCK_KEY = "slexLocalBlockedIds";
     const STATS_KEY = "slexLocalStatsV2";
-    const THEME_RESET_VERSION = "1";
+    // Increase these version numbers when you intentionally change the
+    // default password or hard-coded app details in index.html.
+    const THEME_RESET_VERSION = "2";
     const THEME_RESET_KEY = "slexThemeResetVersion";
+    const PASSWORD_RESET_VERSION = "2";
+    const PASSWORD_RESET_KEY = "slexPasswordResetVersion";
 
     const $ = id => document.getElementById(id);
 
@@ -1668,6 +1672,15 @@
       if (localStorage.getItem(THEME_RESET_KEY) !== THEME_RESET_VERSION) {
         localStorage.removeItem(THEME_KEY);
         localStorage.setItem(THEME_RESET_KEY, THEME_RESET_VERSION);
+      }
+
+      // When this version changes, discard any browser-saved password so the
+      // password currently defined in DEFAULT_ADMIN_PASSWORD takes effect.
+      if (localStorage.getItem(PASSWORD_RESET_KEY) !== PASSWORD_RESET_VERSION) {
+        localStorage.removeItem(PASS_KEY);
+        localStorage.removeItem(REMEMBER_KEY);
+        sessionStorage.removeItem(SESSION_KEY);
+        localStorage.setItem(PASSWORD_RESET_KEY, PASSWORD_RESET_VERSION);
       }
     } catch (error) {
       // Storage may be unavailable in some browser modes.
@@ -2177,6 +2190,13 @@
       applyTheme(sanitizeTheme(readJSON(THEME_KEY, DEFAULT_THEME)));
     }
 
+    // Resets every theme control and the saved theme in this browser.
+    function resetThemeToDefault() {
+      currentTheme = { ...DEFAULT_THEME };
+      applyTheme(DEFAULT_THEME);
+      writeJSON(THEME_KEY, DEFAULT_THEME);
+    }
+
     loadSavedTheme();
 
     function getThemeFromControls() {
@@ -2324,6 +2344,10 @@
         return;
       }
 
+      const previousApp = appData[index];
+      const appIdentityOrLinkChanged =
+        previousApp.name !== name || previousApp.url !== url;
+
       appData[index] = {
         name,
         description,
@@ -2333,8 +2357,17 @@
       };
 
       if (writeJSON(APP_DATA_KEY, appData)) {
+        if (appIdentityOrLinkChanged) {
+          resetThemeToDefault();
+        }
         renderApps();
-        setStatus($("appsStatus"), "Saved in this browser only.", "success");
+        setStatus(
+          $("appsStatus"),
+          appIdentityOrLinkChanged
+            ? "App name/link saved. Full theme reset to defaults."
+            : "Saved in this browser only.",
+          "success"
+        );
       } else {
         setStatus($("appsStatus"), "Could not save changes.", "error");
       }
@@ -2548,6 +2581,8 @@
       try {
         localStorage.setItem(PASS_KEY, password);
         ADMIN_PASSWORD = password;
+
+        resetThemeToDefault();
 
         localStorage.removeItem(REMEMBER_KEY);
         sessionStorage.removeItem(SESSION_KEY);
