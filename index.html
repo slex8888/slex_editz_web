@@ -2,284 +2,286 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#090610">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SLEX.EDITZ - Access Tool</title>
-
 <style>
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #090610;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #0d0d0d;
     color: #fff;
-    font-family: Arial, sans-serif;
-}
-
-.card {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .container {
     width: 100%;
-    max-width: 430px;
-    padding: 25px 21px;
-    border: 1px solid #57238a;
-    border-radius: 22px;
-    background: #110b1d;
-    box-shadow: 0 0 35px #7627c522;
-}
-
-h1 {
-    color: #c084fc;
-    font-size: 26px;
+    max-width: 420px;
+    background: #161616;
+    border-radius: 14px;
+    padding: 28px 22px;
+    box-shadow: 0 0 25px rgba(0,255,150,0.15);
+    border: 1px solid #1f1f1f;
+  }
+  h1 {
     text-align: center;
+    font-size: 22px;
+    color: #00ff9d;
     letter-spacing: 2px;
-}
-
-.subtitle {
-    color: #91839f;
+    margin-bottom: 6px;
+  }
+  .subtitle {
     text-align: center;
-    font-size: 11px;
-    letter-spacing: 2px;
-    margin: 12px 0 28px;
-}
-
-label {
-    display: block;
-    margin: 20px 0 10px;
-    color: #c9a6f5;
+    font-size: 12px;
+    color: #888;
+    letter-spacing: 3px;
+    margin-bottom: 22px;
+  }
+  button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: none;
+    border-radius: 8px;
     font-size: 14px;
-}
-
-input {
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+  }
+  .login { background: #fff; color: #000; }
+  .login:hover { background: #ddd; }
+  .facebook { background: #1877f2; color: #fff; }
+  .facebook:hover { background: #0f5fce; }
+  label {
+    display: block;
+    font-size: 12px;
+    color: #aaa;
+    margin: 14px 0 6px;
+    letter-spacing: 1px;
+  }
+  input {
     width: 100%;
-    padding: 15px 12px;
-    border-radius: 11px;
-    border: 1px solid #39264d;
-    background: #090711;
-    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #2a2a2a;
+    background: #0d0d0d;
+    color: #fff;
     font-size: 13px;
     outline: none;
-}
-
-input:focus {
-    border-color: #b34cff;
-}
-
-button {
-    width: 100%;
-    padding: 15px 10px;
-    border: none;
-    border-radius: 11px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.login {
-    margin-bottom: 12px;
-    background: #eee7ff;
-    color: #24123c;
-}
-
-.facebook {
-    background: #6425c5;
-    color: white;
-}
-
-.convert {
+  }
+  input:focus { border-color: #00ff9d; }
+  .convert {
+    background: linear-gradient(90deg, #00ff9d, #00b36b);
+    color: #000;
+    margin-top: 14px;
+  }
+  .convert:hover { filter: brightness(1.15); }
+  .result {
     margin-top: 18px;
-    color: white;
-    background: linear-gradient(90deg, #7926ca, #b837ff);
-}
-
-.copy {
-    margin-top: 12px;
-    color: white;
-    background: #35164f;
-}
-
-.result {
-    display: none;
-    margin-top: 18px;
+    background: #0d0d0d;
+    border: 1px solid #00ff9d33;
+    border-radius: 10px;
     padding: 14px;
-    border: 1px solid #39264d;
-    border-radius: 11px;
-    background: #090711;
-    overflow-wrap: anywhere;
-}
-
-.result-title {
-    margin-bottom: 10px;
-    color: #c084fc;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-#resultText {
+    display: none;
+  }
+  .result-title {
     font-size: 12px;
+    color: #00ff9d;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  #resultText {
+    font-size: 13px;
     line-height: 1.7;
     word-break: break-all;
-}
-
-#status {
-    margin-top: 15px;
+    color: #ddd;
+  }
+  #resultText span { color: #00ff9d; font-weight: 600; }
+  .copy {
+    background: #222;
+    color: #00ff9d;
+    margin-top: 12px;
+    border: 1px solid #00ff9d55;
+  }
+  .copy:hover { background: #2a2a2a; }
+  #status {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 14px;
     min-height: 18px;
-    color: #c084fc;
-    font-size: 12px;
+    color: #ffb300;
+  }
+  #status.error { color: #ff4d4d; }
+  #status.success { color: #00ff9d; }
+  .footer {
     text-align: center;
+    font-size: 11px;
+    color: #555;
+    margin-top: 22px;
     line-height: 1.6;
-}
-
-.footer {
-    margin-top: 25px;
-    color: #756880;
-    font-size: 10px;
-    text-align: center;
-    line-height: 1.8;
-}
+  }
 </style>
 </head>
-
 <body>
-<main class="card">
 
-    <h1>ACCESS GENERATOR</h1>
-    <p class="subtitle">SECURE ACCESS INTERFACE</p>
+<div class="container">
+  <h1>ACCESS GENERATOR</h1>
+  <p class="subtitle">SECURE ACCESS INTERFACE</p>
 
-    <button class="login" onclick="openProvider('google')">
-        Continue with Google
-    </button>
+  <button class="login" onclick="openProvider('google')">Continue with Google</button>
+  <button class="facebook" onclick="openProvider('facebook')">Continue with Facebook</button>
 
-    <button class="facebook" onclick="openProvider('facebook')">
-        Continue with Facebook
-    </button>
+  <label for="accessLink">Paste Your Link</label>
+  <input id="accessLink" type="url" placeholder="https://example.com/?eat=..." autocomplete="off">
 
-    <label for="accessLink">Paste Your Link</label>
+  <button class="convert" id="convertBtn" onclick="processLink()">ACCESS TOKEN</button>
 
-    <input
-        id="accessLink"
-        type="url"
-        placeholder="https://example.com/?eat=..."
-        autocomplete="off"
-    >
+  <section class="result" id="result">
+    <div class="result-title">LINK INFORMATION</div>
+    <div id="resultText"></div>
+    <button class="copy" onclick="copyResult()">COPY RESULT</button>
+  </section>
 
-    <button class="convert" id="convertBtn" onclick="processLink()">
-        ACCESS TOKEN
-    </button>
+  <div id="status" role="status"></div>
 
-    <section class="result" id="result">
-        <div class="result-title">LINK INFORMATION</div>
-        <div id="resultText"></div>
-
-        <button class="copy" onclick="copyResult()">
-            COPY RESULT
-        </button>
-    </section>
-
-    <div id="status" role="status"></div>
-
-    <div class="footer">
-        LINK VALIDATION MODE<br>
-        REAL TOKEN CONVERSION REQUIRES AN AUTHORIZED API
-    </div>
-
-</main>
+  <div class="footer">
+    LINK VALIDATION MODE<br>
+    REAL TOKEN CONVERSION REQUIRES AN AUTHORIZED API
+  </div>
+</div>
 
 <script>
-"use strict";
-
-let currentResult = "";
-
 function openProvider(provider) {
-    const providers = {
-        google: "https://accounts.google.com/",
-        facebook: "https://m.facebook.com/privacy/consent/gdp/?params%5Bapp_id%5D=2036793259884297&params%5Blogger_id%5D=%228efac02a-9cdc-458a-893e-22c48021351b%22&params%5Bnext%5D=%22confirm%22&params%5Bredirect_uri%5D=%22https%3A%5C%2F%5C%2Fauth.garena.com%5C%2Funiversal%5C%2Foauth%5C%2Ffacebook%22&params%5Bresponse_type%5D=%22token%22&params%5Bscope%5D=%5B%22public_profile%22%2C%22email%22%2C%22user_friends%22%2C%22user_link%22%5D&params%5Bstate%5D=%2290940a3710fd4e8d9b943779a5a161e0-platform%3D3%26response_type%3Dcode%26locale%3Den-SG%26client_id%3D100067%26redirect_uri%3Dhttps%5Cu00253A%5Cu00252F%5Cu00252Fapi.ff.garena.co.id%5Cu00252Fauth%5Cu00252Fauth%5Cu00252Fcallback_n%5Cu00253Fsite%5Cu00253Dhttps%5Cu00253A%5Cu00252F%5Cu00252Fapi-discountstore.kiosgamer.gameid.garena.co.id%5Cu00252Foauth%5Cu00252Fcallback_redirect%5Cu00252F%22&params%5Bsteps%5D=%7B%7D&params%5Bcui_gk%5D=%22%5BPASS%5D%3Aconfirm%22&source=gdp_delegated&cache_buster=-3670712328463331327&_rdr"
-    };
-
-    window.open(
-        providers[provider],
-        "_blank",
-        "noopener,noreferrer"
-    );
+  setStatus("Redirecting to " + provider + "...", "");
 }
 
-function processLink() {
-    const input = document.getElementById("accessLink").value.trim();
-    const status = document.getElementById("status");
-    const result = document.getElementById("result");
-    const resultText = document.getElementById("resultText");
-    const button = document.getElementById("convertBtn");
-
-    result.style.display = "none";
-    currentResult = "";
-
-    if (!input) {
-        status.textContent = "Please paste your link first.";
-        return;
-    }
-
-    let url;
-
-    try {
-        url = new URL(input);
-    } catch {
-        status.textContent = "Invalid link. Please check your URL.";
-        return;
-    }
-
-    if (url.protocol !== "https:") {
-        status.textContent = "Please enter a valid HTTPS link.";
-        return;
-    }
-
-    const eat = url.searchParams.get("eat");
-
-    if (!eat) {
-        status.textContent = "No EAT parameter was found in this link.";
-        return;
-    }
-
-    button.disabled = true;
-    button.textContent = "PROCESSING...";
-
-    status.textContent = "Checking link information...";
-
-    window.setTimeout(() => {
-        currentResult =
-            "EAT value found. Real access-token conversion has not been performed.";
-
-        resultText.textContent = currentResult;
-        result.style.display = "block";
-
-        status.textContent =
-            "Link checked. An authorized conversion API is required for a real token.";
-
-        button.disabled = false;
-        button.textContent = "ACCESS TOKEN";
-    }, 500);
+function setStatus(msg, type) {
+  const s = document.getElementById("status");
+  s.textContent = msg;
+  s.className = type || "";
 }
 
-async function copyResult() {
-    const status = document.getElementById("status");
+function extractEatToken(input) {
+  input = input.trim();
+  if (!input) return null;
 
-    if (!currentResult) {
-        status.textContent = "No result available to copy.";
-        return;
+  // अगर पूरा URL है
+  try {
+    if (input.includes("http") || input.includes("?")) {
+      const url = new URL(input);
+      const eat = url.searchParams.get("eat");
+      if (eat) return eat;
     }
+  } catch (e) { /* ignore */ }
 
+  // अगर सीधा token है
+  if (/^[A-Za-z0-9._\-]+$/.test(input)) return input;
+
+  return null;
+}
+
+async function processLink() {
+  const rawInput = document.getElementById("accessLink").value;
+  const eatToken = extractEatToken(rawInput);
+
+  if (!eatToken) {
+    setStatus("❌ कोई valid EAT token नहीं मिला। सही लिंक या टोकन डालें।", "error");
+    return;
+  }
+
+  setStatus("⏳ Processing... Connecting to server...", "");
+
+  const apiUrl = `https://api-otrss.garena.com/support/callback/?access_token=${encodeURIComponent(eatToken)}`;
+
+  try {
+    // CORS proxy के जरिए request (क्योंकि browser सीधे Garena API को call नहीं कर सकता)
+    const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent(apiUrl);
+
+    const response = await fetch(proxyUrl, {
+      method: "GET",
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 13; Mobile) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36"
+      },
+      redirect: "follow"
+    });
+
+    const finalUrl = response.url;
+
+    // Final URL से parameters निकालें
+    let finalParams;
     try {
-        await navigator.clipboard.writeText(currentResult);
-        status.textContent = "Result copied.";
-    } catch {
-        status.textContent =
-            "Automatic copy unavailable. Please select the result manually.";
+      const parsed = new URL(finalUrl);
+      finalParams = parsed.searchParams;
+    } catch (e) {
+      // अगर finalUrl valid URL नहीं है तो response text में ढूंढें
+      const text = await response.text();
+      const match = text.match(/access_token=([^&"'\s]+)/);
+      if (match) {
+        showResult({
+          access_token: decodeURIComponent(match[1]),
+          account_id: "Unknown",
+          nickname: "Unknown",
+          region: "Unknown"
+        });
+        return;
+      }
+      throw new Error("Access token not found in response.");
     }
+
+    const accessToken = finalParams.get("access_token");
+    if (!accessToken) {
+      throw new Error("Access Token not found. EAT token expired or invalid हो सकता है।");
+    }
+
+    const accountId = finalParams.get("account_id") || "Unknown";
+    const nickname = decodeURIComponent(finalParams.get("nickname") || "Unknown");
+    const region = finalParams.get("region") || "Unknown";
+
+    showResult({
+      access_token: accessToken,
+      account_id: accountId,
+      nickname: nickname,
+      region: region
+    });
+
+  } catch (err) {
+    console.error(err);
+    setStatus("❌ Error: " + err.message, "error");
+  }
+}
+
+function showResult(data) {
+  const resultBox = document.getElementById("result");
+  const resultText = document.getElementById("resultText");
+
+  resultText.innerHTML = `
+    <div><span>Nickname:</span> ${data.nickname}</div>
+    <div><span>Account ID:</span> ${data.account_id}</div>
+    <div><span>Region:</span> ${data.region}</div>
+    <div style="margin-top:8px;"><span>Access Token:</span><br>${data.access_token}</div>
+  `;
+
+  resultBox.style.display = "block";
+  resultBox.dataset.copy = `Nickname: ${data.nickname}\nAccount ID: ${data.account_id}\nRegion: ${data.region}\nAccess Token: ${data.access_token}`;
+
+  setStatus("✅ Success! Token generated.", "success");
+}
+
+function copyResult() {
+  const resultBox = document.getElementById("result");
+  const text = resultBox.dataset.copy || "";
+  if (!text) return;
+
+  navigator.clipboard.writeText(text).then(() => {
+    setStatus("📋 Result copied to clipboard!", "success");
+  }).catch(() => {
+    setStatus("❌ Copy failed.", "error");
+  });
 }
 </script>
+
 </body>
 </html>
