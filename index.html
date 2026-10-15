@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SLEX Access Generator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080610">
+<title>ACCESS GENERATOR</title>
 
 <style>
 * {
@@ -13,493 +14,204 @@
 }
 
 body {
-  background: #08060d;
-  color: #f8f5ff;
+  min-height: 100vh;
+  background: #080610;
+  color: #f5f0ff;
   font-family: Arial, sans-serif;
-  padding: 18px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-.app {
-  max-width: 520px;
-  margin: auto;
-  padding: 22px;
-  background: #100d17;
-  border: 1px solid #33213e;
-  border-radius: 25px;
-}
-
-header {
-  text-align: center;
-  padding: 18px 0 30px;
+.container {
+  width: 100%;
+  max-width: 420px;
+  background: #100c1c;
+  border: 1px solid #5422a5;
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: 0 0 30px #6d28d933;
 }
 
 .logo {
-  width: 82px;
-  height: 82px;
-  margin: 0 auto 18px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  border: 3px solid #c34cff;
-  background: #25102f;
-  font-size: 34px;
-  box-shadow: 0 0 25px #bd4cf433;
-}
-
-h1 {
-  font-size: 25px;
-  margin-bottom: 10px;
+  text-align: center;
+  color: #bb86fc;
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 2px;
 }
 
 .subtitle {
-  color: #ce76ef;
+  text-align: center;
+  color: #9c91ad;
+  font-size: 12px;
+  margin: 8px 0 25px;
 }
 
-.card {
-  padding: 20px;
-  margin-bottom: 20px;
-  background: #17131e;
-  border: 1px solid #302637;
-  border-radius: 17px;
+label {
+  display: block;
+  color: #c9b3f5;
+  font-size: 13px;
+  margin: 17px 0 8px;
 }
 
-h2 {
-  font-size: 17px;
-  margin-bottom: 17px;
-}
-
-p {
-  line-height: 1.6;
+button, input {
+  width: 100%;
+  border-radius: 9px;
+  padding: 13px;
+  font-size: 14px;
 }
 
 input {
-  width: 100%;
-  padding: 15px;
-  margin: 8px 0;
-  border-radius: 10px;
-  border: 1px solid #39303f;
-  background: #09070e;
+  background: #090711;
   color: white;
-  font-size: 15px;
+  border: 1px solid #382653;
   outline: none;
 }
 
 input:focus {
-  border-color: #c34cff;
+  border-color: #a855f7;
+  box-shadow: 0 0 10px #9333ea33;
 }
 
 button {
+  border: none;
   cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: .2s;
 }
 
-.btn {
-  width: 100%;
-  padding: 15px 10px;
-  margin: 7px 0;
-  border: 0;
-  border-radius: 11px;
-  background: linear-gradient(100deg, #9048f3, #d342e8);
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.15);
 }
 
 .google {
-  background: #25212c;
-  border: 1px solid #49404f;
+  background: #eee8ff;
+  color: #25123e;
 }
 
 .facebook {
-  background: #1877f2;
+  background: #6425c5;
+  color: white;
 }
 
-.secondary {
-  background: #292330;
-  border: 1px solid #403747;
+.generate {
+  background: linear-gradient(90deg, #7928ca, #b044ff);
+  color: white;
+  margin-top: 18px;
 }
 
-.hidden {
-  display: none !important;
-}
-
-.message {
-  margin-top: 12px;
-  padding: 12px;
-  background: #24152c;
-  border: 1px solid #623b74;
+.output {
+  margin-top: 18px;
+  padding: 13px;
   border-radius: 9px;
-  color: #e4c5f5;
+  background: #090711;
+  border: 1px solid #382653;
   overflow-wrap: anywhere;
-}
-
-.small {
-  color: #9d95a8;
   font-size: 12px;
-  margin-top: 10px;
+  color: #d8baff;
+  display: none;
 }
 
-.item {
-  padding: 13px 0;
-  border-bottom: 1px solid #332a3b;
-  overflow-wrap: anywhere;
-}
-
-.item:last-child {
-  border-bottom: 0;
-}
-
-footer {
-  padding: 18px 0 5px;
+.status {
+  min-height: 18px;
+  color: #c084fc;
+  font-size: 12px;
+  margin-top: 13px;
   text-align: center;
-  color: #80778b;
-  font-size: 12px;
+}
+
+.footer {
+  text-align: center;
+  color: #6f647f;
+  font-size: 10px;
+  margin-top: 22px;
 }
 </style>
 </head>
 
 <body>
+<main class="container">
+  <div class="logo">ACCESS GENERATOR</div>
+  <div class="subtitle">SECURE DEMO INTERFACE</div>
 
-<main class="app">
-
-<header>
-  <div class="logo">⚡</div>
-  <h1>SLEX ACCESS GENERATOR</h1>
-  <p class="subtitle">Authentication Demo</p>
-</header>
-
-<!-- SIGN UP -->
-<section id="signup" class="card">
-  <h2>CREATE ACCOUNT</h2>
-
-  <button class="btn google" id="googleSignup">
-    🌐 Sign up with Google
+  <button class="google" onclick="openLogin('google')">
+    Continue with Google
   </button>
 
-  <button class="btn facebook" id="facebookSignup">
-    f &nbsp; Sign up with Facebook
+  <button class="facebook" onclick="openLogin('facebook')">
+    Continue with Facebook
   </button>
 
-  <p class="small">
-    Provider buttons open the official login websites.
-    This demo does not receive their authentication results.
-  </p>
+  <label for="accessLink">Access Link / Demo Input</label>
+  <input
+    id="accessLink"
+    type="text"
+    placeholder="Paste a test link or text..."
+    autocomplete="off"
+  >
 
-  <hr style="border-color:#332a3b;margin:20px 0">
-
-  <h2>OR CREATE A LOCAL DEMO ACCOUNT</h2>
-
-  <form id="signupForm">
-    <input id="name" placeholder="Your username"
-           minlength="3" maxlength="30" required>
-
-    <input id="email" type="email"
-           placeholder="Email address" required>
-
-    <input id="password" type="password"
-           placeholder="Create password"
-           minlength="8" required>
-
-    <button class="btn" type="submit">SIGN UP →</button>
-  </form>
-
-  <p class="small">
-    Already registered?
-    <button id="showLogin"
-      style="background:none;border:0;color:#d78cff">
-      Login here
-    </button>
-  </p>
-
-  <div id="signupMessage" aria-live="polite"></div>
-</section>
-
-<!-- LOGIN -->
-<section id="login" class="card hidden">
-  <h2>LOGIN</h2>
-
-  <form id="loginForm">
-    <input id="loginEmail" type="email"
-           placeholder="Email address" required>
-
-    <input id="loginPassword" type="password"
-           placeholder="Password" required>
-
-    <button class="btn" type="submit">LOGIN →</button>
-  </form>
-
-  <button id="backSignup" class="btn secondary">
-    BACK TO SIGN UP
+  <button class="generate" onclick="convertDemo()">
+    CONVERT DEMO TOKEN
   </button>
 
-  <div id="loginMessage" aria-live="polite"></div>
-</section>
+  <div class="output" id="output"></div>
+  <div class="status" id="status" role="status"></div>
 
-<!-- DASHBOARD -->
-<section id="dashboard" class="hidden">
-
-  <div class="card">
-    <h2>WELCOME</h2>
-    <p id="welcome"></p>
-
-    <button id="logout" class="btn secondary">
-      LOG OUT
-    </button>
+  <div class="footer">
+    DEMO MODE · NO REAL ACCOUNT TOKENS ARE CREATED
   </div>
-
-  <div class="card">
-    <h2>ACCESS GENERATOR</h2>
-
-    <p class="small">
-      Enter a non-sensitive test URL or test value.
-      This demo validates input; it does not generate
-      real game-account access tokens.
-    </p>
-
-    <input id="sourceInput"
-           placeholder="Paste URL or test value">
-
-    <button id="generate" class="btn">
-      GENERATE →
-    </button>
-
-    <div id="generateMessage" aria-live="polite"></div>
-  </div>
-
-  <div class="card">
-    <h2>GENERATION HISTORY</h2>
-
-    <div id="history"></div>
-
-    <button id="clearHistory" class="btn secondary">
-      CLEAR HISTORY
-    </button>
-  </div>
-
-</section>
-
-<footer>
-  SLEX ACCESS GENERATOR · DEMO
-</footer>
-
 </main>
 
 <script>
-const $ = id => document.getElementById(id);
+function openLogin(provider) {
+  const status = document.getElementById("status");
 
-const show = id => $(id).classList.remove("hidden");
-const hide = id => $(id).classList.add("hidden");
-
-function notify(id, text) {
-  $(id).className = "message";
-  $(id).textContent = text;
-}
-
-function read(key, fallback) {
-  try {
-    return JSON.parse(localStorage.getItem(key)) ?? fallback;
-  } catch {
-    return fallback;
+  if (provider === "google") {
+    window.open(
+      "https://accounts.google.com/",
+      "_blank",
+      "noopener,noreferrer"
+    );
+    status.textContent =
+      "Google opened. This demo does not capture login credentials or tokens.";
+  } else {
+    window.open(
+      "https://www.facebook.com/login/",
+      "_blank",
+      "noopener,noreferrer"
+    );
+    status.textContent =
+      "Facebook opened. This demo does not capture login credentials or tokens.";
   }
 }
 
-function write(key, value) {
-  localStorage.setItem(key, JSON.stringify(value));
-}
+function convertDemo() {
+  const input = document.getElementById("accessLink").value.trim();
+  const output = document.getElementById("output");
+  const status = document.getElementById("status");
 
-function openProvider(provider) {
-  const urls = {
-    Google: "https://accounts.google.com/",
-    Facebook: "https://www.facebook.com/login/"
-  };
-
-  location.href = urls[provider];
-}
-
-$("googleSignup").onclick = () => openProvider("Google");
-$("facebookSignup").onclick = () => openProvider("Facebook");
-
-$("showLogin").onclick = () => {
-  hide("signup");
-  show("login");
-};
-
-$("backSignup").onclick = () => {
-  hide("login");
-  show("signup");
-};
-
-function enterDashboard(user) {
-  write("slex_demo_session", {
-    email: user.email,
-    name: user.name
-  });
-
-  hide("signup");
-  hide("login");
-  show("dashboard");
-
-  $("welcome").textContent =
-    "Logged in as " + user.name + " (" + user.email + ")";
-
-  renderHistory();
-}
-
-$("signupForm").onsubmit = event => {
-  event.preventDefault();
-
-  const name = $("name").value.trim();
-  const email = $("email").value.trim().toLowerCase();
-  const password = $("password").value;
-
-  if (name.length < 3 || password.length < 8) {
-    notify("signupMessage", "Please check your input.");
+  if (!input) {
+    status.style.color = "#facc15";
+    status.textContent = "Please enter some test text first.";
+    output.style.display = "none";
     return;
   }
 
-  const users = read("slex_demo_users", []);
+  // Local demonstration only; this is NOT a real access token.
+  const demoToken =
+    "DEMO_" + btoa(unescape(encodeURIComponent(input))).slice(0, 24);
 
-  if (users.some(user => user.email === email)) {
-    notify("signupMessage", "Account already exists. Please log in.");
-    return;
-  }
+  output.textContent = "Demo token: " + demoToken;
+  output.style.display = "block";
 
-  /*
-   * Demo only: localStorage is not secure account storage.
-   * Do not use this authentication method for a public website.
-   */
-  users.push({name, email, password});
-  write("slex_demo_users", users);
-
-  enterDashboard({name, email});
-};
-
-$("loginForm").onsubmit = event => {
-  event.preventDefault();
-
-  const email = $("loginEmail").value.trim().toLowerCase();
-  const password = $("loginPassword").value;
-
-  const users = read("slex_demo_users", []);
-
-  const user = users.find(
-    item => item.email === email && item.password === password
-  );
-
-  if (!user) {
-    notify("loginMessage", "Incorrect email or password.");
-    return;
-  }
-
-  enterDashboard(user);
-};
-
-$("logout").onclick = () => {
-  localStorage.removeItem("slex_demo_session");
-
-  hide("dashboard");
-  show("signup");
-
-  $("signupForm").reset();
-  $("loginForm").reset();
-};
-
-function renderHistory() {
-  const history = read("slex_demo_history", []);
-  const root = $("history");
-
-  root.replaceChildren();
-
-  if (!history.length) {
-    const empty = document.createElement("p");
-    empty.className = "small";
-    empty.textContent = "No demo history yet.";
-    root.appendChild(empty);
-    return;
-  }
-
-  history.slice().reverse().forEach(entry => {
-    const item = document.createElement("div");
-    item.className = "item";
-
-    const title = document.createElement("strong");
-    title.textContent = entry.status;
-
-    const date = document.createElement("p");
-    date.className = "small";
-    date.textContent = entry.date;
-
-    const detail = document.createElement("p");
-    detail.className = "small";
-    detail.textContent = entry.detail;
-
-    item.append(title, date, detail);
-    root.appendChild(item);
-  });
-}
-
-$("generate").onclick = () => {
-  const session = read("slex_demo_session", null);
-
-  if (!session) {
-    notify("generateMessage", "Please log in first.");
-    return;
-  }
-
-  const value = $("sourceInput").value.trim();
-
-  if (!value) {
-    notify("generateMessage", "Please enter a test URL or value.");
-    return;
-  }
-
-  let detail;
-
-  try {
-    const url = new URL(value);
-
-    if (!["https:", "http:"].includes(url.protocol)) {
-      throw new Error("Unsupported protocol");
-    }
-
-    detail = url.searchParams.has("eat")
-      ? "URL contains an eat parameter; no token generated."
-      : "Valid URL; no eat parameter found.";
-  } catch {
-    if (/^https?:\/\//i.test(value)) {
-      notify("generateMessage", "Invalid URL.");
-      return;
-    }
-
-    detail = "Test value accepted for format checking only.";
-  }
-
-  const history = read("slex_demo_history", []);
-
-  history.push({
-    status: "DEMO VALIDATION",
-    date: new Date().toLocaleString(),
-    detail
-  });
-
-  write("slex_demo_history", history);
-
-  notify("generateMessage", detail);
-  renderHistory();
-};
-
-$("clearHistory").onclick = () => {
-  if (confirm("Clear your local demo history?")) {
-    write("slex_demo_history", []);
-    renderHistory();
-  }
-};
-
-const session = read("slex_demo_session", null);
-
-if (session) {
-  enterDashboard(session);
+  status.style.color = "#c084fc";
+  status.textContent =
+    "Demo complete. No request was sent and no real token was generated.";
 }
 </script>
-
 </body>
 </html>
