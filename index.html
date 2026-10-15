@@ -13,178 +13,193 @@
 }
 
 body {
-  min-height: 100vh;
-  padding: 20px 14px;
   background: #08060d;
-  color: white;
+  background-image:
+    linear-gradient(#21132c 1px, transparent 1px),
+    linear-gradient(90deg, #21132c 1px, transparent 1px);
+  background-size: 35px 35px;
+  color: #fff;
   font-family: Arial, sans-serif;
+  padding: 18px 12px;
 }
 
 .container {
-  max-width: 520px;
-  margin: 20px auto;
-  padding: 28px 20px;
-  border: 1px solid #302039;
+  max-width: 580px;
+  margin: auto;
+  padding: 26px 20px;
+  border: 1px solid #30213b;
   border-radius: 28px;
-  background: #100d16;
-  box-shadow: 0 0 30px #a13bff15;
+  background: #0b0810;
 }
 
 header {
   text-align: center;
-  margin-bottom: 30px;
+  padding: 10px 0 30px;
 }
 
 .logo {
-  width: 90px;
-  height: 90px;
-  margin: 0 auto 20px;
+  width: 100px;
+  height: 100px;
   display: grid;
   place-items: center;
-  border: 3px solid #c14aff;
+  margin: 0 auto 20px;
   border-radius: 50%;
-  background: #21102c;
-  box-shadow: 0 0 24px #c14aff40;
-  font-size: 38px;
+  border: 4px solid #bf4cf4;
+  background: #21102b;
+  box-shadow: 0 0 30px #bf4cf455;
+  font-size: 40px;
 }
 
 h1 {
-  font-size: 25px;
+  font-size: 27px;
   font-weight: 900;
 }
 
 .subtitle {
   margin-top: 12px;
-  color: #c65bfa;
-  letter-spacing: 2px;
+  color: #d16bea;
+  font-size: 19px;
 }
 
 .card {
-  margin: 20px 0;
   padding: 20px;
-  border: 1px solid #30253a;
+  margin: 20px 0;
+  border: 1px solid #302632;
   border-radius: 18px;
-  background: #15111c;
+  background: #15121a;
 }
 
-h2 {
-  margin-bottom: 18px;
+.card h2 {
   font-size: 18px;
+  margin-bottom: 18px;
+}
+
+.instructions {
+  color: #aaa4b3;
+  font-size: 14px;
+  line-height: 1.8;
 }
 
 .provider {
   width: 100%;
-  min-height: 58px;
-  margin: 9px 0;
-  padding: 14px;
-  border: 1px solid #3a3045;
+  min-height: 60px;
+  margin: 8px 0;
+  padding: 15px;
+  border: 1px solid #38303f;
   border-radius: 12px;
-  background: #201927;
+  background: #211a29;
   color: white;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  transition: .2s;
 }
 
-.provider:hover {
-  border-color: #c14aff;
-  background: #30203b;
+.provider:active {
+  transform: scale(.98);
 }
 
 .google {
-  color: #fff;
+  border-color: #45404b;
 }
 
 .facebook {
-  background: #173e83;
-  border-color: #2860bb;
-}
-
-.facebook:hover {
-  background: #2054a6;
+  background: #1877f2;
+  border-color: #1877f2;
 }
 
 input {
   width: 100%;
-  padding: 17px;
-  margin-top: 12px;
-  border: 1px solid #39303f;
-  border-radius: 12px;
-  outline: none;
-  background: #08070c;
+  padding: 19px 15px;
+  border-radius: 13px;
+  border: 1px solid #33273d;
+  background: #08060c;
   color: white;
   font-size: 15px;
+  outline: none;
 }
 
 input:focus {
-  border-color: #c14aff;
+  border-color: #bd4cf4;
 }
 
 .generate {
   width: 100%;
-  padding: 19px 10px;
   margin-top: 18px;
-  border: 0;
-  border-radius: 13px;
-  background: linear-gradient(100deg, #8c43ee, #d642e8);
+  padding: 20px 10px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(100deg, #8846f2, #dc42e8);
   color: white;
+  font-size: 17px;
   font-weight: 900;
-  font-size: 16px;
+  letter-spacing: 1px;
   cursor: pointer;
 }
 
 .message {
   display: none;
-  margin-top: 16px;
+  margin-top: 15px;
   padding: 14px;
+  border: 1px solid #75418c;
   border-radius: 10px;
-  background: #21152b;
-  color: #e0b4ff;
-  line-height: 1.6;
+  background: #211329;
+  color: #e5c4f5;
+  font-size: 14px;
+  line-height: 1.7;
   overflow-wrap: anywhere;
 }
 
-.note {
-  margin-top: 14px;
-  color: #9991a5;
+.small {
+  margin-top: 12px;
+  color: #928b9d;
   font-size: 12px;
   line-height: 1.6;
 }
 
 footer {
-  margin-top: 28px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #30213b;
   text-align: center;
-  color: #777080;
+  color: #8c8497;
   font-size: 12px;
 }
 </style>
 </head>
 
 <body>
-
 <main class="container">
 
 <header>
   <div class="logo">⚡</div>
   <h1>ACCESS GENERATOR</h1>
-  <p class="subtitle">SECURE AUTHENTICATION</p>
+  <p class="subtitle">Secure Authentication</p>
 </header>
 
 <section class="card">
-  <h2>SELECT LOGIN METHOD</h2>
+  <h2>HOW TO USE</h2>
+  <div class="instructions">
+    1. Select Google or Facebook.<br>
+    2. Complete authentication on the official provider page.<br>
+    3. Use the URL validator below to check a URL's format.
+  </div>
+</section>
+
+<section class="card">
+  <h2>SELECT PROVIDER &amp; LOGIN</h2>
 
   <button class="provider google" id="googleBtn">
-    🌐 Continue with Google
+    🌐 &nbsp; Continue with Google
   </button>
 
   <button class="provider facebook" id="facebookBtn">
     f &nbsp; Continue with Facebook
   </button>
 
-  <p class="note">
-    Login buttons open the official provider websites.
-    Real account authentication requires application setup.
+  <p class="small">
+    These buttons open the official provider websites.
+    Your own registered OAuth application is required
+    for authentication callbacks.
   </p>
 </section>
 
@@ -193,12 +208,13 @@ footer {
 
   <input
     id="urlInput"
-    type="url"
-    placeholder="Paste a URL to validate"
+    type="text"
+    placeholder="Paste URL containing eat="
     autocomplete="off"
+    spellcheck="false"
   >
 
-  <button class="generate" id="validateBtn">
+  <button class="generate" id="generateBtn">
     VALIDATE URL →
   </button>
 
@@ -206,7 +222,7 @@ footer {
 </section>
 
 <footer>
-  Secure Authentication Demo · 2026
+  ACCESS GENERATOR · SECURE DEMO
 </footer>
 
 </main>
@@ -214,41 +230,52 @@ footer {
 <script>
 const message = document.getElementById("message");
 
+function showMessage(text) {
+  message.textContent = text;
+  message.style.display = "block";
+}
+
 document.getElementById("googleBtn").addEventListener("click", () => {
-  window.location.href =
-    "https://accounts.google.com/";
+  window.location.href = "https://accounts.google.com/";
 });
 
 document.getElementById("facebookBtn").addEventListener("click", () => {
-  window.location.href =
-    "https://www.facebook.com/login/";
+  window.location.href = "https://www.facebook.com/login/";
 });
 
-document.getElementById("validateBtn").addEventListener("click", () => {
-  const value = document.getElementById("urlInput").value.trim();
+document.getElementById("generateBtn").addEventListener("click", () => {
+  const input = document.getElementById("urlInput").value.trim();
 
-  message.style.display = "block";
-
-  if (!value) {
-    message.textContent = "Please enter a URL first.";
+  if (!input) {
+    showMessage("Please enter a URL.");
     return;
   }
 
+  let url;
+
   try {
-    const url = new URL(value);
-
-    if (url.protocol !== "https:" && url.protocol !== "http:") {
-      message.textContent = "Unsupported URL protocol.";
-      return;
-    }
-
-    message.textContent =
-      "URL format is valid. This demo does not generate access tokens.";
+    url = new URL(input);
   } catch {
-    message.textContent = "Invalid URL. Please check your input.";
+    showMessage("Invalid URL. Please check the URL and try again.");
+    return;
+  }
+
+  if (!["https:", "http:"].includes(url.protocol)) {
+    showMessage("Unsupported URL protocol.");
+    return;
+  }
+
+  if (url.searchParams.has("eat")) {
+    showMessage(
+      "URL contains an eat parameter. Format validated only; " +
+      "no access token was generated."
+    );
+  } else {
+    showMessage(
+      "The URL is valid, but it does not contain an eat parameter."
+    );
   }
 });
 </script>
-
 </body>
 </html>
