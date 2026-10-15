@@ -3,286 +3,160 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Access Generator</title>
+<title>ACCESS GENERATOR</title>
 
 <style>
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-:root {
-    --bg: #07050c;
-    --card: #121018;
-    --purple: #bd4cf4;
-    --pink: #e044ef;
-    --text: #f5f2fa;
-    --muted: #92909f;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background-color: var(--bg);
-    background-image:
-        linear-gradient(#24102e 1px, transparent 1px),
-        linear-gradient(90deg, #24102e 1px, transparent 1px);
-    background-size: 35px 35px;
-    color: var(--text);
-    font-family: Arial, sans-serif;
-    padding: 20px 12px;
+  min-height: 100vh;
+  padding: 20px 14px;
+  background: #08060d;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
 .container {
-    width: 100%;
-    max-width: 620px;
-    margin: 12px auto;
-    padding: 28px 22px;
-    background: rgba(8, 6, 13, 0.97);
-    border: 1px solid #28212f;
-    border-radius: 32px;
-    box-shadow: 0 0 35px #a32de80b;
+  max-width: 520px;
+  margin: 20px auto;
+  padding: 28px 20px;
+  border: 1px solid #302039;
+  border-radius: 28px;
+  background: #100d16;
+  box-shadow: 0 0 30px #a13bff15;
 }
 
-.profile {
-    text-align: center;
-    margin-bottom: 36px;
+header {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.avatar {
-    width: 112px;
-    height: 112px;
-    border: 5px solid var(--purple);
-    border-radius: 50%;
-    margin: 8px auto 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 45px;
-    background: #21102e;
-    box-shadow: 0 0 25px #bd4cf455;
+.logo {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 20px;
+  display: grid;
+  place-items: center;
+  border: 3px solid #c14aff;
+  border-radius: 50%;
+  background: #21102c;
+  box-shadow: 0 0 24px #c14aff40;
+  font-size: 38px;
 }
 
 h1 {
-    font-size: 29px;
-    font-weight: 900;
-    margin-bottom: 15px;
+  font-size: 25px;
+  font-weight: 900;
 }
 
 .subtitle {
-    color: #d27be9;
-    font-size: 22px;
+  margin-top: 12px;
+  color: #c65bfa;
+  letter-spacing: 2px;
 }
 
-.tutorial {
-    display: block;
-    text-decoration: none;
-    color: white;
-    background: #190d20;
-    border: 1px dashed #9c39b5;
-    padding: 20px;
-    margin: 17px 0;
-    border-radius: 17px;
+.card {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #30253a;
+  border-radius: 18px;
+  background: #15111c;
 }
 
-.tutorial strong {
-    font-size: 17px;
-}
-
-.tutorial p {
-    margin-top: 8px;
-    color: var(--muted);
-    font-size: 13px;
-}
-
-.section {
-    background: var(--card);
-    border: 1px solid #28232e;
-    border-radius: 22px;
-    padding: 22px;
-    margin: 26px 0;
-}
-
-.section h3 {
-    font-size: 19px;
-    margin-bottom: 23px;
-}
-
-.step {
-    display: flex;
-    gap: 14px;
-    margin: 20px 0;
-    line-height: 1.6;
-    color: #aaa6b6;
-}
-
-.number {
-    min-width: 32px;
-    height: 32px;
-    border-radius: 7px;
-    background: #421a4b;
-    color: #e58cff;
-    display: grid;
-    place-items: center;
-    font-weight: bold;
-}
-
-.safe {
-    color: #47c77d;
-    font-size: 14px;
-    margin-top: 4px;
-}
-
-.provider-title {
-    margin: 30px 0 17px;
-    font-size: 18px;
-    color: #b0adbb;
-}
-
-.providers {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
+h2 {
+  margin-bottom: 18px;
+  font-size: 18px;
 }
 
 .provider {
-    height: 66px;
-    border: 1px solid #24212b;
-    border-radius: 14px;
-    background: #100e16;
-    color: white;
-    font-size: 25px;
-    cursor: pointer;
-    transition: 0.2s;
+  width: 100%;
+  min-height: 58px;
+  margin: 9px 0;
+  padding: 14px;
+  border: 1px solid #3a3045;
+  border-radius: 12px;
+  background: #201927;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .2s;
 }
 
-.provider:hover,
-.provider.active {
-    border-color: var(--purple);
-    background: #281332;
-    transform: translateY(-2px);
+.provider:hover {
+  border-color: #c14aff;
+  background: #30203b;
 }
 
-.provider-label {
-    color: var(--muted);
-    font-size: 13px;
-    margin-top: 12px;
+.google {
+  color: #fff;
+}
+
+.facebook {
+  background: #173e83;
+  border-color: #2860bb;
+}
+
+.facebook:hover {
+  background: #2054a6;
 }
 
 input {
-    width: 100%;
-    min-height: 78px;
-    margin-top: 27px;
-    padding: 20px;
-    background: #07060b;
-    color: white;
-    border: 1px solid #28232f;
-    border-radius: 18px;
-    font-size: 15px;
-    outline: none;
+  width: 100%;
+  padding: 17px;
+  margin-top: 12px;
+  border: 1px solid #39303f;
+  border-radius: 12px;
+  outline: none;
+  background: #08070c;
+  color: white;
+  font-size: 15px;
 }
 
 input:focus {
-    border-color: var(--purple);
-    box-shadow: 0 0 15px #bd4cf422;
-}
-
-input::placeholder {
-    color: #666273;
-}
-
-.hint {
-    margin-top: 12px;
-    font-size: 13px;
-    color: #777383;
-    line-height: 1.5;
+  border-color: #c14aff;
 }
 
 .generate {
-    width: 100%;
-    min-height: 84px;
-    margin-top: 28px;
-    border: 0;
-    border-radius: 19px;
-    background: linear-gradient(110deg, #8c50f4, #db42e9);
-    color: white;
-    font-weight: 900;
-    font-size: 18px;
-    letter-spacing: 2px;
-    cursor: pointer;
-    box-shadow: 0 0 25px #c43fe933;
+  width: 100%;
+  padding: 19px 10px;
+  margin-top: 18px;
+  border: 0;
+  border-radius: 13px;
+  background: linear-gradient(100deg, #8c43ee, #d642e8);
+  color: white;
+  font-weight: 900;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.generate:active {
-    transform: scale(0.98);
+.message {
+  display: none;
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 10px;
+  background: #21152b;
+  color: #e0b4ff;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
-.result {
-    display: none;
-    margin-top: 20px;
-    padding: 17px;
-    border-radius: 12px;
-    background: #17121e;
-    border: 1px solid #75408a;
-    overflow-wrap: anywhere;
-    line-height: 1.7;
+.note {
+  margin-top: 14px;
+  color: #9991a5;
+  font-size: 12px;
+  line-height: 1.6;
 }
 
-.result button {
-    margin-top: 12px;
-    padding: 10px 16px;
-    border: 0;
-    border-radius: 8px;
-    background: #b74be8;
-    color: white;
-    cursor: pointer;
-}
-
-.footer {
-    text-align: center;
-    margin-top: 38px;
-    padding-top: 25px;
-    border-top: 1px solid #28212f;
-    color: #777383;
-    font-size: 13px;
-}
-
-.socials {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 22px;
-}
-
-.social {
-    background: #1b1a1d;
-    padding: 20px 12px;
-    border-radius: 17px;
-    color: #b9b6c2;
-    text-align: center;
-    border: 1px solid #29262e;
-}
-
-@media (max-width: 380px) {
-    .container {
-        padding: 22px 15px;
-    }
-
-    h1 {
-        font-size: 25px;
-    }
-
-    .section {
-        padding: 16px;
-    }
-
-    .providers {
-        gap: 6px;
-    }
-
-    .provider {
-        height: 55px;
-        font-size: 21px;
-    }
+footer {
+  margin-top: 28px;
+  text-align: center;
+  color: #777080;
+  font-size: 12px;
 }
 </style>
 </head>
@@ -291,226 +165,88 @@ input::placeholder {
 
 <main class="container">
 
-    <header class="profile">
-        <div class="avatar">⚡</div>
-        <h1>ACCESS GENERATOR</h1>
-        <p class="subtitle">Your Website Name</p>
-    </header>
+<header>
+  <div class="logo">⚡</div>
+  <h1>ACCESS GENERATOR</h1>
+  <p class="subtitle">SECURE AUTHENTICATION</p>
+</header>
 
-    <a class="tutorial" href="#instructions">
-        <strong>▶ &nbsp; FULL TUTORIAL</strong>
-        <p>Learn how to use this tool</p>
-    </a>
+<section class="card">
+  <h2>SELECT LOGIN METHOD</h2>
 
-    <a class="tutorial" href="#generator">
-        <strong>▶ &nbsp; SECOND METHOD</strong>
-        <p>View the alternative method</p>
-    </a>
+  <button class="provider google" id="googleBtn">
+    🌐 Continue with Google
+  </button>
 
-    <section class="section" id="instructions">
-        <h3>📖 &nbsp; HOW TO USE</h3>
+  <button class="provider facebook" id="facebookBtn">
+    f &nbsp; Continue with Facebook
+  </button>
 
-        <div class="step">
-            <span class="number">1</span>
-            <div>
-                Select a provider below.
-                <p class="safe">✓ Use official authentication only.</p>
-            </div>
-        </div>
+  <p class="note">
+    Login buttons open the official provider websites.
+    Real account authentication requires application setup.
+  </p>
+</section>
 
-        <div class="step">
-            <span class="number">2</span>
-            <div>
-                Paste a URL containing an <b>eat=</b> parameter,
-                or enter a non-sensitive test token.
-            </div>
-        </div>
+<section class="card">
+  <h2>URL VALIDATOR</h2>
 
-        <div class="step">
-            <span class="number">3</span>
-            <div>
-                Click GENERATE to validate the input format.
-            </div>
-        </div>
-    </section>
+  <input
+    id="urlInput"
+    type="url"
+    placeholder="Paste a URL to validate"
+    autocomplete="off"
+  >
 
-    <h3 class="provider-title">SELECT PROVIDER</h3>
+  <button class="generate" id="validateBtn">
+    VALIDATE URL →
+  </button>
 
-    <div class="providers">
-        <button class="provider" data-provider="Google"
-                aria-label="Google">G</button>
+  <div class="message" id="message" role="status"></div>
+</section>
 
-        <button class="provider" data-provider="Facebook"
-                aria-label="Facebook">f</button>
-
-        <button class="provider" data-provider="Apple"
-                aria-label="Apple">●</button>
-
-        <button class="provider" data-provider="X"
-                aria-label="X">𝕏</button>
-
-        <button class="provider" data-provider="VK"
-                aria-label="VK">ᴠκ</button>
-    </div>
-
-    <p class="provider-label" id="providerLabel">
-        Selected provider: None
-    </p>
-
-    <section id="generator">
-
-        <input
-            id="tokenInput"
-            type="text"
-            placeholder="Paste URL or test token"
-            autocomplete="off"
-            spellcheck="false"
-            aria-label="URL or test token"
-        >
-
-        <p class="hint">
-            Accepts a URL containing eat= or a test token.
-            Never paste passwords, cookies or live session tokens.
-        </p>
-
-        <button class="generate" id="generateBtn">
-            GENERATE ACCESS →
-        </button>
-
-        <div class="result" id="result" role="status">
-            <p id="resultMessage"></p>
-            <button id="copyBtn" style="display:none">
-                COPY EXTRACTED VALUE
-            </button>
-        </div>
-
-    </section>
-
-    <footer class="footer">
-        <p>CONNECT WITH US</p>
-
-        <div class="socials">
-            <div class="social">✈ Telegram</div>
-            <div class="social">▶ YouTube</div>
-            <div class="social">◎ Instagram</div>
-            <div class="social">◉ GitHub</div>
-        </div>
-
-        <p style="margin-top:28px">
-            Terms &amp; Conditions
-        </p>
-    </footer>
+<footer>
+  Secure Authentication Demo · 2026
+</footer>
 
 </main>
 
 <script>
-const providerButtons = document.querySelectorAll(".provider");
-const providerLabel = document.getElementById("providerLabel");
-const tokenInput = document.getElementById("tokenInput");
-const generateBtn = document.getElementById("generateBtn");
-const result = document.getElementById("result");
-const resultMessage = document.getElementById("resultMessage");
-const copyBtn = document.getElementById("copyBtn");
+const message = document.getElementById("message");
 
-let selectedProvider = "";
-let extractedValue = "";
-
-providerButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        providerButtons.forEach(item =>
-            item.classList.remove("active")
-        );
-
-        button.classList.add("active");
-        selectedProvider = button.dataset.provider;
-
-        providerLabel.textContent =
-            "Selected provider: " + selectedProvider;
-
-        result.style.display = "none";
-    });
+document.getElementById("googleBtn").addEventListener("click", () => {
+  window.location.href =
+    "https://accounts.google.com/";
 });
 
-function showMessage(message, showCopy = false) {
-    result.style.display = "block";
-    resultMessage.textContent = message;
-    copyBtn.style.display = showCopy ? "inline-block" : "none";
-}
-
-generateBtn.addEventListener("click", () => {
-    const input = tokenInput.value.trim();
-
-    extractedValue = "";
-    copyBtn.style.display = "none";
-
-    if (!selectedProvider) {
-        showMessage("Please select a provider first.");
-        return;
-    }
-
-    if (!input) {
-        showMessage("Please enter a URL or test token.");
-        tokenInput.focus();
-        return;
-    }
-
-    /*
-      This demo only parses the eat parameter.
-      It does not contact an API or generate account access.
-    */
-
-    if (/^https?:\/\//i.test(input)) {
-        let url;
-
-        try {
-            url = new URL(input);
-        } catch {
-            showMessage("The URL format is invalid.");
-            return;
-        }
-
-        extractedValue = url.searchParams.get("eat") || "";
-
-        if (!extractedValue) {
-            showMessage(
-                "No eat= parameter was found in this URL."
-            );
-            return;
-        }
-
-        showMessage(
-            "URL format validated for " + selectedProvider +
-            ". A value was extracted, but no access was generated.",
-            true
-        );
-
-        return;
-    }
-
-    if (/^[A-Za-z0-9._~-]{8,2048}$/.test(input)) {
-        showMessage(
-            "Input format looks valid for " + selectedProvider +
-            ". This is a local format check only; no access was generated."
-        );
-        return;
-    }
-
-    showMessage(
-        "Invalid input format. Check the URL or use a test token."
-    );
+document.getElementById("facebookBtn").addEventListener("click", () => {
+  window.location.href =
+    "https://www.facebook.com/login/";
 });
 
-copyBtn.addEventListener("click", async () => {
-    if (!extractedValue) return;
+document.getElementById("validateBtn").addEventListener("click", () => {
+  const value = document.getElementById("urlInput").value.trim();
 
-    try {
-        await navigator.clipboard.writeText(extractedValue);
-        copyBtn.textContent = "COPIED ✓";
-    } catch {
-        showMessage(
-            "Clipboard access is unavailable in this browser."
-        );
+  message.style.display = "block";
+
+  if (!value) {
+    message.textContent = "Please enter a URL first.";
+    return;
+  }
+
+  try {
+    const url = new URL(value);
+
+    if (url.protocol !== "https:" && url.protocol !== "http:") {
+      message.textContent = "Unsupported URL protocol.";
+      return;
     }
+
+    message.textContent =
+      "URL format is valid. This demo does not generate access tokens.";
+  } catch {
+    message.textContent = "Invalid URL. Please check your input.";
+  }
 });
 </script>
 
