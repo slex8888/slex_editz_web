@@ -4,214 +4,277 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080610">
-<title>ACCESS GENERATOR</title>
+<title>SLEX.EDITZ | Access Tool</title>
 
 <style>
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  min-height: 100vh;
-  background: #080610;
-  color: #f5f0ff;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+    min-height: 100vh;
+    padding: 22px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #080610;
+    color: #f5efff;
+    font-family: Arial, sans-serif;
 }
 
-.container {
-  width: 100%;
-  max-width: 420px;
-  background: #100c1c;
-  border: 1px solid #5422a5;
-  border-radius: 18px;
-  padding: 25px;
-  box-shadow: 0 0 30px #6d28d933;
+.card {
+    width: 100%;
+    max-width: 430px;
+    padding: 27px 22px;
+    background: #100b1b;
+    border: 1px solid #512080;
+    border-radius: 23px;
+    box-shadow: 0 0 28px #8b27e51c;
 }
 
-.logo {
-  text-align: center;
-  color: #bb86fc;
-  font-size: 26px;
-  font-weight: 900;
-  letter-spacing: 2px;
+h1 {
+    text-align: center;
+    color: #c084fc;
+    font-size: 27px;
+    letter-spacing: 3px;
+    overflow-wrap: anywhere;
 }
 
 .subtitle {
-  text-align: center;
-  color: #9c91ad;
-  font-size: 12px;
-  margin: 8px 0 25px;
-}
-
-label {
-  display: block;
-  color: #c9b3f5;
-  font-size: 13px;
-  margin: 17px 0 8px;
-}
-
-button, input {
-  width: 100%;
-  border-radius: 9px;
-  padding: 13px;
-  font-size: 14px;
-}
-
-input {
-  background: #090711;
-  color: white;
-  border: 1px solid #382653;
-  outline: none;
-}
-
-input:focus {
-  border-color: #a855f7;
-  box-shadow: 0 0 10px #9333ea33;
+    text-align: center;
+    color: #9689a9;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin: 12px 0 28px;
 }
 
 button {
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 10px;
-  transition: .2s;
-}
-
-button:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.15);
+    width: 100%;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 12px;
+    margin-bottom: 13px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .google {
-  background: #eee8ff;
-  color: #25123e;
+    color: #25143d;
+    background: #eee7ff;
 }
 
 .facebook {
-  background: #6425c5;
-  color: white;
+    color: white;
+    background: #6425c5;
+}
+
+label {
+    display: block;
+    margin: 17px 0 10px;
+    color: #c9a6f5;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 15px 13px;
+    border: 1px solid #332342;
+    border-radius: 12px;
+    outline: none;
+    color: white;
+    background: #090711;
+    font-size: 13px;
+}
+
+input:focus {
+    border-color: #a855f7;
 }
 
 .generate {
-  background: linear-gradient(90deg, #7928ca, #b044ff);
-  color: white;
-  margin-top: 18px;
+    margin-top: 17px;
+    margin-bottom: 0;
+    color: white;
+    background: linear-gradient(90deg, #7724c8, #bd35ff);
+    letter-spacing: 1px;
 }
 
-.output {
-  margin-top: 18px;
-  padding: 13px;
-  border-radius: 9px;
-  background: #090711;
-  border: 1px solid #382653;
-  overflow-wrap: anywhere;
-  font-size: 12px;
-  color: #d8baff;
-  display: none;
+.result {
+    display: none;
+    margin-top: 17px;
+    padding: 14px;
+    border: 1px solid #332342;
+    border-radius: 12px;
+    background: #090711;
+    overflow-wrap: anywhere;
+}
+
+.result-title {
+    margin-bottom: 10px;
+    color: #c084fc;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#resultText {
+    color: #eee3ff;
+    font-size: 12px;
+    line-height: 1.7;
+    word-break: break-all;
+}
+
+.copy {
+    margin-top: 13px;
+    margin-bottom: 0;
+    background: #38165b;
+    color: white;
 }
 
 .status {
-  min-height: 18px;
-  color: #c084fc;
-  font-size: 12px;
-  margin-top: 13px;
-  text-align: center;
+    margin-top: 15px;
+    color: #c084fc;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.6;
 }
 
 .footer {
-  text-align: center;
-  color: #6f647f;
-  font-size: 10px;
-  margin-top: 22px;
+    margin-top: 25px;
+    color: #72657f;
+    font-size: 10px;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 1.8;
 }
 </style>
 </head>
 
 <body>
-<main class="container">
-  <div class="logo">ACCESS GENERATOR</div>
-  <div class="subtitle">SECURE DEMO INTERFACE</div>
 
-  <button class="google" onclick="openLogin('google')">
-    Continue with Google
-  </button>
+<main class="card">
+    <h1>ACCESS TOOL</h1>
+    <p class="subtitle">LINK VALUE EXTRACTOR</p>
 
-  <button class="facebook" onclick="openLogin('facebook')">
-    Continue with Facebook
-  </button>
+    <button class="google" onclick="openProvider('google')">
+        Continue with Google
+    </button>
 
-  <label for="accessLink">Access Link / Demo Input</label>
-  <input
-    id="accessLink"
-    type="text"
-    placeholder="Paste a test link or text..."
-    autocomplete="off"
-  >
+    <button class="facebook" onclick="openProvider('facebook')">
+        Continue with Facebook
+    </button>
 
-  <button class="generate" onclick="convertDemo()">
-    CONVERT DEMO TOKEN
-  </button>
+    <label for="accessLink">Access Link</label>
 
-  <div class="output" id="output"></div>
-  <div class="status" id="status" role="status"></div>
+    <input
+        id="accessLink"
+        type="url"
+        placeholder="Paste your complete link here"
+        autocomplete="off"
+    >
 
-  <div class="footer">
-    DEMO MODE · NO REAL ACCOUNT TOKENS ARE CREATED
-  </div>
+    <button class="generate" onclick="extractValue()">
+        EXTRACT EAT VALUE
+    </button>
+
+    <section class="result" id="result">
+        <div class="result-title">EXTRACTED VALUE</div>
+        <div id="resultText"></div>
+
+        <button class="copy" onclick="copyValue()">
+            COPY VALUE
+        </button>
+    </section>
+
+    <div class="status" id="status" role="status"></div>
+
+    <div class="footer">
+        LINK EXTRACTION ONLY<br>
+        NO REAL ACCOUNT TOKEN GENERATION
+    </div>
 </main>
 
 <script>
-function openLogin(provider) {
-  const status = document.getElementById("status");
+"use strict";
 
-  if (provider === "google") {
-    window.open(
-      "https://acesse.one/5s4d9dc",
-      "_blank",
-      "noopener,noreferrer"
-    );
-    status.textContent =
-      "Google opened. This demo does not capture login credentials or tokens.";
-  } else {
-    window.open(
-      "https://www.facebook.com/login/",
-      "_blank",
-      "noopener,noreferrer"
-    );
-    status.textContent =
-      "Facebook opened. This demo does not capture login credentials or tokens.";
-  }
+let extractedValue = "";
+
+function openProvider(provider) {
+    const pages = {
+        google: "https://accounts.google.com/",
+        facebook: "https://www.facebook.com/login/"
+    };
+
+    if (!Object.prototype.hasOwnProperty.call(pages, provider)) {
+        return;
+    }
+
+    window.open(pages[provider], "_blank", "noopener,noreferrer");
+
+    document.getElementById("status").textContent =
+        "Login page opened. This tool does not collect login details.";
 }
 
-function convertDemo() {
-  const input = document.getElementById("accessLink").value.trim();
-  const output = document.getElementById("output");
-  const status = document.getElementById("status");
+function extractValue() {
+    const input = document.getElementById("accessLink").value.trim();
+    const result = document.getElementById("result");
+    const resultText = document.getElementById("resultText");
+    const status = document.getElementById("status");
 
-  if (!input) {
-    status.style.color = "#facc15";
-    status.textContent = "Please enter some test text first.";
-    output.style.display = "none";
-    return;
-  }
+    extractedValue = "";
+    result.style.display = "none";
 
-  // Local demonstration only; this is NOT a real access token.
-  const demoToken =
-    "DEMO_" + btoa(unescape(encodeURIComponent(input))).slice(0, 24);
+    if (!input) {
+        status.textContent = "Please paste a complete URL.";
+        return;
+    }
 
-  output.textContent = "Demo token: " + demoToken;
-  output.style.display = "block";
+    try {
+        const url = new URL(input);
 
-  status.style.color = "#c084fc";
-  status.textContent =
-    "Demo complete. No request was sent and no real token was generated.";
+        if (url.protocol !== "https:") {
+            status.textContent = "Please use a valid HTTPS link.";
+            return;
+        }
+
+        const value = url.searchParams.get("eat");
+
+        if (!value) {
+            status.textContent = "The URL does not contain an eat= parameter.";
+            return;
+        }
+
+        extractedValue = value;
+        resultText.textContent = value;
+        result.style.display = "block";
+
+        status.textContent =
+            "Value extracted successfully. It has not been verified as an access token.";
+
+    } catch (error) {
+        status.textContent =
+            "Invalid URL. Paste the complete link, including https://";
+    }
+}
+
+async function copyValue() {
+    const status = document.getElementById("status");
+
+    if (!extractedValue) {
+        status.textContent = "Extract a value first.";
+        return;
+    }
+
+    try {
+        await navigator.clipboard.writeText(extractedValue);
+        status.textContent = "Value copied to clipboard.";
+    } catch (error) {
+        status.textContent =
+            "Clipboard access unavailable. Select the displayed value and copy it manually.";
+    }
 }
 </script>
+
 </body>
 </html>
