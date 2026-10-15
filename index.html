@@ -2,111 +2,113 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080610">
-<title>SLEX.EDITZ | Access Tool</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090610">
+<title>SLEX.EDITZ - Access Tool</title>
 
 <style>
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 body {
+    margin: 0;
     min-height: 100vh;
-    padding: 22px 15px;
+    padding: 20px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    background: #080610;
-    color: #f5efff;
+    align-items: center;
+    background: #090610;
+    color: #fff;
     font-family: Arial, sans-serif;
 }
 
 .card {
     width: 100%;
     max-width: 430px;
-    padding: 27px 22px;
-    background: #100b1b;
-    border: 1px solid #512080;
-    border-radius: 23px;
-    box-shadow: 0 0 28px #8b27e51c;
+    padding: 25px 21px;
+    border: 1px solid #57238a;
+    border-radius: 22px;
+    background: #110b1d;
+    box-shadow: 0 0 35px #7627c522;
 }
 
 h1 {
-    text-align: center;
     color: #c084fc;
-    font-size: 27px;
-    letter-spacing: 3px;
-    overflow-wrap: anywhere;
+    font-size: 26px;
+    text-align: center;
+    letter-spacing: 2px;
 }
 
 .subtitle {
+    color: #91839f;
     text-align: center;
-    color: #9689a9;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 2px;
     margin: 12px 0 28px;
 }
 
-button {
-    width: 100%;
-    padding: 15px 10px;
-    border: none;
-    border-radius: 12px;
-    margin-bottom: 13px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.google {
-    color: #25143d;
-    background: #eee7ff;
-}
-
-.facebook {
-    color: white;
-    background: #6425c5;
-}
-
 label {
     display: block;
-    margin: 17px 0 10px;
+    margin: 20px 0 10px;
     color: #c9a6f5;
     font-size: 14px;
 }
 
 input {
     width: 100%;
-    padding: 15px 13px;
-    border: 1px solid #332342;
-    border-radius: 12px;
-    outline: none;
-    color: white;
+    padding: 15px 12px;
+    border-radius: 11px;
+    border: 1px solid #39264d;
     background: #090711;
+    color: white;
     font-size: 13px;
+    outline: none;
 }
 
 input:focus {
-    border-color: #a855f7;
+    border-color: #b34cff;
 }
 
-.generate {
-    margin-top: 17px;
-    margin-bottom: 0;
+button {
+    width: 100%;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 11px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login {
+    margin-bottom: 12px;
+    background: #eee7ff;
+    color: #24123c;
+}
+
+.facebook {
+    background: #6425c5;
     color: white;
-    background: linear-gradient(90deg, #7724c8, #bd35ff);
-    letter-spacing: 1px;
+}
+
+.convert {
+    margin-top: 18px;
+    color: white;
+    background: linear-gradient(90deg, #7926ca, #b837ff);
+}
+
+.copy {
+    margin-top: 12px;
+    color: white;
+    background: #35164f;
 }
 
 .result {
     display: none;
-    margin-top: 17px;
+    margin-top: 18px;
     padding: 14px;
-    border: 1px solid #332342;
-    border-radius: 12px;
+    border: 1px solid #39264d;
+    border-radius: 11px;
     background: #090711;
     overflow-wrap: anywhere;
 }
@@ -119,45 +121,37 @@ input:focus {
 }
 
 #resultText {
-    color: #eee3ff;
     font-size: 12px;
     line-height: 1.7;
     word-break: break-all;
 }
 
-.copy {
-    margin-top: 13px;
-    margin-bottom: 0;
-    background: #38165b;
-    color: white;
-}
-
-.status {
+#status {
     margin-top: 15px;
+    min-height: 18px;
     color: #c084fc;
-    text-align: center;
     font-size: 12px;
+    text-align: center;
     line-height: 1.6;
 }
 
 .footer {
     margin-top: 25px;
-    color: #72657f;
+    color: #756880;
     font-size: 10px;
     text-align: center;
-    letter-spacing: 1px;
     line-height: 1.8;
 }
 </style>
 </head>
 
 <body>
-
 <main class="card">
-    <h1>ACCESS TOOL</h1>
-    <p class="subtitle">LINK VALUE EXTRACTOR</p>
 
-    <button class="google" onclick="openProvider('google')">
+    <h1>ACCESS GENERATOR</h1>
+    <p class="subtitle">SECURE ACCESS INTERFACE</p>
+
+    <button class="login" onclick="openProvider('google')">
         Continue with Google
     </button>
 
@@ -165,116 +159,127 @@ input:focus {
         Continue with Facebook
     </button>
 
-    <label for="accessLink">Access Link</label>
+    <label for="accessLink">Paste Your Link</label>
 
     <input
         id="accessLink"
         type="url"
-        placeholder="Paste your complete link here"
+        placeholder="https://example.com/?eat=..."
         autocomplete="off"
     >
 
-    <button class="generate" onclick="extractValue()">
-        EXTRACT EAT VALUE
+    <button class="convert" id="convertBtn" onclick="processLink()">
+        ACCESS TOKEN
     </button>
 
     <section class="result" id="result">
-        <div class="result-title">EXTRACTED VALUE</div>
+        <div class="result-title">LINK INFORMATION</div>
         <div id="resultText"></div>
 
-        <button class="copy" onclick="copyValue()">
-            COPY VALUE
+        <button class="copy" onclick="copyResult()">
+            COPY RESULT
         </button>
     </section>
 
-    <div class="status" id="status" role="status"></div>
+    <div id="status" role="status"></div>
 
     <div class="footer">
-        LINK EXTRACTION ONLY<br>
-        NO REAL ACCOUNT TOKEN GENERATION
+        LINK VALIDATION MODE<br>
+        REAL TOKEN CONVERSION REQUIRES AN AUTHORIZED API
     </div>
+
 </main>
 
 <script>
 "use strict";
 
-let extractedValue = "";
+let currentResult = "";
 
 function openProvider(provider) {
-    const pages = {
-        google: "https://accounts.google.com/v3/signin/accountchooser?client_id=185753624591-3sg2arfuus5i1anc2jcfarepnf6cdlaq.apps.googleusercontent.com&prompt=select_account&redirect_uri=https%3A%2F%2Fauth.garena.com%2Funiversal%2Foauth%2Fgoogle&response_type=code&scope=profile+email+openid&state=87119ed8f91a44bab4fd85ac939b9fbf-platform%3D8%26response_type%3Dcode%26locale%3Den-SG%26client_id%3D100067%26redirect_uri%3Dhttps%253A%252F%252Fapi.ff.garena.co.id%252Fauth%252Fauth%252Fcallback_n%253Fsite%253Dhttps%253A%252F%252Fapi-discountstore.kiosgamer.gameid.garena.co.id%252Foauth%252Fcallback_redirect%252F&dsh=S-1222640184%3A1792064686751866&o2v=2&service=lso&flowName=GeneralOAuthFlow&opparams=%253F&continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Fv3%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hANKsPUftUlnRSgCDt2KK7HW2HI7RLDfYzcyi4haQ5vIkz0qLmjFN9CRdXtKdm2sxwvoqaEiWg01uFaJtXbVH_qt3GC1DP7mRCv3PPZtdgWT_FP-Rb88ketvQwxkWJW7E3U5MVI2k9ORWchSuuOz2bUgoNPK2HHf256I5L5OdRztu0UHna-eRD3htKjEvwFdJ8WIL5T_BvqMafLLYg0OIDWcx5U_9FiL6tvfFyDKNGXdoyYZpNzqX_TMQ05igD2faXKuF8BzDHfjeXoxAfv42HpCBmNTS14CkGv4bV3wQUgw-v6LyMLGbRhUSP5B7yX47XiioiETWpaKL_jEyqC6_17qYEOGfz_IY74-5fpndXYUwFUbmuTHwTd_Dtswy4wJ_SJcoK1SjTkd5W6W8YMowD_cXFhVKJeCAG3eoyiXN7JZCh4wLR4KjqpovHPVFd3P8pLtngtoHcjlnXUmIBildxot71VSlQ%26flowName%3DGeneralOAuthFlow%26as%3DS-1222640184%253A1792064686751866%26client_id%3D185753624591-3sg2arfuus5i1anc2jcfarepnf6cdlaq.apps.googleusercontent.com%26requestPath%3D%252Fsignin%252Foauth%252Fv3%252Fconsent%23&app_domain=https%3A%2F%2Fauth.garena.com",
+    const providers = {
+        google: "https://accounts.google.com/",
         facebook: "https://www.facebook.com/login/"
     };
 
-    if (!Object.prototype.hasOwnProperty.call(pages, provider)) {
-        return;
-    }
-
-    window.open(pages[provider], "_blank", "noopener,noreferrer");
-
-    document.getElementById("status").textContent =
-        "Login page opened. This tool does not collect login details.";
+    window.open(
+        providers[provider],
+        "_blank",
+        "noopener,noreferrer"
+    );
 }
 
-function extractValue() {
+function processLink() {
     const input = document.getElementById("accessLink").value.trim();
+    const status = document.getElementById("status");
     const result = document.getElementById("result");
     const resultText = document.getElementById("resultText");
-    const status = document.getElementById("status");
+    const button = document.getElementById("convertBtn");
 
-    extractedValue = "";
     result.style.display = "none";
+    currentResult = "";
 
     if (!input) {
-        status.textContent = "Please paste a complete URL.";
+        status.textContent = "Please paste your link first.";
         return;
     }
 
+    let url;
+
     try {
-        const url = new URL(input);
+        url = new URL(input);
+    } catch {
+        status.textContent = "Invalid link. Please check your URL.";
+        return;
+    }
 
-        if (url.protocol !== "https:") {
-            status.textContent = "Please use a valid HTTPS link.";
-            return;
-        }
+    if (url.protocol !== "https:") {
+        status.textContent = "Please enter a valid HTTPS link.";
+        return;
+    }
 
-        const value = url.searchParams.get("eat");
+    const eat = url.searchParams.get("eat");
 
-        if (!value) {
-            status.textContent = "The URL does not contain an eat= parameter.";
-            return;
-        }
+    if (!eat) {
+        status.textContent = "No EAT parameter was found in this link.";
+        return;
+    }
 
-        extractedValue = value;
-        resultText.textContent = value;
+    button.disabled = true;
+    button.textContent = "PROCESSING...";
+
+    status.textContent = "Checking link information...";
+
+    window.setTimeout(() => {
+        currentResult =
+            "EAT value found. Real access-token conversion has not been performed.";
+
+        resultText.textContent = currentResult;
         result.style.display = "block";
 
         status.textContent =
-            "Value extracted successfully. It has not been verified as an access token.";
+            "Link checked. An authorized conversion API is required for a real token.";
 
-    } catch (error) {
-        status.textContent =
-            "Invalid URL. Paste the complete link, including https://";
-    }
+        button.disabled = false;
+        button.textContent = "ACCESS TOKEN";
+    }, 500);
 }
 
-async function copyValue() {
+async function copyResult() {
     const status = document.getElementById("status");
 
-    if (!extractedValue) {
-        status.textContent = "Extract a value first.";
+    if (!currentResult) {
+        status.textContent = "No result available to copy.";
         return;
     }
 
     try {
-        await navigator.clipboard.writeText(extractedValue);
-        status.textContent = "Value copied to clipboard.";
-    } catch (error) {
+        await navigator.clipboard.writeText(currentResult);
+        status.textContent = "Result copied.";
+    } catch {
         status.textContent =
-            "Clipboard access unavailable. Select the displayed value and copy it manually.";
+            "Automatic copy unavailable. Please select the result manually.";
     }
 }
 </script>
-
 </body>
 </html>
