@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ACCESS GENERATOR</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SLEX Access Generator</title>
 
 <style>
 * {
@@ -14,268 +14,492 @@
 
 body {
   background: #08060d;
-  background-image:
-    linear-gradient(#21132c 1px, transparent 1px),
-    linear-gradient(90deg, #21132c 1px, transparent 1px);
-  background-size: 35px 35px;
-  color: #fff;
+  color: #f8f5ff;
   font-family: Arial, sans-serif;
   padding: 18px 12px;
 }
 
-.container {
-  max-width: 580px;
+.app {
+  max-width: 520px;
   margin: auto;
-  padding: 26px 20px;
-  border: 1px solid #30213b;
-  border-radius: 28px;
-  background: #0b0810;
+  padding: 22px;
+  background: #100d17;
+  border: 1px solid #33213e;
+  border-radius: 25px;
 }
 
 header {
   text-align: center;
-  padding: 10px 0 30px;
+  padding: 18px 0 30px;
 }
 
 .logo {
-  width: 100px;
-  height: 100px;
+  width: 82px;
+  height: 82px;
+  margin: 0 auto 18px;
   display: grid;
   place-items: center;
-  margin: 0 auto 20px;
   border-radius: 50%;
-  border: 4px solid #bf4cf4;
-  background: #21102b;
-  box-shadow: 0 0 30px #bf4cf455;
-  font-size: 40px;
+  border: 3px solid #c34cff;
+  background: #25102f;
+  font-size: 34px;
+  box-shadow: 0 0 25px #bd4cf433;
 }
 
 h1 {
-  font-size: 27px;
-  font-weight: 900;
+  font-size: 25px;
+  margin-bottom: 10px;
 }
 
 .subtitle {
-  margin-top: 12px;
-  color: #d16bea;
-  font-size: 19px;
+  color: #ce76ef;
 }
 
 .card {
   padding: 20px;
-  margin: 20px 0;
-  border: 1px solid #302632;
-  border-radius: 18px;
-  background: #15121a;
+  margin-bottom: 20px;
+  background: #17131e;
+  border: 1px solid #302637;
+  border-radius: 17px;
 }
 
-.card h2 {
-  font-size: 18px;
-  margin-bottom: 18px;
+h2 {
+  font-size: 17px;
+  margin-bottom: 17px;
 }
 
-.instructions {
-  color: #aaa4b3;
-  font-size: 14px;
-  line-height: 1.8;
-}
-
-.provider {
-  width: 100%;
-  min-height: 60px;
-  margin: 8px 0;
-  padding: 15px;
-  border: 1px solid #38303f;
-  border-radius: 12px;
-  background: #211a29;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.provider:active {
-  transform: scale(.98);
-}
-
-.google {
-  border-color: #45404b;
-}
-
-.facebook {
-  background: #1877f2;
-  border-color: #1877f2;
+p {
+  line-height: 1.6;
 }
 
 input {
   width: 100%;
-  padding: 19px 15px;
-  border-radius: 13px;
-  border: 1px solid #33273d;
-  background: #08060c;
+  padding: 15px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: 1px solid #39303f;
+  background: #09070e;
   color: white;
   font-size: 15px;
   outline: none;
 }
 
 input:focus {
-  border-color: #bd4cf4;
+  border-color: #c34cff;
 }
 
-.generate {
-  width: 100%;
-  margin-top: 18px;
-  padding: 20px 10px;
-  border: none;
-  border-radius: 14px;
-  background: linear-gradient(100deg, #8846f2, #dc42e8);
-  color: white;
-  font-size: 17px;
-  font-weight: 900;
-  letter-spacing: 1px;
+button {
   cursor: pointer;
 }
 
+.btn {
+  width: 100%;
+  padding: 15px 10px;
+  margin: 7px 0;
+  border: 0;
+  border-radius: 11px;
+  background: linear-gradient(100deg, #9048f3, #d342e8);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.google {
+  background: #25212c;
+  border: 1px solid #49404f;
+}
+
+.facebook {
+  background: #1877f2;
+}
+
+.secondary {
+  background: #292330;
+  border: 1px solid #403747;
+}
+
+.hidden {
+  display: none !important;
+}
+
 .message {
-  display: none;
-  margin-top: 15px;
-  padding: 14px;
-  border: 1px solid #75418c;
-  border-radius: 10px;
-  background: #211329;
-  color: #e5c4f5;
-  font-size: 14px;
-  line-height: 1.7;
+  margin-top: 12px;
+  padding: 12px;
+  background: #24152c;
+  border: 1px solid #623b74;
+  border-radius: 9px;
+  color: #e4c5f5;
   overflow-wrap: anywhere;
 }
 
 .small {
-  margin-top: 12px;
-  color: #928b9d;
+  color: #9d95a8;
   font-size: 12px;
-  line-height: 1.6;
+  margin-top: 10px;
+}
+
+.item {
+  padding: 13px 0;
+  border-bottom: 1px solid #332a3b;
+  overflow-wrap: anywhere;
+}
+
+.item:last-child {
+  border-bottom: 0;
 }
 
 footer {
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid #30213b;
+  padding: 18px 0 5px;
   text-align: center;
-  color: #8c8497;
+  color: #80778b;
   font-size: 12px;
 }
 </style>
 </head>
 
 <body>
-<main class="container">
+
+<main class="app">
 
 <header>
   <div class="logo">⚡</div>
-  <h1>ACCESS GENERATOR</h1>
-  <p class="subtitle">Secure Authentication</p>
+  <h1>SLEX ACCESS GENERATOR</h1>
+  <p class="subtitle">Authentication Demo</p>
 </header>
 
-<section class="card">
-  <h2>HOW TO USE</h2>
-  <div class="instructions">
-    1. Select Google or Facebook.<br>
-    2. Complete authentication on the official provider page.<br>
-    3. Use the URL validator below to check a URL's format.
-  </div>
-</section>
+<!-- SIGN UP -->
+<section id="signup" class="card">
+  <h2>CREATE ACCOUNT</h2>
 
-<section class="card">
-  <h2>SELECT PROVIDER &amp; LOGIN</h2>
-
-  <button class="provider google" id="googleBtn">
-    🌐 &nbsp; Continue with Google
+  <button class="btn google" id="googleSignup">
+    🌐 Sign up with Google
   </button>
 
-  <button class="provider facebook" id="facebookBtn">
-    f &nbsp; Continue with Facebook
+  <button class="btn facebook" id="facebookSignup">
+    f &nbsp; Sign up with Facebook
   </button>
 
   <p class="small">
-    These buttons open the official provider websites.
-    Your own registered OAuth application is required
-    for authentication callbacks.
+    Provider buttons open the official login websites.
+    This demo does not receive their authentication results.
   </p>
+
+  <hr style="border-color:#332a3b;margin:20px 0">
+
+  <h2>OR CREATE A LOCAL DEMO ACCOUNT</h2>
+
+  <form id="signupForm">
+    <input id="name" placeholder="Your username"
+           minlength="3" maxlength="30" required>
+
+    <input id="email" type="email"
+           placeholder="Email address" required>
+
+    <input id="password" type="password"
+           placeholder="Create password"
+           minlength="8" required>
+
+    <button class="btn" type="submit">SIGN UP →</button>
+  </form>
+
+  <p class="small">
+    Already registered?
+    <button id="showLogin"
+      style="background:none;border:0;color:#d78cff">
+      Login here
+    </button>
+  </p>
+
+  <div id="signupMessage" aria-live="polite"></div>
 </section>
 
-<section class="card">
-  <h2>URL VALIDATOR</h2>
+<!-- LOGIN -->
+<section id="login" class="card hidden">
+  <h2>LOGIN</h2>
 
-  <input
-    id="urlInput"
-    type="text"
-    placeholder="Paste URL containing eat="
-    autocomplete="off"
-    spellcheck="false"
-  >
+  <form id="loginForm">
+    <input id="loginEmail" type="email"
+           placeholder="Email address" required>
 
-  <button class="generate" id="generateBtn">
-    VALIDATE URL →
+    <input id="loginPassword" type="password"
+           placeholder="Password" required>
+
+    <button class="btn" type="submit">LOGIN →</button>
+  </form>
+
+  <button id="backSignup" class="btn secondary">
+    BACK TO SIGN UP
   </button>
 
-  <div class="message" id="message" role="status"></div>
+  <div id="loginMessage" aria-live="polite"></div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="hidden">
+
+  <div class="card">
+    <h2>WELCOME</h2>
+    <p id="welcome"></p>
+
+    <button id="logout" class="btn secondary">
+      LOG OUT
+    </button>
+  </div>
+
+  <div class="card">
+    <h2>ACCESS GENERATOR</h2>
+
+    <p class="small">
+      Enter a non-sensitive test URL or test value.
+      This demo validates input; it does not generate
+      real game-account access tokens.
+    </p>
+
+    <input id="sourceInput"
+           placeholder="Paste URL or test value">
+
+    <button id="generate" class="btn">
+      GENERATE →
+    </button>
+
+    <div id="generateMessage" aria-live="polite"></div>
+  </div>
+
+  <div class="card">
+    <h2>GENERATION HISTORY</h2>
+
+    <div id="history"></div>
+
+    <button id="clearHistory" class="btn secondary">
+      CLEAR HISTORY
+    </button>
+  </div>
+
 </section>
 
 <footer>
-  ACCESS GENERATOR · SECURE DEMO
+  SLEX ACCESS GENERATOR · DEMO
 </footer>
 
 </main>
 
 <script>
-const message = document.getElementById("message");
+const $ = id => document.getElementById(id);
 
-function showMessage(text) {
-  message.textContent = text;
-  message.style.display = "block";
+const show = id => $(id).classList.remove("hidden");
+const hide = id => $(id).classList.add("hidden");
+
+function notify(id, text) {
+  $(id).className = "message";
+  $(id).textContent = text;
 }
 
-document.getElementById("googleBtn").addEventListener("click", () => {
-  window.location.href = "https://accounts.google.com/";
-});
+function read(key, fallback) {
+  try {
+    return JSON.parse(localStorage.getItem(key)) ?? fallback;
+  } catch {
+    return fallback;
+  }
+}
 
-document.getElementById("facebookBtn").addEventListener("click", () => {
-  window.location.href = "https://www.facebook.com/login/";
-});
+function write(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
 
-document.getElementById("generateBtn").addEventListener("click", () => {
-  const input = document.getElementById("urlInput").value.trim();
+function openProvider(provider) {
+  const urls = {
+    Google: "https://accounts.google.com/",
+    Facebook: "https://www.facebook.com/login/"
+  };
 
-  if (!input) {
-    showMessage("Please enter a URL.");
+  location.href = urls[provider];
+}
+
+$("googleSignup").onclick = () => openProvider("Google");
+$("facebookSignup").onclick = () => openProvider("Facebook");
+
+$("showLogin").onclick = () => {
+  hide("signup");
+  show("login");
+};
+
+$("backSignup").onclick = () => {
+  hide("login");
+  show("signup");
+};
+
+function enterDashboard(user) {
+  write("slex_demo_session", {
+    email: user.email,
+    name: user.name
+  });
+
+  hide("signup");
+  hide("login");
+  show("dashboard");
+
+  $("welcome").textContent =
+    "Logged in as " + user.name + " (" + user.email + ")";
+
+  renderHistory();
+}
+
+$("signupForm").onsubmit = event => {
+  event.preventDefault();
+
+  const name = $("name").value.trim();
+  const email = $("email").value.trim().toLowerCase();
+  const password = $("password").value;
+
+  if (name.length < 3 || password.length < 8) {
+    notify("signupMessage", "Please check your input.");
     return;
   }
 
-  let url;
+  const users = read("slex_demo_users", []);
+
+  if (users.some(user => user.email === email)) {
+    notify("signupMessage", "Account already exists. Please log in.");
+    return;
+  }
+
+  /*
+   * Demo only: localStorage is not secure account storage.
+   * Do not use this authentication method for a public website.
+   */
+  users.push({name, email, password});
+  write("slex_demo_users", users);
+
+  enterDashboard({name, email});
+};
+
+$("loginForm").onsubmit = event => {
+  event.preventDefault();
+
+  const email = $("loginEmail").value.trim().toLowerCase();
+  const password = $("loginPassword").value;
+
+  const users = read("slex_demo_users", []);
+
+  const user = users.find(
+    item => item.email === email && item.password === password
+  );
+
+  if (!user) {
+    notify("loginMessage", "Incorrect email or password.");
+    return;
+  }
+
+  enterDashboard(user);
+};
+
+$("logout").onclick = () => {
+  localStorage.removeItem("slex_demo_session");
+
+  hide("dashboard");
+  show("signup");
+
+  $("signupForm").reset();
+  $("loginForm").reset();
+};
+
+function renderHistory() {
+  const history = read("slex_demo_history", []);
+  const root = $("history");
+
+  root.replaceChildren();
+
+  if (!history.length) {
+    const empty = document.createElement("p");
+    empty.className = "small";
+    empty.textContent = "No demo history yet.";
+    root.appendChild(empty);
+    return;
+  }
+
+  history.slice().reverse().forEach(entry => {
+    const item = document.createElement("div");
+    item.className = "item";
+
+    const title = document.createElement("strong");
+    title.textContent = entry.status;
+
+    const date = document.createElement("p");
+    date.className = "small";
+    date.textContent = entry.date;
+
+    const detail = document.createElement("p");
+    detail.className = "small";
+    detail.textContent = entry.detail;
+
+    item.append(title, date, detail);
+    root.appendChild(item);
+  });
+}
+
+$("generate").onclick = () => {
+  const session = read("slex_demo_session", null);
+
+  if (!session) {
+    notify("generateMessage", "Please log in first.");
+    return;
+  }
+
+  const value = $("sourceInput").value.trim();
+
+  if (!value) {
+    notify("generateMessage", "Please enter a test URL or value.");
+    return;
+  }
+
+  let detail;
 
   try {
-    url = new URL(input);
+    const url = new URL(value);
+
+    if (!["https:", "http:"].includes(url.protocol)) {
+      throw new Error("Unsupported protocol");
+    }
+
+    detail = url.searchParams.has("eat")
+      ? "URL contains an eat parameter; no token generated."
+      : "Valid URL; no eat parameter found.";
   } catch {
-    showMessage("Invalid URL. Please check the URL and try again.");
-    return;
+    if (/^https?:\/\//i.test(value)) {
+      notify("generateMessage", "Invalid URL.");
+      return;
+    }
+
+    detail = "Test value accepted for format checking only.";
   }
 
-  if (!["https:", "http:"].includes(url.protocol)) {
-    showMessage("Unsupported URL protocol.");
-    return;
-  }
+  const history = read("slex_demo_history", []);
 
-  if (url.searchParams.has("eat")) {
-    showMessage(
-      "URL contains an eat parameter. Format validated only; " +
-      "no access token was generated."
-    );
-  } else {
-    showMessage(
-      "The URL is valid, but it does not contain an eat parameter."
-    );
+  history.push({
+    status: "DEMO VALIDATION",
+    date: new Date().toLocaleString(),
+    detail
+  });
+
+  write("slex_demo_history", history);
+
+  notify("generateMessage", detail);
+  renderHistory();
+};
+
+$("clearHistory").onclick = () => {
+  if (confirm("Clear your local demo history?")) {
+    write("slex_demo_history", []);
+    renderHistory();
   }
-});
+};
+
+const session = read("slex_demo_session", null);
+
+if (session) {
+  enterDashboard(session);
+}
 </script>
+
 </body>
 </html>
