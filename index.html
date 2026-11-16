@@ -1668,11 +1668,54 @@
   
     let currentTheme = { ...DEFAULT_THEME };  
   
-    let appData = readJSON(APP_DATA_KEY, DEFAULT_APPS);  
-  
-    if (!Array.isArray(appData) || !appData.length) {  
-      appData = DEFAULT_APPS.map(app => ({ ...app }));  
-    }  
+    /* =================================
+   AUTO APP-DATA SYNC
+================================= */
+
+function hashApps(apps) {
+  const normalized = apps.map(a => [
+    String(a.name || ""),
+    String(a.description || ""),
+    String(a.image || ""),
+    String(a.url || ""),
+    a.updating ? "1" : "0"
+  ].join("\u0001")).join("\u0002");
+
+  let h = 0x811c9dc5;
+  for (let i = 0; i < normalized.length; i++) {
+    h ^= normalized.charCodeAt(i);
+    h = (h * 0x01000193) >>> 0;
+  }
+  return "v-" + h.toString(16);
+}
+
+const APP_HASH_KEY = "slexAppDataHash";
+
+(function syncAppData() {
+  const incomingHash = hashApps(DEFAULT_APPS);
+  let savedHash = null;
+
+  try {
+    savedHash = localStorage.getItem(APP_HASH_KEY);
+  } catch (e) {
+    savedHash = null;
+  }
+
+  if (savedHash === incomingHash) {
+    return;
+  }
+
+  try {
+    localStorage.removeItem(APP_DATA_KEY);
+    localStorage.setItem(APP_HASH_KEY, incomingHash);
+  } catch (e) {}
+})();
+
+let appData = readJSON(APP_DATA_KEY, DEFAULT_APPS);
+
+if (!Array.isArray(appData) || !appData.length) {
+  appData = DEFAULT_APPS.map(app => ({ ...app }));
+}  
   
     let siteData = {  
       ...DEFAULT_SITE,  
