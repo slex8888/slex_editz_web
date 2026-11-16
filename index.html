@@ -1667,7 +1667,12 @@
     }  
   
     let currentTheme = { ...DEFAULT_THEME };  
-  
+
+    if (!localStorage.getItem("slexWinkFixV1")) {
+  localStorage.removeItem("slexAppDataV2");
+  localStorage.setItem("slexWinkFixV1", "done");
+    }
+    
     let appData = readJSON(APP_DATA_KEY, DEFAULT_APPS);  
   
     if (!Array.isArray(appData) || !appData.length) {  
